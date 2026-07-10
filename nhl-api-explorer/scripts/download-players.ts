@@ -34,6 +34,7 @@ interface CachedPlayerRecord {
   sweaterNumber: number;
   inHHOF: number;
   awards: string[];
+  cups?: number; // added cup count from source
   careerTotals: any;
   seasonTotals: CachedPlayerSeasonTotal[];
   teamsPlayedFor: string[];
@@ -71,20 +72,25 @@ function normalizeSeasonTotals(seasonTotals: any[] | undefined): CachedPlayerSea
   }));
 }
 
-function normalizeAwards(awards: any[] | undefined): string[] {
+function normalizeAwards(awards: any[] | undefined, cupCount: number = 0): string[] {
   if (!Array.isArray(awards)) {
-    return [];
+    awards = [];
   }
 
-  return awards
+  const baseAwards = awards
     .map((award) => {
       if (typeof award === 'string') {
         return award;
       }
-
       return award?.trophy?.default || 'Unknown Award';
     })
     .filter(Boolean);
+
+  // Add one "Stanley Cup" entry for each cup the player has won
+  for (let i = 0; i < cupCount; i++) {
+    baseAwards.push('Stanley Cup');
+  }
+  return baseAwards;
 }
 
 function extractTeamsPlayedFor(seasonTotals: CachedPlayerSeasonTotal[]): string[] {
@@ -133,7 +139,8 @@ function normalizePlayerRecord(playerId: number, playerSummary: any, landingData
     draftDetails: landingData.draftDetails || {},
     sweaterNumber: landingData.sweaterNumber || 0,
     inHHOF: landingData.inHHOF || 0,
-    awards: normalizeAwards(landingData.awards),
+    // Compute cup count: use explicit cups if >0, otherwise infer from awards list
+    awards: normalizeAwards(landingData.awards, landingData.cups && landingData.cups > 0 ? landingData.cups : (Array.isArray(landingData.awards) ? landingData.awards.filter((a:any) => typeof a === 'string' ? a.includes('Stanley Cup') : (a?.trophy?.default || '').includes('Stanley Cup')).length : 0)),
     careerTotals: landingData.careerTotals || {},
     seasonTotals,
     teamsPlayedFor: extractTeamsPlayedFor(seasonTotals),
@@ -171,7 +178,8 @@ function readCachedPlayerRecord(cacheFile: string): CachedPlayerRecord {
     draftDetails: cachedData.draftDetails || {},
     sweaterNumber: cachedData.sweaterNumber || 0,
     inHHOF: cachedData.inHHOF || 0,
-    awards: normalizeAwards(cachedData.awards),
+    // Compute cup count for cached data similarly
+    awards: normalizeAwards(cachedData.awards, cachedData.cups && cachedData.cups > 0 ? cachedData.cups : (Array.isArray(cachedData.awards) ? cachedData.awards.filter((a:any) => typeof a === 'string' ? a.includes('Stanley Cup') : (a?.trophy?.default || '').includes('Stanley Cup')).length : 0)),
     careerTotals: cachedData.careerTotals || {},
     seasonTotals: normalizedSeasonTotals,
     teamsPlayedFor: extractTeamsPlayedFor(normalizedSeasonTotals),

@@ -6,7 +6,8 @@ import unicodedata
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-INPUT_PATH = ROOT / "players.json"
+# Updated path to locate players.json in the nhl-api-explorer data directory
+INPUT_PATH = ROOT / "nhl-api-explorer" / "public" / "data" / "players.json"
 OUTPUT_PATH = ROOT / "backend" / "data" / "players_compact.json"
 
 
@@ -201,7 +202,8 @@ def normalize_player(raw: dict) -> dict:
         "sweaterNumber": _parse_int(raw.get("sweaterNumber"), 0) if raw.get("sweaterNumber") not in (None, "") else None,
         "awards": raw.get("awards", []),
         "inHHOF": bool(raw.get("inHHOF", False)),
-        "cups": _parse_int(raw.get("cups"), 0),
+        # Use explicit cups count if present; otherwise derive from awards
+        "cups": sum(1 for award in raw.get("awards", []) if (isinstance(award, str) and "Stanley Cup" in award) or (isinstance(award, dict) and "Stanley Cup" in (award.get("trophy") or {}).get("default", ""))),
         "stats": {
             "gamesPlayed": _parse_int(regular.get("gamesPlayed"), 0),
             "goals": _parse_int(regular.get("goals"), 0),

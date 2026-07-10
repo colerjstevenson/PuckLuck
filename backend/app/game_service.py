@@ -348,7 +348,8 @@ def normalize_player(raw: dict) -> dict:
         "sweaterNumber": _parse_int(raw.get("sweaterNumber"), 0) if raw.get("sweaterNumber") not in (None, "") else None,
         "awards": raw.get("awards", []),
         "inHHOF": bool(raw.get("inHHOF", False)),
-        "cups": _parse_int(raw.get("cups"), 0),
+        # Use explicit cup count from DB if present; otherwise count Stanley Cup awards
+        "cups": _parse_int(raw.get("cups"), sum(1 for award in raw.get("awards", []) if "Stanley Cup" in award)),
         "stats": {
             "gamesPlayed": _parse_int(regular.get("gamesPlayed"), 0),
             "goals": _parse_int(regular.get("goals"), 0),
