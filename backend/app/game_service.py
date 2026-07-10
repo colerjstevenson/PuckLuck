@@ -683,15 +683,12 @@ def score_lineup(lineup: list[dict]) -> dict:
     grade = _score_to_letter_grade(total_score)
 
     breakdown = {
-        name: {
-            "value": component_values[name],
-            "weight": SCORE_WEIGHTS[name],
-            "weighted": weighted[name],
-        }
-        for name in SCORE_WEIGHTS
+        "production": round(component_values["production"] * 100),
+        "awards": round(component_values["trophies"] * 100),
+        "diversity": round(((component_values["cups"] + component_values["grit"] + component_values["hallOfFame"]) / 3) * 100),
+        "positionFit": round(component_values["positionFit"] * 100),
+        "completionBonus": round(lineup_completion * 100),
     }
-    breakdown["lineupCompletion"] = lineup_completion
-    breakdown["totalWeighted"] = weighted_total
 
     return {
         "totalScore": total_score,

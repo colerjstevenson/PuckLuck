@@ -368,9 +368,6 @@ export default function App() {
           </div>
 
           <div className="actions-row">
-            <button className="secondary" type="button" disabled={loading || isGameOver} onClick={() => void submitScore()}>
-              Score Lineup
-            </button>
             <button className="secondary" type="button" disabled={loading} onClick={resetGame}>
               New Game
             </button>

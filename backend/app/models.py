@@ -74,6 +74,7 @@ class ScoreResponse(BaseModel):
     breakdown: ScoreBreakdown
     penalties: list[str]
     warnings: list[str]
+    grade: str
 
 
 class HealthResponse(BaseModel):
