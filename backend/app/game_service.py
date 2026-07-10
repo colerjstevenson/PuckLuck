@@ -638,7 +638,13 @@ def score_lineup(lineup: list[dict]) -> dict:
             _clamp(awards_count / trophy_norm["awardsMax"]) if trophy_norm["awardsMax"] else 0.0
         )
 
-        cup_total = _parse_int(player.get("cups"), 0)
+        # Determine number of Stanley Cups: use explicit 'cups' field if available and >0, otherwise count awards.
+        cup_total_raw = player.get("cups")
+        if cup_total_raw:
+            cup_total = _parse_int(cup_total_raw, 0)
+        else:
+            awards = player.get("awards", [])
+            cup_total = sum(1 for award in awards if "Stanley Cup" in award)
         cup_scores.append(
             _clamp(cup_total / cup_norm["max"]) if cup_norm["max"] else 0.0
         )
