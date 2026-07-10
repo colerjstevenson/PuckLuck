@@ -100,6 +100,36 @@ def _parse_float(value, default: float = 0.0) -> float:
         return default
 
 
+def _parse_optional_int(value) -> int | None:
+    if value in (None, ""):
+        return None
+    try:
+        return int(value)
+    except (TypeError, ValueError):
+        return None
+
+
+def _parse_time_on_ice(value) -> float | None:
+    if value in (None, ""):
+        return None
+    if isinstance(value, (int, float)):
+        return float(value)
+    if isinstance(value, str):
+        text = value.strip()
+        if not text:
+            return None
+        match = re.match(r"^(\d+):(\d{1,2})$", text)
+        if match:
+            minutes = int(match.group(1))
+            seconds = int(match.group(2))
+            return round(minutes + seconds / 60.0, 3)
+        try:
+            return float(text)
+        except ValueError:
+            return None
+    return None
+
+
 def _normalize_position_group(position: str, position_group: str) -> str:
     if position_group:
         text = position_group.lower()
@@ -145,6 +175,8 @@ def normalize_player(raw: dict) -> dict:
         "positionGroup": _normalize_position_group(raw.get("position", ""), raw.get("positionGroup", "")),
         "birthCountry": raw.get("birthCountry"),
         "birthDate": raw.get("birthDate"),
+        "height": raw.get("height"),
+        "weight": _parse_optional_int(raw.get("weight")),
         "teamsPlayedFor": _clean_nhl_teams(raw.get("teamsPlayedFor", [])),
         "rookieSeason": raw.get("rookieSeason"),
         "lastSeason": raw.get("lastSeason"),
@@ -164,6 +196,9 @@ def normalize_player(raw: dict) -> dict:
             "pim": _parse_int(regular.get("pim"), 0),
             "wins": _parse_int(regular.get("wins"), 0),
             "savePctg": _parse_float(regular.get("savePctg"), 0.0),
+            "shots": _parse_int(regular.get("shots"), 0),
+            "plusMinus": _parse_int(regular.get("plusMinus"), 0),
+            "toi": _parse_time_on_ice(regular.get("toi") or regular.get("timeOnIce") or regular.get("averageTimeOnIce")),
         },
         "careerHighs": {
             "goals": _parse_int(raw.get("careerHighs", {}).get("goals"), 0),
