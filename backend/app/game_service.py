@@ -131,6 +131,40 @@ SLOT_POSITION_GROUP = {
     "G": "Goalie",
 }
 
+SCORE_WEIGHTS = {
+    "production": 0.35,
+    "trophies": 0.15,
+    "cups": 0.10,
+    "grit": 0.15,
+    "positionFit": 0.15,
+    "hallOfFame": 0.10,
+}
+
+SCORE_NORMALIZATION = {
+    "production": {
+        "careerPointsMax": 1600,
+        "pointsPerGameMax": 1.8,
+        "careerHighPointsMax": 150,
+        "playoffPointsMax": 250,
+    },
+    "trophies": {"awardsMax": 10},
+    "cups": {"max": 6},
+    "grit": {
+        "pimMax": 1500,
+        "toiMax": 28,
+        "plusMinusRange": (-40, 50),
+    },
+    "position": {
+        "perfect": 1.0,
+        "skaterOffPosition": 0.25,
+        "goalieOutOfCrease": 0.0,
+        "goalieNotInNet": 0.1,
+        "vacant": 0.0,
+    },
+}
+
+TOTAL_LINEUP_SLOTS = len(SLOT_POSITION_GROUP)
+
 
 def _parse_int(value, default: int = 0) -> int:
     try:
@@ -176,6 +210,16 @@ def _parse_time_on_ice(value) -> float | None:
     return None
 
 
+def _clamp(value: float, low: float = 0.0, high: float = 1.0) -> float:
+    if value is None:
+        return low
+    return max(low, min(high, value))
+
+
+def _mean(values: list[float]) -> float:
+    return sum(values) / len(values) if values else 0.0
+
+
 def _normalize_position_group(raw_position: str, raw_group: str) -> str:
     if raw_group:
         if raw_group.lower().startswith("def"):
@@ -218,6 +262,12 @@ def normalize_player(raw: dict) -> dict:
     position = raw.get("position", "")
     position_group = _normalize_position_group(position, raw.get("positionGroup", ""))
     career_highs = raw.get("careerHighs", {})
+    post_season = (
+        raw.get("careerStats", {}).get("postSeason")
+        or raw.get("postSeason")
+        or raw.get("playoffStats")
+        or {}
+    )
 
     height_raw = (
         raw.get("height")
@@ -270,6 +320,8 @@ def normalize_player(raw: dict) -> dict:
                 or regular.get("avgToi")
                 or regular.get("avgTimeOnIce")
             ),
+            "playoffPoints": _parse_int(post_season.get("points"), 0),
+            "playoffGames": _parse_int(post_season.get("gamesPlayed"), 0),
         },
         "careerHighs": {
             "goals": _parse_int(career_highs.get("goals"), 0),
@@ -463,7 +515,7 @@ def score_lineup(lineup: list[dict]) -> dict:
 
     used_slots = set()
     picked_players = []
-    slot_map = {}
+    slot_map: dict[str, dict] = {}
 
     for pick in lineup:
         slot = pick.get("slot")
@@ -481,54 +533,144 @@ def score_lineup(lineup: list[dict]) -> dict:
         picked_players.append(player)
         slot_map[slot] = player
 
-    production = 0
-    awards = 0
+    production_scores: list[float] = []
+    trophy_scores: list[float] = []
+    cup_scores: list[float] = []
+    grit_scores: list[float] = []
+    hall_scores: list[float] = []
+
+    production_norm = SCORE_NORMALIZATION["production"]
+    trophy_norm = SCORE_NORMALIZATION["trophies"]
+    cup_norm = SCORE_NORMALIZATION["cups"]
+    grit_norm = SCORE_NORMALIZATION["grit"]
 
     for player in picked_players:
-        stats = player.get("stats", {})
-        production += int(stats.get("points", 0) * 0.6 + stats.get("goals", 0) * 0.25 + stats.get("assists", 0) * 0.15)
-        awards += len(player.get("awards", [])) * 8
-        awards += int(player.get("cups", 0)) * 12
-        if player.get("inHHOF"):
-            awards += 25
+        stats = player.get("stats") or {}
+        career_points = _parse_int(stats.get("points"), 0)
+        games_played = _parse_int(stats.get("gamesPlayed"), 0)
 
-    countries = {p.get("birthCountry") for p in picked_players if p.get("birthCountry")}
-    groups = {p.get("positionGroup") for p in picked_players if p.get("positionGroup")}
-    diversity = len(countries) * 6 + len(groups) * 5
+        ppg_raw = stats.get("pointsPerGame")
+        if ppg_raw in (None, ""):
+            points_per_game = career_points / games_played if games_played else 0.0
+        else:
+            points_per_game = _parse_float(ppg_raw, 0.0)
+            if points_per_game == 0.0 and games_played:
+                points_per_game = career_points / games_played
 
-    position_fit = 0
-    for slot, player in slot_map.items():
-        expected = SLOT_POSITION_GROUP.get(slot)
-        actual = player.get("positionGroup")
-        if expected == actual:
-            position_fit += 10
+        career_high_points = _parse_int((player.get("careerHighs") or {}).get("points"), 0)
+        playoff_points = _parse_int(stats.get("playoffPoints"), 0)
+
+        prod_norms = [
+            _clamp(career_points / production_norm["careerPointsMax"]) if production_norm["careerPointsMax"] else 0.0,
+            _clamp(points_per_game / production_norm["pointsPerGameMax"]) if production_norm["pointsPerGameMax"] else 0.0,
+            _clamp(career_high_points / production_norm["careerHighPointsMax"]) if production_norm["careerHighPointsMax"] else 0.0,
+            _clamp(playoff_points / production_norm["playoffPointsMax"]) if production_norm["playoffPointsMax"] else 0.0,
+        ]
+        production_scores.append(_mean(prod_norms))
+
+        awards_count = len(player.get("awards") or [])
+        trophy_scores.append(
+            _clamp(awards_count / trophy_norm["awardsMax"]) if trophy_norm["awardsMax"] else 0.0
+        )
+
+        cup_total = _parse_int(player.get("cups"), 0)
+        cup_scores.append(
+            _clamp(cup_total / cup_norm["max"]) if cup_norm["max"] else 0.0
+        )
+
+        pim = _parse_int(stats.get("pim"), 0)
+        toi_value = stats.get("toi")
+        if isinstance(toi_value, str):
+            toi_value = _parse_time_on_ice(toi_value)
+        if toi_value is None:
+            toi_value = 0.0
+        else:
+            try:
+                toi_value = float(toi_value)
+            except (TypeError, ValueError):
+                toi_value = 0.0
+
+        plus_minus_raw = stats.get("plusMinus")
+        plus_minus = _parse_int(plus_minus_raw, 0)
+
+        pm_low, pm_high = grit_norm["plusMinusRange"]
+        if pm_high == pm_low:
+            plus_minus_norm = 0.0
+        else:
+            plus_minus_norm = _clamp((plus_minus - pm_low) / (pm_high - pm_low))
+
+        grit_components = [
+            _clamp(pim / grit_norm["pimMax"]) if grit_norm["pimMax"] else 0.0,
+            _clamp(toi_value / grit_norm["toiMax"]) if grit_norm["toiMax"] else 0.0,
+            plus_minus_norm,
+        ]
+        grit_scores.append(_mean(grit_components))
+
+        hall_scores.append(1.0 if player.get("inHHOF") else 0.0)
+
+    position_norm = SCORE_NORMALIZATION["position"]
+    position_scores: list[float] = []
+    lineup_incomplete = False
+
+    for slot, expected_group in SLOT_POSITION_GROUP.items():
+        player = slot_map.get(slot)
+        if not player:
+            position_scores.append(position_norm["vacant"])
+            lineup_incomplete = True
             continue
 
-        if actual == "Goalie" and expected != "Goalie":
-            position_fit -= 35
-            penalties.append(f"{player['name']} is a goalie outside the crease ({slot}).")
-        elif expected == "Goalie" and actual != "Goalie":
-            position_fit -= 30
-            penalties.append(f"{player['name']} is not a goalie but was placed in G.")
+        actual_group = player.get("positionGroup")
+        player_name = player.get("name", "Unknown Player")
+
+        if actual_group == expected_group:
+            position_scores.append(position_norm["perfect"])
+        elif actual_group == "Goalie" and expected_group != "Goalie":
+            position_scores.append(position_norm["goalieOutOfCrease"])
+            penalties.append(f"{player_name} is a goalie outside the crease ({slot}).")
+        elif expected_group == "Goalie" and actual_group != "Goalie":
+            position_scores.append(position_norm["goalieNotInNet"])
+            penalties.append(f"{player_name} is not a goalie but was placed in G.")
         else:
-            position_fit -= 15
-            penalties.append(f"{player['name']} is off-position in {slot}.")
+            position_scores.append(position_norm["skaterOffPosition"])
+            penalties.append(f"{player_name} is off-position in {slot}.")
 
-    completion_bonus = 50 if len(slot_map) == 6 else 0
-    if completion_bonus == 0:
-        warnings.append("Lineup incomplete. Fill all six slots for completion bonus.")
+    component_values = {
+        "production": _mean(production_scores),
+        "trophies": _mean(trophy_scores),
+        "cups": _mean(cup_scores),
+        "grit": _mean(grit_scores),
+        "positionFit": _mean(position_scores),
+        "hallOfFame": _mean(hall_scores),
+    }
 
-    total = production + awards + diversity + position_fit + completion_bonus
+    weighted = {
+        name: component_values[name] * SCORE_WEIGHTS[name]
+        for name in SCORE_WEIGHTS
+    }
+    weighted_total = sum(weighted.values())
+    lineup_completion = len(slot_map) / TOTAL_LINEUP_SLOTS if TOTAL_LINEUP_SLOTS else 0.0
+
+    if lineup_completion < 1.0 or lineup_incomplete:
+        warning_msg = "Lineup incomplete. Fill all six slots for completion bonus."
+        if warning_msg not in warnings:
+            warnings.append(warning_msg)
+
+    total_score = max(round(weighted_total * lineup_completion * 100), 0)
+
+    breakdown = {
+        name: {
+            "value": component_values[name],
+            "weight": SCORE_WEIGHTS[name],
+            "weighted": weighted[name],
+        }
+        for name in SCORE_WEIGHTS
+    }
+    breakdown["lineupCompletion"] = lineup_completion
+    breakdown["totalWeighted"] = weighted_total
 
     return {
-        "totalScore": max(total, 0),
-        "breakdown": {
-            "production": production,
-            "awards": awards,
-            "diversity": diversity,
-            "positionFit": position_fit,
-            "completionBonus": completion_bonus,
-        },
+        "totalScore": total_score,
+        "breakdown": breakdown,
         "penalties": penalties,
         "warnings": warnings,
     }
