@@ -188,6 +188,19 @@ def normalize_player(raw: dict) -> dict:
     position_group = _normalize_position_group(position, raw.get("positionGroup", ""))
     career_highs = raw.get("careerHighs", {})
 
+    height_raw = (
+        raw.get("height")
+        or raw.get("heightInInches")
+        or raw.get("heightInches")
+    )
+    weight_raw = (
+        raw.get("weight")
+        or raw.get("weightInPounds")
+        or raw.get("weightLbs")
+    )
+    height = _parse_optional_int(height_raw)
+    weight = _parse_optional_int(weight_raw)
+
     return {
         "id": str(raw.get("id", "")),
         "name": raw.get("name", "Unknown Player"),
@@ -196,8 +209,8 @@ def normalize_player(raw: dict) -> dict:
         "positionGroup": position_group,
         "birthCountry": raw.get("birthCountry"),
         "birthDate": raw.get("birthDate"),
-        "height": raw.get("height"),
-        "weight": _parse_optional_int(raw.get("weight")),
+        "height": height if height is not None else height_raw,
+        "weight": weight if weight is not None else weight_raw,
         "teamsPlayedFor": _clean_nhl_teams(raw.get("teamsPlayedFor", [])),
         "rookieSeason": raw.get("rookieSeason"),
         "lastSeason": raw.get("lastSeason"),
@@ -219,7 +232,13 @@ def normalize_player(raw: dict) -> dict:
             "savePctg": _parse_float(regular.get("savePctg"), 0.0),
             "shots": _parse_int(regular.get("shots"), 0),
             "plusMinus": _parse_int(regular.get("plusMinus"), 0),
-            "toi": _parse_time_on_ice(regular.get("toi") or regular.get("timeOnIce") or regular.get("averageTimeOnIce")),
+            "toi": _parse_time_on_ice(
+                regular.get("toi")
+                or regular.get("timeOnIce")
+                or regular.get("averageTimeOnIce")
+                or regular.get("avgToi")
+                or regular.get("avgTimeOnIce")
+            ),
         },
         "careerHighs": {
             "goals": _parse_int(career_highs.get("goals"), 0),
