@@ -344,7 +344,7 @@ export default function App() {
     <main className="page-shell">
       <header className="hero">
         <p className="kicker">Classic Mode</p>
-        <h1>NHL Rink Builder</h1>
+        <h1>Puck Luck</h1>
         <p>Draft the best team possible using two random categories each round. Can you draft a dynasty?</p>
       </header>
 

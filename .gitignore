@@ -12,3 +12,7 @@ venv/
 .DS_Store
 Thumbs.db
 .aider*
+
+# NHL API explorer generated data
+nhl-api-explorer/cache/
+nhl-api-explorer/output/
