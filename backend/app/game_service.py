@@ -163,6 +163,30 @@ SCORE_NORMALIZATION = {
     },
 }
 
+GRADE_THRESHOLDS = [
+    (97, "A+"),
+    (93, "A"),
+    (90, "A-"),
+    (87, "B+"),
+    (83, "B"),
+    (80, "B-"),
+    (77, "C+"),
+    (73, "C"),
+    (70, "C-"),
+    (67, "D+"),
+    (63, "D"),
+    (60, "D-"),
+    (0, "F"),
+]
+
+
+def _score_to_letter_grade(score: int) -> str:
+    for threshold, label in GRADE_THRESHOLDS:
+        if score >= threshold:
+            return label
+    return GRADE_THRESHOLDS[-1][1]
+
+
 TOTAL_LINEUP_SLOTS = len(SLOT_POSITION_GROUP)
 
 
@@ -656,6 +680,7 @@ def score_lineup(lineup: list[dict]) -> dict:
             warnings.append(warning_msg)
 
     total_score = max(round(weighted_total * lineup_completion * 100), 0)
+    grade = _score_to_letter_grade(total_score)
 
     breakdown = {
         name: {
@@ -670,6 +695,7 @@ def score_lineup(lineup: list[dict]) -> dict:
 
     return {
         "totalScore": total_score,
+        "grade": grade,
         "breakdown": breakdown,
         "penalties": penalties,
         "warnings": warnings,

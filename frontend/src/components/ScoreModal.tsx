@@ -16,7 +16,8 @@ export function ScoreModal({ result, onClose, onRestart, gameOver = false }: Sco
     <div className="modal-backdrop" role="dialog" aria-modal="true" aria-label="Final score modal">
       <div className="modal-card">
         <h2>Final Score</h2>
-        <p className="score-total">{result.totalScore}</p>
+        <p className="score-total">{result.grade}</p>
+        <p className="score-subtotal">{result.totalScore} pts</p>
 
         <div className="score-grid">
           <div>

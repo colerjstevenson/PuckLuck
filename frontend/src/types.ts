@@ -42,6 +42,7 @@ export type EligibleResponse = {
 export type LineupSlot = "F1" | "F2" | "F3" | "D1" | "D2" | "G";
 
 export type ScoreResponse = {
+  grade: string;
   totalScore: number;
   breakdown: {
     production: number;
