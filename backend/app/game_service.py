@@ -1,8 +1,10 @@
 from __future__ import annotations
 
 import json
+import logging
 import random
 import re
+import sqlite3
 import uuid
 import unicodedata
 from collections import defaultdict
@@ -11,10 +13,39 @@ from pathlib import Path
 
 from .categories import CategoryDef, build_categories
 
-ROOT = Path(__file__).resolve().parents[2]
-COMPACT_DATA_PATH = ROOT / "backend" / "data" / "players_compact.json"
-RAW_DATA_PATH = ROOT / "players.json"
-EXAMPLE_DATA_PATH = ROOT / "data_example.json"
+APP_DIR = Path(__file__).resolve().parent
+PROJECT_ROOT = APP_DIR.parent
+REPO_ROOT = PROJECT_ROOT.parent
+
+
+def _unique_paths(paths: list[Path]) -> list[Path]:
+    seen: set[Path] = set()
+    ordered: list[Path] = []
+    for path in paths:
+        if path in seen:
+            continue
+        seen.add(path)
+        ordered.append(path)
+    return ordered
+
+
+DATA_DIR_CANDIDATES = _unique_paths([
+    PROJECT_ROOT / "data",           # Docker image layout (/app/data)
+    REPO_ROOT / "backend" / "data", # Local repo layout (repo/backend/data)
+])
+
+RAW_DB_CANDIDATES = [directory / "players_raw.db" for directory in DATA_DIR_CANDIDATES]
+COMPACT_JSON_CANDIDATES = [directory / "players_compact.json" for directory in DATA_DIR_CANDIDATES]
+RAW_JSON_CANDIDATES = _unique_paths([
+    REPO_ROOT / "players.json",
+    PROJECT_ROOT / "players.json",
+])
+EXAMPLE_JSON_CANDIDATES = _unique_paths([
+    REPO_ROOT / "data_example.json",
+    PROJECT_ROOT / "data_example.json",
+])
+
+logger = logging.getLogger(__name__)
 
 NHL_TEAM_ALIASES = [
     "Anaheim Ducks",
@@ -248,27 +279,111 @@ def normalize_player(raw: dict) -> dict:
     }
 
 
-@lru_cache(maxsize=1)
-def load_players() -> list[dict]:
-    source = None
-    if COMPACT_DATA_PATH.exists():
-        source = COMPACT_DATA_PATH
-    elif RAW_DATA_PATH.exists():
-        source = RAW_DATA_PATH
-    elif EXAMPLE_DATA_PATH.exists():
-        source = EXAMPLE_DATA_PATH
+def _read_players_from_sqlite() -> list[dict] | None:
+    for db_path in RAW_DB_CANDIDATES:
+        if not db_path.exists():
+            continue
 
-    if source is None:
-        return []
+        try:
+            with sqlite3.connect(db_path) as conn:
+                rows = conn.execute("SELECT compact_json FROM players_raw").fetchall()
+        except sqlite3.Error as exc:
+            logger.warning("SQLite load failed for %s: %s", db_path, exc)
+            continue
 
-    with source.open("r", encoding="utf-8") as f:
-        data = json.load(f)
+        players: list[dict] = []
+        for row in rows:
+            compact_json = row[0]
+            if not compact_json:
+                continue
+            try:
+                payload = json.loads(compact_json)
+            except json.JSONDecodeError:
+                continue
+            if isinstance(payload, dict):
+                players.append(payload)
+
+        if players:
+            return players
+
+        logger.warning("SQLite source %s yielded 0 valid player rows. Trying JSON fallback.", db_path)
+
+    return None
+
+
+def _read_players_from_json(path: Path) -> list[dict] | None:
+    if not path.exists():
+        return None
+
+    try:
+        with path.open("r", encoding="utf-8") as f:
+            data = json.load(f)
+    except json.JSONDecodeError as exc:
+        logger.warning("JSON load failed for %s: %s", path, exc)
+        return None
 
     if isinstance(data, dict):
         data = [data]
 
-    normalized = [normalize_player(item) for item in data if isinstance(item, dict)]
-    return [p for p in normalized if p.get("id")]
+    return [item for item in data if isinstance(item, dict)]
+
+
+def _load_players_bundle() -> dict:
+    # Prefer canonical SQLite output and only fall back to JSON during transition windows.
+    sqlite_rows = _read_players_from_sqlite()
+    if sqlite_rows is not None:
+        normalized = [normalize_player(item) for item in sqlite_rows]
+        players = [p for p in normalized if p.get("id")]
+        if players:
+            return {
+                "players": players,
+                "dataSource": "sqlite",
+                "sourcePath": "|".join(str(path) for path in RAW_DB_CANDIDATES),
+                "sourceRowCount": len(sqlite_rows),
+                "ready": True,
+            }
+
+    for source, source_name in [
+        *[(path, "compact-json") for path in COMPACT_JSON_CANDIDATES],
+        *[(path, "raw-json") for path in RAW_JSON_CANDIDATES],
+        *[(path, "example-json") for path in EXAMPLE_JSON_CANDIDATES],
+    ]:
+        data = _read_players_from_json(source)
+        if data is None:
+            continue
+        normalized = [normalize_player(item) for item in data]
+        players = [p for p in normalized if p.get("id")]
+        if players:
+            return {
+                "players": players,
+                "dataSource": source_name,
+                "sourcePath": str(source),
+                "sourceRowCount": len(data),
+                "ready": True,
+            }
+        logger.warning("%s source %s yielded 0 valid players. Trying next source.", source_name, source)
+
+    return {
+        "players": [],
+        "dataSource": "missing",
+        "sourcePath": "",
+        "sourceRowCount": 0,
+        "ready": False,
+    }
+
+
+@lru_cache(maxsize=1)
+def load_players() -> list[dict]:
+    return _load_players_bundle()["players"]
+
+
+@lru_cache(maxsize=1)
+def _load_data_state() -> dict:
+    return _load_players_bundle()
+
+
+def data_ready() -> bool:
+    return bool(_load_data_state().get("ready"))
 
 
 @lru_cache(maxsize=1)
@@ -423,8 +538,12 @@ def metadata() -> dict:
     grouped = defaultdict(int)
     for c in load_categories().values():
         grouped[c.group] += 1
+    state = _load_data_state()
     return {
         "playerCount": len(load_players()),
         "categoryCount": len(load_categories()),
         "categoryGroups": dict(grouped),
+        "dataSource": state.get("dataSource", "unknown"),
+        "sourceRowCount": int(state.get("sourceRowCount", 0) or 0),
+        "dataReady": bool(state.get("ready")),
     }
