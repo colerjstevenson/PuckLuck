@@ -1,0 +1,100 @@
+{
+    "id": "8471675",
+    "name": "Sidney Crosby",
+    "headshot": "https://assets.nhle.com/mugs/nhl/20262027/PIT/8471675.png",
+    "position": "C",
+    "positionGroup": "Forward",
+    "heightInInches": 71,
+    "weightInPounds": 200,
+    "birthCountry": "CAN",
+    "birthDate": "1987-08-07",
+    "teamsPlayedFor": [
+      "Dartmouth",
+      "Dartmouth Subways",
+      "Shat.-St. Mary's",
+      "Rimouski",
+      "Canada",
+      "Pittsburgh Penguins"
+    ],
+    "rookieSeason": "20012002",
+    "lastSeason": "20252026",
+    "draftYear": "2005",
+    "draftRound": "1",
+    "draftPick": "1",
+    "active": true,
+    "careerStats": {
+      "regularSeason": {
+        "assists": 1107,
+        "avgToi": "20:36",
+        "faceoffWinningPctg": 0.5295000000000001,
+        "gameWinningGoals": 104,
+        "gamesPlayed": 1420,
+        "goals": 654,
+        "otGoals": 25,
+        "pim": 898,
+        "plusMinus": 197,
+        "points": 1761,
+        "powerPlayGoals": 194,
+        "powerPlayPoints": 610,
+        "shootingPctg": 0.1466,
+        "shorthandedGoals": 4,
+        "shorthandedPoints": 11,
+        "shots": 4459
+      },
+      "playoffs": {
+        "assists": 134,
+        "avgToi": "20:56",
+        "faceoffWinningPctg": 0.5153,
+        "gameWinningGoals": 9,
+        "gamesPlayed": 186,
+        "goals": 72,
+        "otGoals": 1,
+        "pim": 89,
+        "plusMinus": 17,
+        "points": 206,
+        "powerPlayGoals": 21,
+        "powerPlayPoints": 77,
+        "shootingPctg": 0.1283,
+        "shorthandedGoals": 0,
+        "shorthandedPoints": 0,
+        "shots": 561
+      }
+    },
+    "awards": [
+      "Stanley Cup",
+      "Art Ross Trophy",
+      "Conn Smythe Trophy",
+      "Hart Memorial Trophy",
+      "Mark Messier NHL Leadership Award",
+      "Maurice “Rocket” Richard Trophy",
+      "Ted Lindsay Award"
+    ],
+    "inHHOF": false,
+    "cups": 0,
+    "sweaterNumber": 87,
+    "careerHighs": {
+      "goals": 51,
+      "assists": 84,
+      "points": 120,
+      "plusMinus": 26,
+      "pim": 110,
+      "gamesPlayed": 82,
+      "shots": 298,
+      "shootingPctg": 0.1988,
+      "timeOnIce": "21:58"
+    },
+    "seasonHighs": {
+      "plusMinus": {
+        "season": "20122013",
+        "value": 26
+      },
+      "shots": {
+        "season": "20092010",
+        "value": 298
+      },
+      "timeOnIce": {
+        "season": "20132014",
+        "value": "21:58"
+      }
+    }
+  }

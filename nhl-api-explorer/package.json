@@ -1,0 +1,30 @@
+{
+  "name": "nhl-api-explorer",
+  "version": "1.0.0",
+  "description": "NHL API Explorer for Ultimate Team Builder",
+  "main": "index.js",
+  "scripts": {
+    "test-player": "ts-node scripts/test-player.ts",
+    "download-players": "ts-node scripts/download-players.ts",
+    "inspect-player": "ts-node scripts/inspect-player.ts",
+    "build-database": "ts-node scripts/build-database.ts",
+    "test-implementation": "ts-node scripts/test-implementation.ts"
+  },
+  "keywords": [
+    "nhl",
+    "api",
+    "explorer"
+  ],
+  "author": "NHL Ultimate Team Builder",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^18.0.0",
+    "@types/sql.js": "^1.4.9",
+    "ts-node": "^10.9.0",
+    "typescript": "^4.7.0"
+  },
+  "dependencies": {
+    "axios": "^1.0.0",
+    "sql.js": "^1.13.0"
+  }
+}
