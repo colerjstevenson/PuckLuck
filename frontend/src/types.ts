@@ -47,9 +47,10 @@ export type ScoreResponse = {
   breakdown: {
     production: number;
     awards: number;
-    diversity: number;
+    cups: number;
+    grit: number;
+    hallOfFame: number;
     positionFit: number;
-    completionBonus: number;
   };
   penalties: string[];
   warnings: string[];

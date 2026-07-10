@@ -64,9 +64,10 @@ class ScoreRequest(BaseModel):
 class ScoreBreakdown(BaseModel):
     production: int
     awards: int
-    diversity: int
+    cups: int
+    grit: int
+    hallOfFame: int
     positionFit: int
-    completionBonus: int
 
 
 class ScoreResponse(BaseModel):

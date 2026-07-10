@@ -29,16 +29,20 @@ export function ScoreModal({ result, onClose, onRestart, gameOver = false }: Sco
             <strong>{result.breakdown.awards}</strong>
           </div>
           <div>
-            <span>Diversity</span>
-            <strong>{result.breakdown.diversity}</strong>
+            <span>Cups</span>
+            <strong>{result.breakdown.cups}</strong>
+          </div>
+          <div>
+            <span>Grit</span>
+            <strong>{result.breakdown.grit}</strong>
+          </div>
+          <div>
+            <span>Hall of Fame</span>
+            <strong>{result.breakdown.hallOfFame}</strong>
           </div>
           <div>
             <span>Position Fit</span>
             <strong>{result.breakdown.positionFit}</strong>
-          </div>
-          <div>
-            <span>Completion</span>
-            <strong>{result.breakdown.completionBonus}</strong>
           </div>
         </div>
 
