@@ -110,6 +110,7 @@ function PlayerListMobile({
 }
 
 export default function App() {
+  const modePickerThumbnail = `${import.meta.env.BASE_URL}thumbnail.png`;
   const isMobile = useIsMobile(768);
   const [gameMode, setGameMode] = useState<GameMode | null>(null);
   const [round, setRound] = useState<SpinResponse | null>(null);
@@ -548,7 +549,7 @@ export default function App() {
 
             <div className="mobile-meta-row">
               <p>Respins left: {respinsLeft}</p>
-              <p>{gameMode === "pro" ? "Category matches" : "Eligible players"}: {eligibleCount}</p>
+              {gameMode === "classic" ? <p>Eligible players: {eligibleCount}</p> : null}
             </div>
 
             {roundAdvancePending || isSpinning ? (
@@ -641,7 +642,7 @@ export default function App() {
 
             <div className="meta-row">
               <p>Respins left: {respinsLeft}</p>
-              <p>{gameMode === "pro" ? "Category matches" : "Eligible players"}: {eligibleCount}</p>
+              {gameMode === "classic" ? <p>Eligible players: {eligibleCount}</p> : null}
             </div>
 
             {roundAdvancePending || isSpinning ? (
@@ -724,10 +725,10 @@ export default function App() {
       {gameMode === null ? (
         <div className="mode-picker-backdrop" role="dialog" aria-modal="true" aria-label="Choose game mode">
           <div className="mode-picker-card panel">
-            <img className="mode-picker-logo" src="/thumbnail.png" alt="Puck Luck logo" />
+            <img className="mode-picker-logo" src={modePickerThumbnail} alt="Puck Luck logo" />
             <p className="kicker">Choose Your Challenge</p>
             <h2>Pick a game mode</h2>
-            <p className="mode-picker-copy">Classic keeps the category-guided draft list. Pro shows every player by name and makes you know who actually fits.</p>
+            <p className="mode-picker-copy">Classic Mode provides you with a list of eligle players and there stats, or choose Pro Mode and rely solely on your own hockey knowledge!</p>
 
             {error ? <p className="error">{error}</p> : null}
 

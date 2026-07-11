@@ -9,6 +9,15 @@ const SCORE_COLUMNS = [
   { key: "positionFit", label: "Position Fit" },
 ] as const;
 
+const SCORE_WEIGHTS: Record<(typeof SCORE_COLUMNS)[number]["key"], number> = {
+  production: 0.25,
+  awards: 0.15,
+  cups: 0.2,
+  grit: 0.1,
+  hallOfFame: 0.1,
+  positionFit: 0.35,
+};
+
 const GRADE_THRESHOLDS: Array<[number, string]> = [
   [96, "A++"],
   [80, "A+"],
@@ -25,6 +34,8 @@ const GRADE_THRESHOLDS: Array<[number, string]> = [
   [30, "D-"],
   [0, "F"],
 ];
+
+const BOOLEAN_SCORE_COLUMNS = new Set<"hallOfFame" | "positionFit">(["hallOfFame", "positionFit"]);
 
 function toGrade(score: number): string {
   const clamped = Math.max(0, Math.min(100, Math.round(score)));
@@ -44,13 +55,31 @@ function toSignedGrade(score: number): string {
   return `${sign}${toGrade(Math.abs(score))}`;
 }
 
-function rowAverageGrade(values: Record<(typeof SCORE_COLUMNS)[number]["key"], number>): string {
-  const total = getRowTotal(values);
-  return toGrade(total / SCORE_COLUMNS.length);
+function weightedPointsForCategory(
+  values: Record<(typeof SCORE_COLUMNS)[number]["key"], number>,
+  key: (typeof SCORE_COLUMNS)[number]["key"],
+): number {
+  return values[key] * SCORE_WEIGHTS[key];
 }
 
-function getRowTotal(values: Record<(typeof SCORE_COLUMNS)[number]["key"], number>): number {
-  return SCORE_COLUMNS.reduce((total, column) => total + values[column.key], 0);
+function getWeightedRowTotal(values: Record<(typeof SCORE_COLUMNS)[number]["key"], number>): number {
+  return SCORE_COLUMNS.reduce((total, column) => total + weightedPointsForCategory(values, column.key), 0);
+}
+
+function formatPoints(points: number): string {
+  const rounded = Math.round(points * 10) / 10;
+  return `${rounded.toFixed(1).replace(/\.0$/, "")} pts`;
+}
+
+function renderPlayerCategoryCell(
+  values: Record<(typeof SCORE_COLUMNS)[number]["key"], number>,
+  key: (typeof SCORE_COLUMNS)[number]["key"],
+): string {
+  if (BOOLEAN_SCORE_COLUMNS.has(key as "hallOfFame" | "positionFit")) {
+    return values[key] > 0 ? "✓" : "X";
+  }
+
+  return formatPoints(weightedPointsForCategory(values, key));
 }
 
 type ScoreModalProps = {
@@ -70,22 +99,6 @@ export function ScoreModal({ result, onClose, onRestart, gameOver = false }: Sco
       <div className="modal-card">
         <h2>Final Score</h2>
         <p className="score-total">{result.grade}</p>
-        <p className="score-subtotal">Base score: {toGrade(result.totalScore)}</p>
-
-        <div className="notes-block">
-          <h3>How This Score Was Calculated</h3>
-          <ul>
-            <li>Weighted subtotal: {toGrade(result.scoreSubtotal)}</li>
-            <li>Bonuses: {toSignedGrade(result.bonusTotal)}</li>
-            <li>Hard penalties: {toSignedGrade(-result.hardPenaltyTotal)}</li>
-            <li>
-              Final equation: {toGrade(result.scoreSubtotal)} {toSignedGrade(result.bonusTotal)} {toSignedGrade(-result.hardPenaltyTotal)} = {result.grade}
-            </li>
-            <li>
-              Goalie quality: {toGrade(result.goalieQuality)} (A-floor: {toGrade(result.goalieQualityFloorForA)}) - {result.goalieGatePassedForA ? "A-tier eligible" : "A-tier capped"}
-            </li>
-          </ul>
-        </div>
 
         <div className="score-table-wrap">
           <table className="score-table">
@@ -97,7 +110,7 @@ export function ScoreModal({ result, onClose, onRestart, gameOver = false }: Sco
                     {column.label}
                   </th>
                 ))}
-                <th scope="col">Total</th>
+                <th scope="col">Weighted Total</th>
               </tr>
             </thead>
             <tbody>
@@ -108,17 +121,34 @@ export function ScoreModal({ result, onClose, onRestart, gameOver = false }: Sco
                     <span className="score-player-slot">{entry.slot}</span>
                   </th>
                   {SCORE_COLUMNS.map((column) => (
-                    <td key={column.key}>{toGrade(entry.breakdown[column.key])}</td>
+                    <td key={column.key}>{renderPlayerCategoryCell(entry.breakdown, column.key)}</td>
                   ))}
-                  <td>{rowAverageGrade(entry.breakdown)}</td>
+                  <td>{formatPoints(getWeightedRowTotal(entry.breakdown))}</td>
                 </tr>
               ))}
               <tr className="score-table-total">
-                <th scope="row">Totals</th>
+                <th scope="row">Lineup Weighted</th>
                 {SCORE_COLUMNS.map((column) => (
-                  <td key={column.key}>{toGrade(result.breakdown[column.key])}</td>
+                  <td key={column.key}>{formatPoints(result.weightedContribution[column.key])}</td>
                 ))}
-                <td>{rowAverageGrade(result.breakdown)}</td>
+                <td>
+                  {formatPoints(
+                    SCORE_COLUMNS.reduce(
+                      (total, column) => total + result.weightedContribution[column.key],
+                      0,
+                    ),
+                  )}
+                </td>
+              </tr>
+              <tr className="score-table-total">
+                <th scope="row">Goalie Quality</th>
+                <td colSpan={SCORE_COLUMNS.length}>Weighted goalie quality contribution</td>
+                <td>{formatPoints(result.weightedContribution.goalieQuality)}</td>
+              </tr>
+              <tr className="score-table-total">
+                <th scope="row">Score Subtotal</th>
+                <td colSpan={SCORE_COLUMNS.length}>Weighted total before hard penalties</td>
+                <td>{formatPoints(result.scoreSubtotal)}</td>
               </tr>
             </tbody>
           </table>

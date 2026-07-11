@@ -157,7 +157,6 @@ def _merge_score_weights(overrides: dict[str, float] | None = None) -> dict[str,
     return merged
 
 SCORE_ADJUSTMENTS = {
-    "completeLineupBonus": 3,
     "goalieOutOfCreasePenalty": 20,
     "goalieNotInNetPenalty": 30,
 }
@@ -884,14 +883,12 @@ def score_lineup(lineup: list[dict], weights: dict[str, float] | None = None) ->
             warnings.append(warning_msg)
 
     complete_lineup = len(slot_map) == len(SLOT_POSITION_GROUP)
-    completion_bonus = SCORE_ADJUSTMENTS["completeLineupBonus"] if complete_lineup else 0
     score_subtotal = round(weighted_total * 100)
 
     bonuses: list[dict] = []
-    if completion_bonus > 0:
-        bonuses.append({"label": "Complete lineup bonus", "points": completion_bonus})
+    bonus_total = 0
 
-    total_score = round(score_subtotal + completion_bonus - hard_penalty_points)
+    total_score = round(score_subtotal - hard_penalty_points)
     total_score = max(min(total_score, 100), 0)
 
     legacy_signal = max(
@@ -935,14 +932,14 @@ def score_lineup(lineup: list[dict], weights: dict[str, float] | None = None) ->
         "breakdown": breakdown,
         "weightedContribution": weighted_contribution,
         "scoreSubtotal": score_subtotal,
-        "bonusTotal": completion_bonus,
+        "bonusTotal": bonus_total,
         "hardPenaltyTotal": hard_penalty_points,
         "bonuses": bonuses,
         "penaltiesApplied": hard_penalty_items,
         "goalieQuality": goalie_quality_score,
         "goalieQualityFloorForA": GOALIE_GRADE_GATES["aFloor"],
         "goalieGatePassedForA": goalie_quality_score >= GOALIE_GRADE_GATES["aFloor"],
-        "finalScoreEquation": f"{score_subtotal} + {completion_bonus} - {hard_penalty_points} = {total_score}",
+        "finalScoreEquation": f"{score_subtotal} - {hard_penalty_points} = {total_score}",
         "playerBreakdown": player_breakdown,
         "penalties": penalties,
         "warnings": warnings,
