@@ -63,6 +63,31 @@ body {
   gap: 1rem;
 }
 
+.mobile-layout {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.mobile-panel {
+  padding: 0.85rem;
+}
+
+.mobile-meta-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+  color: #b7def2;
+}
+
+.mobile-meta-row p {
+  margin: 0;
+  border: 1px solid #8dd8ff2e;
+  border-radius: 10px;
+  background: #0e253bdd;
+  padding: 0.45rem 0.55rem;
+}
+
 .panel {
   border: 1px solid #7acbff30;
   border-radius: 18px;
@@ -290,6 +315,15 @@ button {
   box-shadow: 0 0 0 1px #ffca7428, 0 12px 22px #02091388;
 }
 
+.player-list-mobile {
+  min-height: 240px;
+  max-height: 46vh;
+}
+
+.player-card-mobile {
+  padding: 0.7rem;
+}
+
 .card-main h3 {
   margin: 0;
   font-size: 1rem;
@@ -307,6 +341,51 @@ button {
 
 .rink-panel {
   padding: 0.9rem;
+}
+
+.rink-mobile {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.55rem;
+}
+
+.rink-mobile-slot {
+  border: 2px dashed #95dcff66;
+  border-radius: 12px;
+  background: #0a1d2fcd;
+  padding: 0.5rem;
+  text-align: left;
+  color: inherit;
+  cursor: pointer;
+  min-height: 94px;
+}
+
+.rink-mobile-slot:nth-child(6) {
+  grid-column: span 2;
+}
+
+.rink-mobile-slot .slot-empty {
+  margin-top: 0.55rem;
+}
+
+.rink-mobile-slot .mobile-player-card {
+  margin-top: 0.45rem;
+}
+
+.rink-mobile-slot.has-selection {
+  border-color: #ffbf5a95;
+  box-shadow: inset 0 0 0 1px #ffbf5a30, 0 0 0 2px #ffbf5a10;
+}
+
+.rink-mobile-slot.move-target {
+  border-style: solid;
+  border-color: #ffd992bb;
+  background: #15314cb5;
+}
+
+.rink-mobile-slot.is-selected {
+  border-color: #ffca74;
+  box-shadow: inset 0 0 0 1px #ffd28f70, 0 0 0 2px #ffb54540, 0 0 18px #ffb54533;
 }
 
 .rink-shell {
@@ -517,12 +596,38 @@ button {
 }
 
 @media (max-width: 640px) {
+  .page-shell {
+    padding: 1rem 0.75rem 1.25rem;
+  }
+
+  .hero {
+    margin-bottom: 0.9rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(1.7rem, 9vw, 2.25rem);
+  }
+
+  .hero p {
+    font-size: 0.94rem;
+  }
+
   .tiles-row {
     grid-template-columns: 1fr;
   }
 
   .actions-row {
     flex-direction: column;
+  }
+
+  .mobile-actions-row .secondary {
+    min-height: 44px;
+  }
+
+  .respin-side,
+  .player-card,
+  .rink-mobile-slot {
+    min-height: 44px;
   }
 
   .meta-row {
@@ -558,6 +663,19 @@ button {
   .slot-D2 {
     right: 8%;
     top: 46%;
+  }
+
+  .player-list-mobile {
+    max-height: 38vh;
+  }
+
+  .modal-card {
+    max-height: 88vh;
+    overflow-y: auto;
+  }
+
+  .score-grid {
+    grid-template-columns: 1fr;
   }
 }
 

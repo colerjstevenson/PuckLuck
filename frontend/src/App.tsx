@@ -3,11 +3,106 @@ import { fetchCategories, fetchEligible, scoreLineup, spinRound } from "./api";
 import { CategoryTile } from "./components/CategoryTile";
 import { RinkBoard } from "./components/RinkBoard";
 import { ScoreModal } from "./components/ScoreModal";
+import { useIsMobile } from "./hooks/useIsMobile";
 import type { Category, LineupSlot, PlayerCard, ScoreResponse, SpinResponse } from "./types";
 
 const SLOT_SEQUENCE: LineupSlot[] = ["F1", "F2", "F3", "D1", "D2", "G"];
+const SLOT_LABELS: Record<LineupSlot, string> = {
+  F1: "F",
+  F2: "F",
+  F3: "F",
+  D1: "D",
+  D2: "D",
+  G: "G",
+};
+
+type RinkBoardMobileProps = {
+  lineup: Partial<Record<LineupSlot, PlayerCard>>;
+  onSlotAction: (slot: LineupSlot) => void;
+  selectedPlayerId: string | null;
+  selectedLineupSlot: LineupSlot | null;
+};
+
+function RinkBoardMobile({ lineup, onSlotAction, selectedPlayerId, selectedLineupSlot }: RinkBoardMobileProps) {
+  return (
+    <section className="rink-mobile" aria-label="Lineup board">
+      {SLOT_SEQUENCE.map((slot) => {
+        const player = lineup[slot];
+        const hasSelection = Boolean(selectedPlayerId || selectedLineupSlot);
+        const isMoveTarget = Boolean(selectedLineupSlot && !player);
+        const isSelectedLineupSlot = selectedLineupSlot === slot;
+
+        return (
+          <button
+            key={slot}
+            type="button"
+            className={`rink-mobile-slot${hasSelection ? " has-selection" : ""}${isMoveTarget ? " move-target" : ""}${isSelectedLineupSlot ? " is-selected" : ""}`}
+            onClick={() => onSlotAction(slot)}
+          >
+            <div className="slot-top-row">
+              <span>{slot}</span>
+              <span className="slot-type">{SLOT_LABELS[slot]}</span>
+            </div>
+            {player ? (
+              <div className="slot-player mobile-player-card">
+                <strong>{player.name}</strong>
+                <span>{player.positionGroup}</span>
+              </div>
+            ) : (
+              <p className="slot-empty">{selectedLineupSlot ? "Move here" : "Tap to assign"}</p>
+            )}
+          </button>
+        );
+      })}
+    </section>
+  );
+}
+
+type PlayerListMobileProps = {
+  filteredPlayers: PlayerCard[];
+  slottedPlayerIds: Set<string>;
+  isGameOver: boolean;
+  selectedPlayerId: string | null;
+  onDraftPlayer: (player: PlayerCard) => void;
+};
+
+function PlayerListMobile({
+  filteredPlayers,
+  slottedPlayerIds,
+  isGameOver,
+  selectedPlayerId,
+  onDraftPlayer,
+}: PlayerListMobileProps) {
+  return (
+    <div className="player-list player-list-mobile" aria-label="Guided eligible player list">
+      {filteredPlayers.length === 0 ? (
+        <p className="empty-hint">No players loaded yet. Add a player to continue or start a new game.</p>
+      ) : (
+        filteredPlayers.map((player) => (
+          <button
+            key={player.id}
+            className={`player-card player-card-mobile ${slottedPlayerIds.has(player.id) ? "selected" : ""}`}
+            type="button"
+            disabled={isGameOver}
+            onClick={() => onDraftPlayer(player)}
+            aria-pressed={selectedPlayerId === player.id}
+          >
+            <div className="card-main">
+              <h3>{player.name}</h3>
+              <p>
+                {player.position} | {player.birthCountry ?? "N/A"} | {player.stats.points} PTS
+              </p>
+              <p className="teams-line">{player.teamsPlayedFor.slice(0, 2).join(" / ") || "No teams"}</p>
+            </div>
+          </button>
+        ))
+      )}
+    </div>
+  );
+}
 
 export default function App() {
+  const isMobile = useIsMobile(768);
   const [round, setRound] = useState<SpinResponse | null>(null);
   const [spinPreview, setSpinPreview] = useState<{ left: Category; right: Category } | null>(null);
   const [eligiblePlayers, setEligiblePlayers] = useState<PlayerCard[]>([]);
@@ -348,105 +443,192 @@ export default function App() {
         <p>Draft the best team possible using two random categories each round. Can you draft a dynasty?</p>
       </header>
 
-      <section className="game-grid">
-        <div className="panel controls-panel">
-          <div className="tiles-row">
-            <CategoryTile
-              title="Category A"
-              category={displayedLeftCategory}
-              disabled={loading || isGameOver || respinsLeft < 1}
-              onRespin={() => void respin("left")}
-              spinning={isSpinning && (spinningSide === "both" || spinningSide === "left")}
+      {isMobile ? (
+        <section className="mobile-layout">
+          <div className="panel controls-panel mobile-panel">
+            <div className="tiles-row">
+              <CategoryTile
+                title="Category A"
+                category={displayedLeftCategory}
+                disabled={loading || isGameOver || respinsLeft < 1}
+                onRespin={() => void respin("left")}
+                spinning={isSpinning && (spinningSide === "both" || spinningSide === "left")}
+              />
+              <CategoryTile
+                title="Category B"
+                category={displayedRightCategory}
+                disabled={loading || isGameOver || respinsLeft < 1}
+                onRespin={() => void respin("right")}
+                spinning={isSpinning && (spinningSide === "both" || spinningSide === "right")}
+              />
+            </div>
+
+            <div className="mobile-meta-row">
+              <p>Respins left: {respinsLeft}</p>
+              <p>Eligible players: {eligibleCount}</p>
+            </div>
+
+            {roundAdvancePending || isSpinning ? (
+              <p className="round-transition" role="status" aria-live="polite">
+                {isSpinning ? "Round complete. Spinning new categories..." : "Player placed. Ending round..."}
+              </p>
+            ) : null}
+
+            {error ? <p className="error">{error}</p> : null}
+          </div>
+
+          <div className="panel rink-panel mobile-panel">
+            <RinkBoardMobile
+              lineup={lineup}
+              onSlotAction={handleSlotAction}
+              selectedPlayerId={selectedPlayerId}
+              selectedLineupSlot={selectedLineupSlot}
             />
-            <CategoryTile
-              title="Category B"
-              category={displayedRightCategory}
-              disabled={loading || isGameOver || respinsLeft < 1}
-              onRespin={() => void respin("right")}
-              spinning={isSpinning && (spinningSide === "both" || spinningSide === "right")}
+          </div>
+
+          <div className="panel controls-panel mobile-panel">
+            <div className="player-search">
+              <label className="player-search-label" htmlFor="player-search-input-mobile">
+                Search eligible players
+              </label>
+              <input
+                id="player-search-input-mobile"
+                className="player-search-input"
+                type="search"
+                placeholder="Type a name, team, position, or country"
+                value={searchQuery}
+                onChange={(event) => {
+                  if (isGameOver) {
+                    return;
+                  }
+                  setSearchQuery(event.target.value);
+                  if (!event.target.value) {
+                    setSelectedPlayerId(null);
+                  }
+                  setSelectedLineupSlot(null);
+                }}
+              />
+              <p className="player-search-hint">Pick a player, then tap a slot. To reposition, tap a slotted player and then an empty slot.</p>
+            </div>
+
+            {selectedPlayer ? <p className="selected-player-chip">Selected: {selectedPlayer.name}</p> : null}
+
+            <PlayerListMobile
+              filteredPlayers={filteredPlayers}
+              slottedPlayerIds={slottedPlayerIds}
+              isGameOver={isGameOver}
+              selectedPlayerId={selectedPlayerId}
+              onDraftPlayer={draftPlayer}
+            />
+
+            <div className="actions-row mobile-actions-row">
+              <button className="secondary" type="button" disabled={loading} onClick={resetGame}>
+                New Game
+              </button>
+            </div>
+          </div>
+        </section>
+      ) : (
+        <section className="game-grid">
+          <div className="panel controls-panel">
+            <div className="tiles-row">
+              <CategoryTile
+                title="Category A"
+                category={displayedLeftCategory}
+                disabled={loading || isGameOver || respinsLeft < 1}
+                onRespin={() => void respin("left")}
+                spinning={isSpinning && (spinningSide === "both" || spinningSide === "left")}
+              />
+              <CategoryTile
+                title="Category B"
+                category={displayedRightCategory}
+                disabled={loading || isGameOver || respinsLeft < 1}
+                onRespin={() => void respin("right")}
+                spinning={isSpinning && (spinningSide === "both" || spinningSide === "right")}
+              />
+            </div>
+
+            <div className="actions-row">
+              <button className="secondary" type="button" disabled={loading} onClick={resetGame}>
+                New Game
+              </button>
+            </div>
+
+            <div className="meta-row">
+              <p>Respins left: {respinsLeft}</p>
+              <p>Eligible players: {eligibleCount}</p>
+            </div>
+
+            {roundAdvancePending || isSpinning ? (
+              <p className="round-transition" role="status" aria-live="polite">
+                {isSpinning ? "Round complete. Spinning new categories..." : "Player placed. Ending round..."}
+              </p>
+            ) : null}
+
+            {error ? <p className="error">{error}</p> : null}
+
+            <div className="player-search">
+              <label className="player-search-label" htmlFor="player-search-input">
+                Search eligible players
+              </label>
+              <input
+                id="player-search-input"
+                className="player-search-input"
+                type="search"
+                placeholder="Type a name, team, position, or country"
+                value={searchQuery}
+                onChange={(event) => {
+                  if (isGameOver) {
+                    return;
+                  }
+                  setSearchQuery(event.target.value);
+                  if (!event.target.value) {
+                    setSelectedPlayerId(null);
+                  }
+                  setSelectedLineupSlot(null);
+                }}
+              />
+              <p className="player-search-hint">Pick a player, then click a slot on the rink. To reposition your lineup, click a player on the rink, then click an empty slot.</p>
+            </div>
+
+            {selectedPlayer ? <p className="selected-player-chip">Selected: {selectedPlayer.name}</p> : null}
+
+            <div className="player-list" aria-label="Guided eligible player list">
+              {filteredPlayers.length === 0 ? (
+                <p className="empty-hint">No players loaded yet. Add a player to continue or start a new game.</p>
+              ) : (
+                filteredPlayers.map((player) => (
+                  <button
+                    key={player.id}
+                    className={`player-card ${slottedPlayerIds.has(player.id) ? "selected" : ""}`}
+                    type="button"
+                    disabled={isGameOver}
+                    onClick={() => draftPlayer(player)}
+                    aria-pressed={selectedPlayerId === player.id}
+                  >
+                    <div className="card-main">
+                      <h3>{player.name}</h3>
+                      <p>
+                        {player.position} | {player.birthCountry ?? "N/A"} | {player.stats.points} PTS
+                      </p>
+                      <p className="teams-line">{player.teamsPlayedFor.slice(0, 2).join(" / ") || "No teams"}</p>
+                    </div>
+                  </button>
+                ))
+              )}
+            </div>
+          </div>
+
+          <div className="panel rink-panel">
+            <RinkBoard
+              lineup={lineup}
+              onSlotAction={handleSlotAction}
+              selectedPlayerId={selectedPlayerId}
+              selectedLineupSlot={selectedLineupSlot}
             />
           </div>
-
-          <div className="actions-row">
-            <button className="secondary" type="button" disabled={loading} onClick={resetGame}>
-              New Game
-            </button>
-          </div>
-
-          <div className="meta-row">
-            <p>Respins left: {respinsLeft}</p>
-            <p>Eligible players: {eligibleCount}</p>
-          </div>
-
-          {roundAdvancePending || isSpinning ? (
-            <p className="round-transition" role="status" aria-live="polite">
-              {isSpinning ? "Round complete. Spinning new categories..." : "Player placed. Ending round..."}
-            </p>
-          ) : null}
-
-          {error ? <p className="error">{error}</p> : null}
-
-          <div className="player-search">
-            <label className="player-search-label" htmlFor="player-search-input">
-              Search eligible players
-            </label>
-            <input
-              id="player-search-input"
-              className="player-search-input"
-              type="search"
-              placeholder="Type a name, team, position, or country"
-              value={searchQuery}
-              onChange={(event) => {
-                if (isGameOver) {
-                  return;
-                }
-                setSearchQuery(event.target.value);
-                if (!event.target.value) {
-                  setSelectedPlayerId(null);
-                }
-                setSelectedLineupSlot(null);
-              }}
-            />
-            <p className="player-search-hint">Pick a player, then click a slot on the rink. To reposition your lineup, click a player on the rink, then click an empty slot.</p>
-          </div>
-
-          {selectedPlayer ? <p className="selected-player-chip">Selected: {selectedPlayer.name}</p> : null}
-
-          <div className="player-list" aria-label="Guided eligible player list">
-            {filteredPlayers.length === 0 ? (
-              <p className="empty-hint">No players loaded yet. Add a player to continue or start a new game.</p>
-            ) : (
-              filteredPlayers.map((player) => (
-                <button
-                  key={player.id}
-                  className={`player-card ${slottedPlayerIds.has(player.id) ? "selected" : ""}`}
-                  type="button"
-                  disabled={isGameOver}
-                  onClick={() => draftPlayer(player)}
-                  aria-pressed={selectedPlayerId === player.id}
-                >
-                  <div className="card-main">
-                    <h3>{player.name}</h3>
-                    <p>
-                      {player.position} | {player.birthCountry ?? "N/A"} | {player.stats.points} PTS
-                    </p>
-                    <p className="teams-line">{player.teamsPlayedFor.slice(0, 2).join(" / ") || "No teams"}</p>
-                  </div>
-                </button>
-              ))
-            )}
-          </div>
-        </div>
-
-        <div className="panel rink-panel">
-          <RinkBoard
-            lineup={lineup}
-            onSlotAction={handleSlotAction}
-            selectedPlayerId={selectedPlayerId}
-            selectedLineupSlot={selectedLineupSlot}
-          />
-        </div>
-      </section>
+        </section>
+      )}
 
       <ScoreModal result={score} onClose={() => setScore(null)} onRestart={resetGame} gameOver={isGameOver} />
     </main>

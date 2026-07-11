@@ -1,0 +1,41 @@
+{
+  "name": "good_game_balanced_v1",
+  "notes": "Target curve for a fun-but-challenging game: most lineups score in the middle bands, with enough high-end and low-end outcomes to keep results meaningful.",
+  "summary": {
+    "lineups": 10000,
+    "score": {
+      "mean": 58.0,
+      "median": 58.0,
+      "stdev": 18.0
+    },
+    "grades": {
+      "A++": 40,
+      "A+": 220,
+      "A": 420,
+      "A-": 620,
+      "B+": 820,
+      "B": 980,
+      "B-": 1050,
+      "C+": 1100,
+      "C": 1120,
+      "C-": 1020,
+      "D+": 860,
+      "D": 700,
+      "D-": 560,
+      "F": 490
+    },
+    "histogram": {
+      "00-09": 80,
+      "10-19": 240,
+      "20-29": 520,
+      "30-39": 900,
+      "40-49": 1400,
+      "50-59": 1900,
+      "60-69": 1900,
+      "70-79": 1450,
+      "80-89": 950,
+      "90-99": 560,
+      "100": 100
+    }
+  }
+}

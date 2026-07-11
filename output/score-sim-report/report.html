@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Scoring Simulation Report</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --ink: #10233f;
+      --muted: #5d708f;
+      --line: #dce4f0;
+      --accent: #0b7fab;
+      --accent-soft: #d8eef6;
+    }
+    body {
+      margin: 0;
+      background: radial-gradient(circle at 10% 0%, #e7f3ff 0%, var(--bg) 45%);
+      color: var(--ink);
+      font-family: Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 24px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
+    .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px; }
+    h1, h2 { margin: 0 0 12px 0; }
+    h1 { font-size: 28px; }
+    h2 { font-size: 19px; margin-top: 16px; }
+    p { margin: 0 0 6px 0; color: var(--muted); }
+    table { width: 100%; border-collapse: collapse; background: var(--card); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+    th, td { border-bottom: 1px solid var(--line); padding: 8px; text-align: left; font-size: 14px; vertical-align: top; }
+    th { background: #eef3fa; }
+    tr:last-child td { border-bottom: none; }
+    .bar { height: 12px; background: var(--accent-soft); border-radius: 99px; overflow: hidden; min-width: 120px; }
+    .bar > span { display: block; height: 100%; background: linear-gradient(90deg, #25a9d8, var(--accent)); }
+    .mono { font-family: Consolas, 'Courier New', monospace; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Scoring Simulation Report</h1>
+    <p>Samples: <span class="mono">25000</span> | Mode: <span class="mono">realistic</span> | Seed: <span class="mono">random</span></p>
+
+    <h2>Score Summary</h2>
+    <div class="grid">
+      <div class="card"><strong>Mean</strong><p class="mono">31.45</p></div>
+      <div class="card"><strong>Median</strong><p class="mono">31.0</p></div>
+      <div class="card"><strong>Std Dev</strong><p class="mono">3.01</p></div>
+      <div class="card"><strong>Range</strong><p class="mono">25 to 48</p></div>
+      <div class="card"><strong>P10 / P25</strong><p class="mono">28.0 / 29.0</p></div>
+      <div class="card"><strong>P75 / P90</strong><p class="mono">33.0 / 35.0</p></div>
+    </div>
+
+    <h2>Histogram</h2>
+    <table>
+      <thead><tr><th>Score Bin</th><th>Count</th><th>Percent</th><th>Visual</th></tr></thead>
+      <tbody><tr><td>00-09</td><td>0</td><td>0.00%</td><td><div class="bar"><span style="width:0.00%"></span></div></td></tr><tr><td>10-19</td><td>0</td><td>0.00%</td><td><div class="bar"><span style="width:0.00%"></span></div></td></tr><tr><td>20-29</td><td>7136</td><td>28.54%</td><td><div class="bar"><span style="width:40.81%"></span></div></td></tr><tr><td>30-39</td><td>17486</td><td>69.94%</td><td><div class="bar"><span style="width:100.00%"></span></div></td></tr><tr><td>40-49</td><td>378</td><td>1.51%</td><td><div class="bar"><span style="width:2.16%"></span></div></td></tr><tr><td>50-59</td><td>0</td><td>0.00%</td><td><div class="bar"><span style="width:0.00%"></span></div></td></tr><tr><td>60-69</td><td>0</td><td>0.00%</td><td><div class="bar"><span style="width:0.00%"></span></div></td></tr><tr><td>70-79</td><td>0</td><td>0.00%</td><td><div class="bar"><span style="width:0.00%"></span></div></td></tr><tr><td>80-89</td><td>0</td><td>0.00%</td><td><div class="bar"><span style="width:0.00%"></span></div></td></tr><tr><td>90-99</td><td>0</td><td>0.00%</td><td><div class="bar"><span style="width:0.00%"></span></div></td></tr><tr><td>100</td><td>0</td><td>0.00%</td><td><div class="bar"><span style="width:0.00%"></span></div></td></tr></tbody>
+    </table>
+
+    <h2>Grade Distribution</h2>
+    <table>
+      <thead><tr><th>Grade</th><th>Count</th><th>Percent</th><th>Visual</th></tr></thead>
+      <tbody><tr><td>C-</td><td>11</td><td>0.04%</td><td><div class="bar"><span style="width:0.08%"></span></div></td></tr><tr><td>D+</td><td>367</td><td>1.47%</td><td><div class="bar"><span style="width:2.61%"></span></div></td></tr><tr><td>D</td><td>3409</td><td>13.64%</td><td><div class="bar"><span style="width:24.22%"></span></div></td></tr><tr><td>D-</td><td>14077</td><td>56.31%</td><td><div class="bar"><span style="width:100.00%"></span></div></td></tr><tr><td>F</td><td>7136</td><td>28.54%</td><td><div class="bar"><span style="width:50.69%"></span></div></td></tr></tbody>
+    </table>
+
+    <h2>Top Examples</h2>
+    <table>
+      <thead><tr><th>Rank</th><th>Score</th><th>Grade</th><th>Lineup</th></tr></thead>
+      <tbody><tr><td>1</td><td>48</td><td>C-</td><td>F1:Jim Pappin, F2:Steven Stamkos, F3:Steve Washburn, D1:Bobby Orr, D2:Ben Lovejoy, G:Chris Clifford</td></tr><tr><td>2</td><td>48</td><td>C-</td><td>F1:Darryl Sittler, F2:Theo Fleury, F3:Dan Bylsma, D1:Brenden Dillon, D2:Bobby Orr, G:Leevi Meriläinen</td></tr><tr><td>3</td><td>47</td><td>C-</td><td>F1:Cully Dahlstrom, F2:Duke Keats, F3:Andy Bathgate, D1:Kaspars Astashenko, D2:Ray Bourque, G:Chuck Rayner</td></tr><tr><td>4</td><td>47</td><td>C-</td><td>F1:Everett Sanipass, F2:Daniel Alfredsson, F3:Wayne Gretzky, D1:Jacques Laperriere, D2:Brian Chapman, G:Kevin Poulin</td></tr><tr><td>5</td><td>47</td><td>C-</td><td>F1:Alexander Mogilny, F2:Alex Ovechkin, F3:Mark Recchi, D1:Andrew Campbell, D2:Ron Wilson, G:Robert Dopson</td></tr></tbody>
+    </table>
+
+    <h2>Bottom Examples</h2>
+    <table>
+      <thead><tr><th>Rank</th><th>Score</th><th>Grade</th><th>Lineup</th></tr></thead>
+      <tbody><tr><td>1</td><td>25</td><td>F</td><td>F1:Eric Prentice, F2:Aggie Kukulowicz, F3:Brian Murphy, D1:Bruce Affleck, D2:Art Michaluk, G:Larry Lozinski</td></tr><tr><td>2</td><td>25</td><td>F</td><td>F1:Chad Penney, F2:Greg Koehler, F3:Gord Haidy, D1:Ty Murchison, D2:Art Townsend, G:Joacim Eriksson</td></tr><tr><td>3</td><td>25</td><td>F</td><td>F1:Jason Polin, F2:John Craighead, F3:Mike Chernoff, D1:Ian McKegney, D2:Yevgeny Shaldybin, G:Don McLeod</td></tr><tr><td>4</td><td>25</td><td>F</td><td>F1:Bruce Greig, F2:Kelly Pratt, F3:Billy Carter, D1:Mike Berger, D2:Kevin Kemp, G:Jean-Guy Morissette</td></tr><tr><td>5</td><td>25</td><td>F</td><td>F1:Glenn Johannesen, F2:Brian Marchinko, F3:Gary Yaremchuk, D1:Kent Paynter, D2:Emanuel Viveiros, G:Claude Evans</td></tr></tbody>
+    </table>
+  </div>
+</body>
+</html>
