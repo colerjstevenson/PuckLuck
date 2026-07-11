@@ -315,6 +315,13 @@ button {
   box-shadow: 0 0 0 1px #ffca7428, 0 12px 22px #02091388;
 }
 
+.player-card.invalid {
+  border-color: #ff7d7d;
+  background: linear-gradient(160deg, #4b1a24, #2c1520);
+  box-shadow: 0 0 0 1px #ff878744, 0 12px 24px #2a030b66;
+  animation: invalid-pulse 850ms ease;
+}
+
 .player-list-mobile {
   min-height: 240px;
   max-height: 46vh;
@@ -553,6 +560,77 @@ button {
   margin: 0;
 }
 
+.mode-picker-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background:
+    radial-gradient(800px 420px at 50% 10%, #3d8cc24a 0%, transparent 60%),
+    #020913d8;
+}
+
+.mode-picker-card {
+  width: min(720px, 100%);
+  padding: 1.4rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.mode-picker-logo {
+  width: min(220px, 48vw);
+  justify-self: center;
+  filter: drop-shadow(0 18px 34px #020913aa);
+}
+
+.mode-picker-card h2 {
+  margin: 0;
+  font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: 0.04em;
+}
+
+.mode-picker-copy {
+  margin: 0;
+  color: #c3dff0;
+}
+
+.mode-picker-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.mode-option {
+  border: 1px solid #8fdcff40;
+  border-radius: 16px;
+  background: linear-gradient(160deg, #102a43, #0b1d33);
+  color: inherit;
+  padding: 1rem;
+  text-align: left;
+  display: grid;
+  gap: 0.35rem;
+  cursor: pointer;
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.mode-option:hover {
+  transform: translateY(-2px);
+  border-color: #a8e3ff70;
+  box-shadow: 0 16px 32px #02091370;
+}
+
+.mode-option strong {
+  font-size: 1.05rem;
+}
+
+.mode-option span {
+  color: #b5d5e7;
+  line-height: 1.45;
+}
+
 .score-total {
   margin: 0.3rem 0 0.9rem;
   font-family: "Bebas Neue", sans-serif;
@@ -721,6 +799,10 @@ button {
     max-height: 88vh;
     overflow-y: auto;
   }
+
+  .mode-picker-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @keyframes tile-shuffle {
@@ -740,5 +822,22 @@ button {
 
   to {
     box-shadow: 0 0 0 4px #ffb14508;
+  }
+}
+
+@keyframes invalid-pulse {
+  0% {
+    transform: translateY(0);
+    box-shadow: 0 0 0 0 #ff878700;
+  }
+
+  40% {
+    transform: translateY(-1px);
+    box-shadow: 0 0 0 4px #ff878732;
+  }
+
+  100% {
+    transform: translateY(0);
+    box-shadow: 0 0 0 0 #ff878700;
   }
 }

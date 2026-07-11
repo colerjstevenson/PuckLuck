@@ -91,33 +91,6 @@ export function ScoreModal({ result, onClose, onRestart, gameOver = false }: Sco
           <table className="score-table">
             <thead>
               <tr>
-                <th scope="col">Weighted Contributions</th>
-                {SCORE_COLUMNS.map((column) => (
-                  <th key={column.key} scope="col">
-                    {column.label}
-                  </th>
-                ))}
-                <th scope="col">Goalie Quality</th>
-                <th scope="col">Subtotal</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Weighted points</th>
-                {SCORE_COLUMNS.map((column) => (
-                  <td key={column.key}>{toGrade(result.weightedContribution[column.key])}</td>
-                ))}
-                <td>{toGrade(result.weightedContribution.goalieQuality)}</td>
-                <td>{toGrade(result.scoreSubtotal)}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div className="score-table-wrap">
-          <table className="score-table">
-            <thead>
-              <tr>
                 <th scope="col">Player</th>
                 {SCORE_COLUMNS.map((column) => (
                   <th key={column.key} scope="col">

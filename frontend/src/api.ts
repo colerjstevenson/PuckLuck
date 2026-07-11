@@ -1,4 +1,4 @@
-import type { Category, EligibleResponse, LineupSlot, ScoreResponse, SpinResponse } from "./types";
+import type { Category, EligibleResponse, LineupSlot, PlayerCard, ScoreResponse, SpinResponse } from "./types";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? "http://127.0.0.1:8000";
 const ELIGIBLE_FETCH_LIMIT = 8000;
@@ -36,6 +36,10 @@ export async function fetchEligible(leftCategoryId: string, rightCategoryId: str
     method: "POST",
     body: JSON.stringify({ leftCategoryId, rightCategoryId, limit: ELIGIBLE_FETCH_LIMIT }),
   });
+}
+
+export async function fetchPlayers(): Promise<PlayerCard[]> {
+  return request<PlayerCard[]>(`/players?limit=${ELIGIBLE_FETCH_LIMIT}`);
 }
 
 export async function scoreLineup(lineup: Partial<Record<LineupSlot, string>>): Promise<ScoreResponse> {

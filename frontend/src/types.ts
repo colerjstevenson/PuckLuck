@@ -4,6 +4,8 @@ export type Category = {
   group: string;
 };
 
+export type GameMode = "classic" | "pro";
+
 export type SpinResponse = {
   left: Category;
   right: Category;

@@ -2,10 +2,10 @@ from __future__ import annotations
 
 import os
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 
-from .game_service import data_ready, eligible, get_player, list_categories, metadata, score_lineup, spin
+from .game_service import data_ready, eligible, get_player, list_categories, list_players, metadata, score_lineup, spin
 from .models import (
     EligibleRequest,
     EligibleResponse,
@@ -74,6 +74,12 @@ def eligible_players(payload: EligibleRequest) -> EligibleResponse:
         totalMatches=total,
         players=cards,
     )
+
+
+@app.get("/players", response_model=list[PlayerCardResponse])
+def players(limit: int = Query(default=8000, ge=1, le=8000)) -> list[PlayerCardResponse]:
+    _ensure_runtime_data()
+    return [PlayerCardResponse(**player) for player in list_players(limit)]
 
 
 @app.get("/player/{player_id}", response_model=PlayerCardResponse)

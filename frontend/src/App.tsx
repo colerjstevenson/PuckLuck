@@ -1,10 +1,10 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { fetchCategories, fetchEligible, scoreLineup, spinRound } from "./api";
+import { fetchCategories, fetchEligible, fetchPlayers, scoreLineup, spinRound } from "./api";
 import { CategoryTile } from "./components/CategoryTile";
 import { RinkBoard } from "./components/RinkBoard";
 import { ScoreModal } from "./components/ScoreModal";
 import { useIsMobile } from "./hooks/useIsMobile";
-import type { Category, LineupSlot, PlayerCard, ScoreResponse, SpinResponse } from "./types";
+import type { Category, GameMode, LineupSlot, PlayerCard, ScoreResponse, SpinResponse } from "./types";
 
 const SLOT_SEQUENCE: LineupSlot[] = ["F1", "F2", "F3", "D1", "D2", "G"];
 const SLOT_LABELS: Record<LineupSlot, string> = {
@@ -60,7 +60,9 @@ function RinkBoardMobile({ lineup, onSlotAction, selectedPlayerId, selectedLineu
 
 type PlayerListMobileProps = {
   filteredPlayers: PlayerCard[];
+  gameMode: GameMode;
   slottedPlayerIds: Set<string>;
+  invalidPlayerId: string | null;
   isGameOver: boolean;
   selectedPlayerId: string | null;
   onDraftPlayer: (player: PlayerCard) => void;
@@ -68,7 +70,9 @@ type PlayerListMobileProps = {
 
 function PlayerListMobile({
   filteredPlayers,
+  gameMode,
   slottedPlayerIds,
+  invalidPlayerId,
   isGameOver,
   selectedPlayerId,
   onDraftPlayer,
@@ -81,7 +85,7 @@ function PlayerListMobile({
         filteredPlayers.map((player) => (
           <button
             key={player.id}
-            className={`player-card player-card-mobile ${slottedPlayerIds.has(player.id) ? "selected" : ""}`}
+            className={`player-card player-card-mobile ${slottedPlayerIds.has(player.id) ? "selected" : ""}${invalidPlayerId === player.id ? " invalid" : ""}`}
             type="button"
             disabled={isGameOver}
             onClick={() => onDraftPlayer(player)}
@@ -89,10 +93,14 @@ function PlayerListMobile({
           >
             <div className="card-main">
               <h3>{player.name}</h3>
-              <p>
-                {player.position} | {player.birthCountry ?? "N/A"} | {player.stats.points} PTS
-              </p>
-              <p className="teams-line">{player.teamsPlayedFor.slice(0, 2).join(" / ") || "No teams"}</p>
+              {gameMode === "classic" ? (
+                <>
+                  <p>
+                    {player.position} | {player.birthCountry ?? "N/A"} | {player.stats.points} PTS
+                  </p>
+                  <p className="teams-line">{player.teamsPlayedFor.slice(0, 2).join(" / ") || "No teams"}</p>
+                </>
+              ) : null}
             </div>
           </button>
         ))
@@ -103,18 +111,22 @@ function PlayerListMobile({
 
 export default function App() {
   const isMobile = useIsMobile(768);
+  const [gameMode, setGameMode] = useState<GameMode | null>(null);
   const [round, setRound] = useState<SpinResponse | null>(null);
   const [spinPreview, setSpinPreview] = useState<{ left: Category; right: Category } | null>(null);
   const [eligiblePlayers, setEligiblePlayers] = useState<PlayerCard[]>([]);
+  const [allPlayers, setAllPlayers] = useState<PlayerCard[]>([]);
   const [eligibleCount, setEligibleCount] = useState(0);
   const [lineup, setLineup] = useState<Partial<Record<LineupSlot, PlayerCard>>>({});
   const [respinsLeft, setRespinsLeft] = useState(2);
   const [loading, setLoading] = useState(false);
+  const [startingGame, setStartingGame] = useState(false);
   const [isSpinning, setIsSpinning] = useState(false);
   const [spinningSide, setSpinningSide] = useState<"left" | "right" | "both" | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedPlayerId, setSelectedPlayerId] = useState<string | null>(null);
   const [selectedLineupSlot, setSelectedLineupSlot] = useState<LineupSlot | null>(null);
+  const [invalidPlayerId, setInvalidPlayerId] = useState<string | null>(null);
   const [categories, setCategories] = useState<Category[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [score, setScore] = useState<ScoreResponse | null>(null);
@@ -122,25 +134,33 @@ export default function App() {
   const [roundAdvancePending, setRoundAdvancePending] = useState(false);
   const categoriesRef = useRef<Category[]>([]);
   const finalScoreRequestedRef = useRef(false);
+  const invalidPlayerTimeoutRef = useRef<number | null>(null);
+
+  const playerPool = gameMode === "pro" ? allPlayers : eligiblePlayers;
 
   const selectedPlayer = useMemo(
-    () => eligiblePlayers.find((player) => player.id === selectedPlayerId) ?? null,
-    [eligiblePlayers, selectedPlayerId],
+    () => playerPool.find((player) => player.id === selectedPlayerId) ?? null,
+    [playerPool, selectedPlayerId],
   );
+
+  const eligiblePlayerIds = useMemo(() => new Set(eligiblePlayers.map((player) => player.id)), [eligiblePlayers]);
 
   const filteredPlayers = useMemo(() => {
     const query = searchQuery.trim().toLowerCase();
     if (!query) {
-      return eligiblePlayers;
+      return playerPool;
     }
 
-    return eligiblePlayers.filter((player) => {
-      const haystack = [player.name, player.position, player.positionGroup, player.birthCountry ?? "", player.teamsPlayedFor.join(" ")]
-        .join(" ")
-        .toLowerCase();
+    return playerPool.filter((player) => {
+      const haystack =
+        gameMode === "pro"
+          ? player.name.toLowerCase()
+          : [player.name, player.position, player.positionGroup, player.birthCountry ?? "", player.teamsPlayedFor.join(" ")]
+              .join(" ")
+              .toLowerCase();
       return haystack.includes(query);
     });
-  }, [eligiblePlayers, searchQuery]);
+  }, [gameMode, playerPool, searchQuery]);
 
   const slottedPlayerIds = useMemo(() => new Set(Object.values(lineup).map((p) => p?.id).filter(Boolean)), [lineup]);
   const slottedCount = slottedPlayerIds.size;
@@ -243,7 +263,11 @@ export default function App() {
   }
 
   useEffect(() => {
-    void spin();
+    return () => {
+      if (invalidPlayerTimeoutRef.current) {
+        window.clearTimeout(invalidPlayerTimeoutRef.current);
+      }
+    };
   }, []);
 
   useEffect(() => {
@@ -300,6 +324,17 @@ export default function App() {
     return { lineupCompleted };
   }
 
+  function flashInvalidPlayer(playerId: string) {
+    if (invalidPlayerTimeoutRef.current) {
+      window.clearTimeout(invalidPlayerTimeoutRef.current);
+    }
+    setInvalidPlayerId(playerId);
+    invalidPlayerTimeoutRef.current = window.setTimeout(() => {
+      setInvalidPlayerId(null);
+      invalidPlayerTimeoutRef.current = null;
+    }, 850);
+  }
+
   function draftPlayer(player: PlayerCard) {
     if (isGameOver) {
       return;
@@ -309,7 +344,15 @@ export default function App() {
       return;
     }
 
+    if (gameMode === "pro" && !eligiblePlayerIds.has(player.id)) {
+      setSelectedPlayerId(null);
+      setSelectedLineupSlot(null);
+      flashInvalidPlayer(player.id);
+      return;
+    }
+
     setSelectedLineupSlot(null);
+    setInvalidPlayerId(null);
     setSelectedPlayerId(player.id);
     setSearchQuery(player.name);
   }
@@ -411,7 +454,34 @@ export default function App() {
     await spin({ keepSide, keepCategoryId }, { resetRespins: false });
   }
 
+  async function startGame(nextMode: GameMode) {
+    if (loading || startingGame) {
+      return;
+    }
+
+    setStartingGame(true);
+    setError(null);
+
+    try {
+      if (nextMode === "pro" && allPlayers.length === 0) {
+        const players = await fetchPlayers();
+        setAllPlayers(players);
+      }
+
+      setGameMode(nextMode);
+      await spin(undefined, { resetRespins: true });
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Failed to start game.");
+    } finally {
+      setStartingGame(false);
+    }
+  }
+
   function resetGame() {
+    if (!gameMode) {
+      return;
+    }
+
     finalScoreRequestedRef.current = false;
     setLineup({});
     setRespinsLeft(2);
@@ -420,9 +490,22 @@ export default function App() {
     setRoundAdvancePending(false);
     setSelectedPlayerId(null);
     setSelectedLineupSlot(null);
+    setInvalidPlayerId(null);
     setSearchQuery("");
     void spin();
   }
+
+  const modeLabel = gameMode === "pro" ? "Pro Mode" : "Classic Mode";
+  const searchLabel = gameMode === "pro" ? "Search all players" : "Search eligible players";
+  const searchPlaceholder = gameMode === "pro" ? "Type a player name" : "Type a name, team, position, or country";
+  const searchHint =
+    gameMode === "pro"
+      ? "Pick a player by name, then place them on the rink. Off-category players flash red and cannot be drafted."
+      : "Pick a player, then click a slot on the rink. To reposition your lineup, click a player on the rink, then click an empty slot.";
+  const mobileSearchHint =
+    gameMode === "pro"
+      ? "Pick a player by name, then tap a slot. Off-category players flash red and cannot be drafted."
+      : "Pick a player, then tap a slot. To reposition, tap a slotted player and then an empty slot.";
 
   const displayedLeftCategory = isSpinning
     ? spinningSide === "right"
@@ -438,7 +521,7 @@ export default function App() {
   return (
     <main className="page-shell">
       <header className="hero">
-        <p className="kicker">Classic Mode</p>
+        <p className="kicker">{modeLabel}</p>
         <h1>Puck Luck</h1>
         <p>Draft the best team possible using two random categories each round. Can you draft a dynasty?</p>
       </header>
@@ -465,7 +548,7 @@ export default function App() {
 
             <div className="mobile-meta-row">
               <p>Respins left: {respinsLeft}</p>
-              <p>Eligible players: {eligibleCount}</p>
+              <p>{gameMode === "pro" ? "Category matches" : "Eligible players"}: {eligibleCount}</p>
             </div>
 
             {roundAdvancePending || isSpinning ? (
@@ -489,13 +572,13 @@ export default function App() {
           <div className="panel controls-panel mobile-panel">
             <div className="player-search">
               <label className="player-search-label" htmlFor="player-search-input-mobile">
-                Search eligible players
+                {searchLabel}
               </label>
               <input
                 id="player-search-input-mobile"
                 className="player-search-input"
                 type="search"
-                placeholder="Type a name, team, position, or country"
+                placeholder={searchPlaceholder}
                 value={searchQuery}
                 onChange={(event) => {
                   if (isGameOver) {
@@ -508,14 +591,16 @@ export default function App() {
                   setSelectedLineupSlot(null);
                 }}
               />
-              <p className="player-search-hint">Pick a player, then tap a slot. To reposition, tap a slotted player and then an empty slot.</p>
+              <p className="player-search-hint">{mobileSearchHint}</p>
             </div>
 
             {selectedPlayer ? <p className="selected-player-chip">Selected: {selectedPlayer.name}</p> : null}
 
             <PlayerListMobile
               filteredPlayers={filteredPlayers}
+              gameMode={gameMode ?? "classic"}
               slottedPlayerIds={slottedPlayerIds}
+              invalidPlayerId={invalidPlayerId}
               isGameOver={isGameOver}
               selectedPlayerId={selectedPlayerId}
               onDraftPlayer={draftPlayer}
@@ -556,7 +641,7 @@ export default function App() {
 
             <div className="meta-row">
               <p>Respins left: {respinsLeft}</p>
-              <p>Eligible players: {eligibleCount}</p>
+              <p>{gameMode === "pro" ? "Category matches" : "Eligible players"}: {eligibleCount}</p>
             </div>
 
             {roundAdvancePending || isSpinning ? (
@@ -569,13 +654,13 @@ export default function App() {
 
             <div className="player-search">
               <label className="player-search-label" htmlFor="player-search-input">
-                Search eligible players
+                {searchLabel}
               </label>
               <input
                 id="player-search-input"
                 className="player-search-input"
                 type="search"
-                placeholder="Type a name, team, position, or country"
+                placeholder={searchPlaceholder}
                 value={searchQuery}
                 onChange={(event) => {
                   if (isGameOver) {
@@ -588,7 +673,7 @@ export default function App() {
                   setSelectedLineupSlot(null);
                 }}
               />
-              <p className="player-search-hint">Pick a player, then click a slot on the rink. To reposition your lineup, click a player on the rink, then click an empty slot.</p>
+              <p className="player-search-hint">{searchHint}</p>
             </div>
 
             {selectedPlayer ? <p className="selected-player-chip">Selected: {selectedPlayer.name}</p> : null}
@@ -600,7 +685,7 @@ export default function App() {
                 filteredPlayers.map((player) => (
                   <button
                     key={player.id}
-                    className={`player-card ${slottedPlayerIds.has(player.id) ? "selected" : ""}`}
+                    className={`player-card ${slottedPlayerIds.has(player.id) ? "selected" : ""}${invalidPlayerId === player.id ? " invalid" : ""}`}
                     type="button"
                     disabled={isGameOver}
                     onClick={() => draftPlayer(player)}
@@ -608,10 +693,14 @@ export default function App() {
                   >
                     <div className="card-main">
                       <h3>{player.name}</h3>
-                      <p>
-                        {player.position} | {player.birthCountry ?? "N/A"} | {player.stats.points} PTS
-                      </p>
-                      <p className="teams-line">{player.teamsPlayedFor.slice(0, 2).join(" / ") || "No teams"}</p>
+                      {gameMode === "classic" ? (
+                        <>
+                          <p>
+                            {player.position} | {player.birthCountry ?? "N/A"} | {player.stats.points} PTS
+                          </p>
+                          <p className="teams-line">{player.teamsPlayedFor.slice(0, 2).join(" / ") || "No teams"}</p>
+                        </>
+                      ) : null}
                     </div>
                   </button>
                 ))
@@ -631,6 +720,30 @@ export default function App() {
       )}
 
       <ScoreModal result={score} onClose={() => setScore(null)} onRestart={resetGame} gameOver={isGameOver} />
+
+      {gameMode === null ? (
+        <div className="mode-picker-backdrop" role="dialog" aria-modal="true" aria-label="Choose game mode">
+          <div className="mode-picker-card panel">
+            <img className="mode-picker-logo" src="/thumbnail.png" alt="Puck Luck logo" />
+            <p className="kicker">Choose Your Challenge</p>
+            <h2>Pick a game mode</h2>
+            <p className="mode-picker-copy">Classic keeps the category-guided draft list. Pro shows every player by name and makes you know who actually fits.</p>
+
+            {error ? <p className="error">{error}</p> : null}
+
+            <div className="mode-picker-grid">
+              <button type="button" className="mode-option" onClick={() => void startGame("classic")} disabled={startingGame}>
+                <strong>Classic Mode</strong>
+                <span>Eligible players only, with team and stat clues.</span>
+              </button>
+              <button type="button" className="mode-option" onClick={() => void startGame("pro")} disabled={startingGame}>
+                <strong>Pro Mode</strong>
+                <span>All players by name only. Wrong category picks flash red and fail.</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      ) : null}
     </main>
   );
 }

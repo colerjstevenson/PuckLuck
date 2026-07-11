@@ -635,6 +635,13 @@ def eligible(left_category_id: str, right_category_id: str, limit: int = 120) ->
     return len(all_matches), all_matches[:limit]
 
 
+def list_players(limit: int | None = None) -> list[dict]:
+    players = load_players()
+    if limit is None:
+        return players
+    return players[:limit]
+
+
 def get_player(player_id: str) -> dict | None:
     for player in load_players():
         if player.get("id") == player_id:
