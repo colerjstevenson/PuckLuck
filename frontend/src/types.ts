@@ -52,6 +52,30 @@ export type ScoreResponse = {
     hallOfFame: number;
     positionFit: number;
   };
+  weightedContribution: {
+    production: number;
+    awards: number;
+    cups: number;
+    grit: number;
+    hallOfFame: number;
+    positionFit: number;
+    goalieQuality: number;
+  };
+  scoreSubtotal: number;
+  bonusTotal: number;
+  hardPenaltyTotal: number;
+  bonuses: {
+    label: string;
+    points: number;
+  }[];
+  penaltiesApplied: {
+    label: string;
+    points: number;
+  }[];
+  goalieQuality: number;
+  goalieQualityFloorForA: number;
+  goalieGatePassedForA: boolean;
+  finalScoreEquation: string;
   playerBreakdown: {
     slot: LineupSlot;
     playerId: string;

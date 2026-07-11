@@ -132,13 +132,29 @@ SLOT_POSITION_GROUP = {
 }
 
 SCORE_WEIGHTS = {
-    "production": 0.301582,
-    "trophies": 0.065926,
-    "cups": 0.028535,
-    "grit": 0.092497,
-    "positionFit": 0.511460,
-    "hallOfFame": 0.0,
+    "production": 0.25,
+    "trophies": 0.15,
+    "cups": 0.2,
+    "grit": 0.1,
+    "positionFit": 0.35,
+    "hallOfFame": 0.1,
+    "goalieQuality": 0.2,
 }
+
+
+def _merge_score_weights(overrides: dict[str, float] | None = None) -> dict[str, float]:
+    if not overrides:
+        return SCORE_WEIGHTS
+
+    merged = dict(SCORE_WEIGHTS)
+    for name, value in overrides.items():
+        if name not in merged:
+            continue
+        try:
+            merged[name] = float(value)
+        except (TypeError, ValueError):
+            continue
+    return merged
 
 SCORE_ADJUSTMENTS = {
     "completeLineupBonus": 3,
@@ -151,6 +167,12 @@ ELITE_GRADE_RULES = {
     "minProduction": 0.75,
     "minPositionFit": 1.0,
     "minLegacySignal": 0.45,
+}
+
+GOALIE_GRADE_GATES = {
+    "aFloor": 55,
+    "aPlusFloor": 70,
+    "aPlusPlusFloor": 85,
 }
 
 SCORE_NORMALIZATION = {
@@ -200,6 +222,25 @@ GRADE_THRESHOLDS = [
     (0, "F"),
 ]
 
+GRADE_ORDER = [
+    "F",
+    "D-",
+    "D",
+    "D+",
+    "C-",
+    "C",
+    "C+",
+    "B-",
+    "B",
+    "B+",
+    "A-",
+    "A",
+    "A+",
+    "A++",
+]
+
+GRADE_RANK = {label: index for index, label in enumerate(GRADE_ORDER)}
+
 
 def _score_to_letter_grade(score: int, qualifies_for_elite: bool = False) -> str:
     if score >= ELITE_GRADE_RULES["aPlusPlusFloor"] and qualifies_for_elite:
@@ -210,6 +251,25 @@ def _score_to_letter_grade(score: int, qualifies_for_elite: bool = False) -> str
         if score >= threshold:
             return label
     return GRADE_THRESHOLDS[-1][1]
+
+
+def _cap_grade(max_grade: str, current_grade: str) -> str:
+    if GRADE_RANK.get(current_grade, 0) > GRADE_RANK.get(max_grade, 0):
+        return max_grade
+    return current_grade
+
+
+def _apply_goalie_grade_gate(base_grade: str, goalie_quality_score: int) -> str:
+    adjusted_grade = base_grade
+
+    if goalie_quality_score < GOALIE_GRADE_GATES["aFloor"]:
+        adjusted_grade = _cap_grade("B+", adjusted_grade)
+    if goalie_quality_score < GOALIE_GRADE_GATES["aPlusFloor"]:
+        adjusted_grade = _cap_grade("A", adjusted_grade)
+    if goalie_quality_score < GOALIE_GRADE_GATES["aPlusPlusFloor"]:
+        adjusted_grade = _cap_grade("A+", adjusted_grade)
+
+    return adjusted_grade
 
 
 def _parse_int(value, default: int = 0) -> int:
@@ -264,6 +324,33 @@ def _clamp(value: float, low: float = 0.0, high: float = 1.0) -> float:
 
 def _mean(values: list[float]) -> float:
     return sum(values) / len(values) if values else 0.0
+
+
+def _goalie_quality_signal(player: dict) -> float:
+    if player.get("positionGroup") != "Goalie":
+        return 0.0
+
+    production_norm = SCORE_NORMALIZATION["production"]
+    stats = player.get("stats") or {}
+    wins = _parse_int(stats.get("wins"), 0)
+    games_played = _parse_int(stats.get("gamesPlayed"), 0)
+    playoff_games = _parse_int(stats.get("playoffGames"), 0)
+    save_pctg = _parse_float(stats.get("savePctg"), 0.0)
+
+    sv_low, sv_high = production_norm["goalieSavePctgRange"]
+    if sv_high == sv_low:
+        save_pctg_norm = 0.0
+    else:
+        save_pctg_norm = _clamp((save_pctg - sv_low) / (sv_high - sv_low))
+
+    return _mean(
+        [
+            _clamp(wins / production_norm["goalieWinsMax"]) if production_norm["goalieWinsMax"] else 0.0,
+            save_pctg_norm,
+            _clamp(games_played / production_norm["goalieGamesPlayedMax"]) if production_norm["goalieGamesPlayedMax"] else 0.0,
+            _clamp(playoff_games / production_norm["goaliePlayoffGamesMax"]) if production_norm["goaliePlayoffGamesMax"] else 0.0,
+        ]
+    )
 
 
 def _normalize_position_group(raw_position: str, raw_group: str) -> str:
@@ -555,10 +642,11 @@ def get_player(player_id: str) -> dict | None:
     return None
 
 
-def score_lineup(lineup: list[dict]) -> dict:
+def score_lineup(lineup: list[dict], weights: dict[str, float] | None = None) -> dict:
     players_by_id = {p["id"]: p for p in load_players()}
     penalties = []
     warnings = []
+    hard_penalty_items: list[dict] = []
 
     used_slots = set()
     picked_players = []
@@ -729,11 +817,21 @@ def score_lineup(lineup: list[dict]) -> dict:
             position_scores.append(position_norm["perfect"])
         elif actual_group == "Goalie" and expected_group != "Goalie":
             position_scores.append(position_norm["goalieOutOfCrease"])
-            hard_penalty_points += SCORE_ADJUSTMENTS["goalieOutOfCreasePenalty"]
+            penalty_points = SCORE_ADJUSTMENTS["goalieOutOfCreasePenalty"]
+            hard_penalty_points += penalty_points
+            hard_penalty_items.append({
+                "label": f"{player_name} is a goalie outside the crease ({slot}).",
+                "points": penalty_points,
+            })
             penalties.append(f"{player_name} is a goalie outside the crease ({slot}).")
         elif expected_group == "Goalie" and actual_group != "Goalie":
             position_scores.append(position_norm["goalieNotInNet"])
-            hard_penalty_points += SCORE_ADJUSTMENTS["goalieNotInNetPenalty"]
+            penalty_points = SCORE_ADJUSTMENTS["goalieNotInNetPenalty"]
+            hard_penalty_points += penalty_points
+            hard_penalty_items.append({
+                "label": f"{player_name} is not a goalie but was placed in G.",
+                "points": penalty_points,
+            })
             penalties.append(f"{player_name} is not a goalie but was placed in G.")
         else:
             position_scores.append(position_norm["skaterOffPosition"])
@@ -753,6 +851,10 @@ def score_lineup(lineup: list[dict]) -> dict:
     slot_order = {slot: index for index, slot in enumerate(SLOT_POSITION_GROUP)}
     player_breakdown.sort(key=lambda entry: slot_order.get(entry["slot"], len(slot_order)))
 
+    goalie_player = slot_map.get("G")
+    goalie_quality = _goalie_quality_signal(goalie_player) if goalie_player else 0.0
+    goalie_quality_score = round(goalie_quality * 100)
+
     component_values = {
         "production": _mean(production_scores),
         "trophies": _mean(trophy_scores),
@@ -760,11 +862,13 @@ def score_lineup(lineup: list[dict]) -> dict:
         "grit": _mean(grit_scores),
         "positionFit": _mean(position_scores),
         "hallOfFame": _mean(hall_scores),
+        "goalieQuality": goalie_quality,
     }
 
+    applied_weights = _merge_score_weights(weights)
     weighted = {
-        name: component_values[name] * SCORE_WEIGHTS[name]
-        for name in SCORE_WEIGHTS
+        name: component_values[name] * applied_weights[name]
+        for name in applied_weights
     }
     weighted_total = sum(weighted.values())
     if lineup_incomplete:
@@ -774,8 +878,13 @@ def score_lineup(lineup: list[dict]) -> dict:
 
     complete_lineup = len(slot_map) == len(SLOT_POSITION_GROUP)
     completion_bonus = SCORE_ADJUSTMENTS["completeLineupBonus"] if complete_lineup else 0
+    score_subtotal = round(weighted_total * 100)
 
-    total_score = round((weighted_total * 100) + completion_bonus - hard_penalty_points)
+    bonuses: list[dict] = []
+    if completion_bonus > 0:
+        bonuses.append({"label": "Complete lineup bonus", "points": completion_bonus})
+
+    total_score = round(score_subtotal + completion_bonus - hard_penalty_points)
     total_score = max(min(total_score, 100), 0)
 
     legacy_signal = max(
@@ -791,7 +900,8 @@ def score_lineup(lineup: list[dict]) -> dict:
         and legacy_signal >= ELITE_GRADE_RULES["minLegacySignal"]
     )
 
-    grade = _score_to_letter_grade(total_score, qualifies_for_elite=qualifies_for_elite)
+    base_grade = _score_to_letter_grade(total_score, qualifies_for_elite=qualifies_for_elite)
+    grade = _apply_goalie_grade_gate(base_grade, goalie_quality_score)
 
     breakdown = {
         "production": round(component_values["production"] * 100),
@@ -802,10 +912,30 @@ def score_lineup(lineup: list[dict]) -> dict:
         "positionFit": round(component_values["positionFit"] * 100),
     }
 
+    weighted_contribution = {
+        "production": round(weighted["production"] * 100),
+        "awards": round(weighted["trophies"] * 100),
+        "cups": round(weighted["cups"] * 100),
+        "grit": round(weighted["grit"] * 100),
+        "hallOfFame": round(weighted["hallOfFame"] * 100),
+        "positionFit": round(weighted["positionFit"] * 100),
+        "goalieQuality": round(weighted["goalieQuality"] * 100),
+    }
+
     return {
         "totalScore": total_score,
         "grade": grade,
         "breakdown": breakdown,
+        "weightedContribution": weighted_contribution,
+        "scoreSubtotal": score_subtotal,
+        "bonusTotal": completion_bonus,
+        "hardPenaltyTotal": hard_penalty_points,
+        "bonuses": bonuses,
+        "penaltiesApplied": hard_penalty_items,
+        "goalieQuality": goalie_quality_score,
+        "goalieQualityFloorForA": GOALIE_GRADE_GATES["aFloor"],
+        "goalieGatePassedForA": goalie_quality_score >= GOALIE_GRADE_GATES["aFloor"],
+        "finalScoreEquation": f"{score_subtotal} + {completion_bonus} - {hard_penalty_points} = {total_score}",
         "playerBreakdown": player_breakdown,
         "penalties": penalties,
         "warnings": warnings,

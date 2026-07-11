@@ -1,27 +1,27 @@
 {
   "settings": {
-    "samples": 25000,
+    "samples": 300,
     "mode": "realistic",
-    "seed": null
+    "seed": 42
   },
   "playerPool": {
-    "total": 8801,
-    "forwards": 5336,
-    "defense": 2586,
-    "goalies": 879
+    "total": 4566,
+    "forwards": 2788,
+    "defense": 1418,
+    "goalies": 360
   },
   "summary": {
-    "lineups": 25000,
+    "lineups": 300,
     "score": {
-      "mean": 31.45,
-      "median": 31.0,
-      "stdev": 3.01,
-      "min": 25,
-      "p10": 28.0,
-      "p25": 29.0,
-      "p75": 33.0,
-      "p90": 35.0,
-      "max": 48
+      "mean": 48.85,
+      "median": 48.0,
+      "stdev": 2.81,
+      "min": 42,
+      "p10": 46.0,
+      "p25": 47.0,
+      "p75": 51.0,
+      "p90": 52.0,
+      "max": 58
     },
     "penalties": {
       "lineupsWithPenalties": 0,
@@ -32,19 +32,19 @@
       "avgWarningsPerLineup": 0.0
     },
     "grades": {
-      "C-": 11,
-      "D+": 367,
-      "D": 3409,
-      "D-": 14077,
-      "F": 7136
+      "B-": 1,
+      "C+": 19,
+      "C": 92,
+      "C-": 159,
+      "D+": 29
     },
     "histogram": {
       "00-09": 0,
       "10-19": 0,
-      "20-29": 7136,
-      "30-39": 17486,
-      "40-49": 378,
-      "50-59": 0,
+      "20-29": 0,
+      "30-39": 0,
+      "40-49": 188,
+      "50-59": 112,
       "60-69": 0,
       "70-79": 0,
       "80-89": 0,
@@ -54,125 +54,125 @@
   },
   "topExamples": [
     {
-      "score": 48,
-      "grade": "C-",
+      "score": 58,
+      "grade": "B-",
       "lineup": {
-        "F1": "Jim Pappin",
-        "F2": "Steven Stamkos",
-        "F3": "Steve Washburn",
+        "F1": "Brady Tkachuk",
+        "F2": "Howie Meeker",
+        "F3": "Bernie Nicholls",
+        "D1": "Larry Hillman",
+        "D2": "Bill MacKenzie",
+        "G": "Dominik Hasek"
+      }
+    },
+    {
+      "score": 57,
+      "grade": "C+",
+      "lineup": {
+        "F1": "Paul Ranheim",
+        "F2": "Jaroslav Bednar",
+        "F3": "Doug Risebrough",
+        "D1": "Aaron Johnson",
+        "D2": "Billy Stuart",
+        "G": "Patrick Roy"
+      }
+    },
+    {
+      "score": 57,
+      "grade": "C+",
+      "lineup": {
+        "F1": "Pierre Engvall",
+        "F2": "Wayne Merrick",
+        "F3": "Perry Anderson",
         "D1": "Bobby Orr",
-        "D2": "Ben Lovejoy",
-        "G": "Chris Clifford"
+        "D2": "Bob Gassoff",
+        "G": "Tom Barrasso"
       }
     },
     {
-      "score": 48,
-      "grade": "C-",
+      "score": 56,
+      "grade": "C+",
       "lineup": {
-        "F1": "Darryl Sittler",
-        "F2": "Theo Fleury",
-        "F3": "Dan Bylsma",
-        "D1": "Brenden Dillon",
-        "D2": "Bobby Orr",
-        "G": "Leevi Meril\u00e4inen"
+        "F1": "Robert Nilsson",
+        "F2": "Sean Avery",
+        "F3": "Conor Sheary",
+        "D1": "Brad Berry",
+        "D2": "Scott Niedermayer",
+        "G": "Mike Vernon"
       }
     },
     {
-      "score": 47,
-      "grade": "C-",
+      "score": 56,
+      "grade": "C+",
       "lineup": {
-        "F1": "Cully Dahlstrom",
-        "F2": "Duke Keats",
-        "F3": "Andy Bathgate",
-        "D1": "Kaspars Astashenko",
-        "D2": "Ray Bourque",
-        "G": "Chuck Rayner"
-      }
-    },
-    {
-      "score": 47,
-      "grade": "C-",
-      "lineup": {
-        "F1": "Everett Sanipass",
-        "F2": "Daniel Alfredsson",
-        "F3": "Wayne Gretzky",
-        "D1": "Jacques Laperriere",
-        "D2": "Brian Chapman",
-        "G": "Kevin Poulin"
-      }
-    },
-    {
-      "score": 47,
-      "grade": "C-",
-      "lineup": {
-        "F1": "Alexander Mogilny",
-        "F2": "Alex Ovechkin",
-        "F3": "Mark Recchi",
-        "D1": "Andrew Campbell",
-        "D2": "Ron Wilson",
-        "G": "Robert Dopson"
+        "F1": "Ryan Spooner",
+        "F2": "Mattias Tedenby",
+        "F3": "Michael Nylander",
+        "D1": "Jarno Kultanen",
+        "D2": "Roman Josi",
+        "G": "Dominik Hasek"
       }
     }
   ],
   "bottomExamples": [
     {
-      "score": 25,
-      "grade": "F",
+      "score": 42,
+      "grade": "D+",
       "lineup": {
-        "F1": "Eric Prentice",
-        "F2": "Aggie Kukulowicz",
-        "F3": "Brian Murphy",
-        "D1": "Bruce Affleck",
-        "D2": "Art Michaluk",
-        "G": "Larry Lozinski"
+        "F1": "Brock McGinn",
+        "F2": "Tom Kostopoulos",
+        "F3": "Len Barrie",
+        "D1": "Connor Carrick",
+        "D2": "Kyle Capobianco",
+        "G": "Jack Gelineau"
       }
     },
     {
-      "score": 25,
-      "grade": "F",
+      "score": 43,
+      "grade": "D+",
       "lineup": {
-        "F1": "Chad Penney",
-        "F2": "Greg Koehler",
-        "F3": "Gord Haidy",
-        "D1": "Ty Murchison",
-        "D2": "Art Townsend",
-        "G": "Joacim Eriksson"
+        "F1": "Nick Tarnasky",
+        "F2": "Bill Touhey",
+        "F3": "Ryan Garbutt",
+        "D1": "Ralph Nattrass",
+        "D2": "Joel Bouchard",
+        "G": "Jacques Cloutier"
       }
     },
     {
-      "score": 25,
-      "grade": "F",
+      "score": 43,
+      "grade": "D+",
       "lineup": {
-        "F1": "Jason Polin",
-        "F2": "John Craighead",
-        "F3": "Mike Chernoff",
-        "D1": "Ian McKegney",
-        "D2": "Yevgeny Shaldybin",
-        "G": "Don McLeod"
+        "F1": "Bert McInenly",
+        "F2": "Austin Czarnik",
+        "F3": "Mitchell Chaffee",
+        "D1": "Craig Wolanin",
+        "D2": "Walt Buswell",
+        "G": "Ron Grahame"
       }
     },
     {
-      "score": 25,
-      "grade": "F",
+      "score": 44,
+      "grade": "D+",
       "lineup": {
-        "F1": "Bruce Greig",
-        "F2": "Kelly Pratt",
-        "F3": "Billy Carter",
-        "D1": "Mike Berger",
-        "D2": "Kevin Kemp",
-        "G": "Jean-Guy Morissette"
+        "F1": "David Krejci",
+        "F2": "Bill Touhey",
+        "F3": "Mike Corrigan",
+        "D1": "Drew Bannister",
+        "D2": "Bob Beers",
+        "G": "Frank Caprice"
       }
     },
     {
-      "score": 25,
-      "grade": "F",
+      "score": 44,
+      "grade": "D+",
       "lineup": {
-        "F1": "Glenn Johannesen",
-        "F2": "Brian Marchinko",
-        "F3": "Gary Yaremchuk",
-        "D1": "Kent Paynter",
-        "D2": "Emanuel Viveiros",
-        "G": "Claude Evans"
+        "F1": "John Flesch",
+        "F2": "Tomas Kopecky",
+        "F3": "Danny Johnson",
+        "D1": "Travis Sanheim",
+        "D2": "Steven Kampfer",
+        "G": "Bill Beveridge"
       }
     }
   ]

@@ -70,6 +70,21 @@ class ScoreBreakdown(BaseModel):
     positionFit: int
 
 
+class ScoreWeightedContribution(BaseModel):
+    production: int
+    awards: int
+    cups: int
+    grit: int
+    hallOfFame: int
+    positionFit: int
+    goalieQuality: int
+
+
+class ScoreAdjustment(BaseModel):
+    label: str
+    points: int
+
+
 class ScorePlayerBreakdown(BaseModel):
     slot: Literal["F1", "F2", "F3", "D1", "D2", "G"]
     playerId: str
@@ -80,6 +95,16 @@ class ScorePlayerBreakdown(BaseModel):
 class ScoreResponse(BaseModel):
     totalScore: int
     breakdown: ScoreBreakdown
+    weightedContribution: ScoreWeightedContribution
+    scoreSubtotal: int
+    bonusTotal: int
+    hardPenaltyTotal: int
+    bonuses: list[ScoreAdjustment]
+    penaltiesApplied: list[ScoreAdjustment]
+    goalieQuality: int
+    goalieQualityFloorForA: int
+    goalieGatePassedForA: bool
+    finalScoreEquation: str
     playerBreakdown: list[ScorePlayerBreakdown]
     penalties: list[str]
     warnings: list[str]

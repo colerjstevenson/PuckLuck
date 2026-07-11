@@ -32,6 +32,46 @@ export function ScoreModal({ result, onClose, onRestart, gameOver = false }: Sco
         <p className="score-total">{result.grade}</p>
         <p className="score-subtotal">{result.totalScore} pts</p>
 
+        <div className="notes-block">
+          <h3>How This Score Was Calculated</h3>
+          <ul>
+            <li>Weighted subtotal: {result.scoreSubtotal}</li>
+            <li>Bonuses: +{result.bonusTotal}</li>
+            <li>Hard penalties: -{result.hardPenaltyTotal}</li>
+            <li>Final equation: {result.finalScoreEquation}</li>
+            <li>
+              Goalie quality: {result.goalieQuality} (A-floor: {result.goalieQualityFloorForA}) - {result.goalieGatePassedForA ? "A-tier eligible" : "A-tier capped"}
+            </li>
+          </ul>
+        </div>
+
+        <div className="score-table-wrap">
+          <table className="score-table">
+            <thead>
+              <tr>
+                <th scope="col">Weighted Contributions</th>
+                {SCORE_COLUMNS.map((column) => (
+                  <th key={column.key} scope="col">
+                    {column.label}
+                  </th>
+                ))}
+                <th scope="col">Goalie Quality</th>
+                <th scope="col">Subtotal</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Weighted points</th>
+                {SCORE_COLUMNS.map((column) => (
+                  <td key={column.key}>{result.weightedContribution[column.key]}</td>
+                ))}
+                <td>{result.weightedContribution.goalieQuality}</td>
+                <td>{result.scoreSubtotal}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
         <div className="score-table-wrap">
           <table className="score-table">
             <thead>
@@ -75,6 +115,32 @@ export function ScoreModal({ result, onClose, onRestart, gameOver = false }: Sco
             <ul>
               {result.penalties.map((item) => (
                 <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
+
+        {result.penaltiesApplied.length > 0 ? (
+          <div className="notes-block">
+            <h3>Hard Penalty Deductions</h3>
+            <ul>
+              {result.penaltiesApplied.map((item) => (
+                <li key={`${item.label}-${item.points}`}>
+                  {item.label} (-{item.points})
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
+
+        {result.bonuses.length > 0 ? (
+          <div className="notes-block">
+            <h3>Bonuses</h3>
+            <ul>
+              {result.bonuses.map((item) => (
+                <li key={`${item.label}-${item.points}`}>
+                  {item.label} (+{item.points})
+                </li>
               ))}
             </ul>
           </div>

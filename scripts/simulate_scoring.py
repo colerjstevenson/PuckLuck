@@ -44,6 +44,8 @@ GRADE_ORDER = [
     "F",
 ]
 
+MIN_GAMES_PLAYED = 100
+
 
 def _pct(count: int, total: int) -> float:
     if total <= 0:
@@ -64,6 +66,15 @@ def _percentile(values: list[int], p: float) -> float:
         return float(ordered[low])
     frac = index - low
     return ordered[low] + ((ordered[high] - ordered[low]) * frac)
+
+
+def _as_int(value: Any, default: int = 0) -> int:
+    try:
+        if value is None:
+            return default
+        return int(value)
+    except (TypeError, ValueError):
+        return default
 
 
 def _build_lineup_realistic(pools: dict[str, list[dict[str, Any]]]) -> list[dict[str, str]]:
@@ -153,16 +164,30 @@ def run_simulation(samples: int, mode: str, seed: int | None = None) -> dict[str
     if not players:
         raise RuntimeError("No players loaded. Ensure backend/data has generated player data.")
 
-    players_by_id = {player["id"]: player for player in players}
+    eligible_players = [
+        player
+        for player in players
+        if _as_int(player.get("stats", {}).get("gamesPlayed"), 0) >= MIN_GAMES_PLAYED
+    ]
+    if not eligible_players:
+        raise RuntimeError(
+            f"No players meet minimum games requirement (>= {MIN_GAMES_PLAYED} games played)."
+        )
+
+    players_by_id = {player["id"]: player for player in eligible_players}
     pools = {
-        "Forward": [p for p in players if p.get("positionGroup") == "Forward"],
-        "Defense": [p for p in players if p.get("positionGroup") == "Defense"],
-        "Goalie": [p for p in players if p.get("positionGroup") == "Goalie"],
+        "Forward": [p for p in eligible_players if p.get("positionGroup") == "Forward"],
+        "Defense": [p for p in eligible_players if p.get("positionGroup") == "Defense"],
+        "Goalie": [p for p in eligible_players if p.get("positionGroup") == "Goalie"],
     }
 
     if mode == "realistic":
         if len(pools["Forward"]) < 3 or len(pools["Defense"]) < 2 or len(pools["Goalie"]) < 1:
             raise RuntimeError("Not enough players by position group to sample realistic lineups.")
+    elif len(eligible_players) < len(SLOTS):
+        raise RuntimeError(
+            f"Need at least {len(SLOTS)} eligible players for random-any mode after filtering by games played."
+        )
 
     results: list[dict[str, Any]] = []
 
@@ -170,7 +195,7 @@ def run_simulation(samples: int, mode: str, seed: int | None = None) -> dict[str
         if mode == "realistic":
             lineup = _build_lineup_realistic(pools)
         else:
-            lineup = _build_lineup_random_any(players)
+            lineup = _build_lineup_random_any(eligible_players)
 
         score = score_lineup(lineup)
         results.append(
@@ -191,7 +216,7 @@ def run_simulation(samples: int, mode: str, seed: int | None = None) -> dict[str
     return {
         "settings": {"samples": samples, "mode": mode, "seed": seed},
         "playerPool": {
-            "total": len(players),
+            "total": len(eligible_players),
             "forwards": len(pools["Forward"]),
             "defense": len(pools["Defense"]),
             "goalies": len(pools["Goalie"]),

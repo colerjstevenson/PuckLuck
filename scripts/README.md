@@ -120,3 +120,42 @@ or
 ```
 
 The script normalizes each candidate so weights sum to 1.0 before scoring.
+
+## Elite Grade Proof Script
+
+Use this script to test and prove that high-end grades are achievable using actual players in the current dataset.
+
+It searches real lineups in two phases:
+
+- Random realistic sampling (`F1,F2,F3,D1,D2,G` by position group).
+- Targeted exhaustive search over top heuristic players by position.
+
+By default, it excludes players with fewer than `200` regular-season games (`--min-games 200`).
+
+The script fails with a non-zero exit code if it cannot find both an `A+` lineup and an `A++` lineup within the configured search budget.
+
+### Commands
+
+```powershell
+python scripts/test_elite_grades.py
+```
+
+```powershell
+python scripts/test_elite_grades.py --random-samples 50000 --top-forwards 20 --top-defense 14 --top-goalies 10 --json-out output/elite-grade-proof.json
+```
+
+```powershell
+python scripts/test_elite_grades.py --min-games 300
+```
+
+## Local Score UI
+
+Use this Tkinter workbench to pick players for a lineup and score it with the current backend rules.
+
+### Command
+
+```powershell
+python scripts/score_ui.py
+```
+
+The left panel lets you fill `F1`, `F2`, `F3`, `D1`, `D2`, and `G`. The right panel shows the total score, grade, equation, breakdown, and penalties for the selected lineup.
