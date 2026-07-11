@@ -9,6 +9,46 @@ const SCORE_COLUMNS = [
   { key: "positionFit", label: "Position Fit" },
 ] as const;
 
+const GRADE_THRESHOLDS: Array<[number, string]> = [
+  [96, "A++"],
+  [80, "A+"],
+  [74, "A"],
+  [70, "A-"],
+  [66, "B+"],
+  [62, "B"],
+  [58, "B-"],
+  [54, "C+"],
+  [50, "C"],
+  [46, "C-"],
+  [40, "D+"],
+  [35, "D"],
+  [30, "D-"],
+  [0, "F"],
+];
+
+function toGrade(score: number): string {
+  const clamped = Math.max(0, Math.min(100, Math.round(score)));
+  for (const [threshold, label] of GRADE_THRESHOLDS) {
+    if (clamped >= threshold) {
+      return label;
+    }
+  }
+  return "F";
+}
+
+function toSignedGrade(score: number): string {
+  if (score === 0) {
+    return toGrade(0);
+  }
+  const sign = score > 0 ? "+" : "-";
+  return `${sign}${toGrade(Math.abs(score))}`;
+}
+
+function rowAverageGrade(values: Record<(typeof SCORE_COLUMNS)[number]["key"], number>): string {
+  const total = getRowTotal(values);
+  return toGrade(total / SCORE_COLUMNS.length);
+}
+
 function getRowTotal(values: Record<(typeof SCORE_COLUMNS)[number]["key"], number>): number {
   return SCORE_COLUMNS.reduce((total, column) => total + values[column.key], 0);
 }
@@ -30,17 +70,19 @@ export function ScoreModal({ result, onClose, onRestart, gameOver = false }: Sco
       <div className="modal-card">
         <h2>Final Score</h2>
         <p className="score-total">{result.grade}</p>
-        <p className="score-subtotal">{result.totalScore} pts</p>
+        <p className="score-subtotal">Base score: {toGrade(result.totalScore)}</p>
 
         <div className="notes-block">
           <h3>How This Score Was Calculated</h3>
           <ul>
-            <li>Weighted subtotal: {result.scoreSubtotal}</li>
-            <li>Bonuses: +{result.bonusTotal}</li>
-            <li>Hard penalties: -{result.hardPenaltyTotal}</li>
-            <li>Final equation: {result.finalScoreEquation}</li>
+            <li>Weighted subtotal: {toGrade(result.scoreSubtotal)}</li>
+            <li>Bonuses: {toSignedGrade(result.bonusTotal)}</li>
+            <li>Hard penalties: {toSignedGrade(-result.hardPenaltyTotal)}</li>
             <li>
-              Goalie quality: {result.goalieQuality} (A-floor: {result.goalieQualityFloorForA}) - {result.goalieGatePassedForA ? "A-tier eligible" : "A-tier capped"}
+              Final equation: {toGrade(result.scoreSubtotal)} {toSignedGrade(result.bonusTotal)} {toSignedGrade(-result.hardPenaltyTotal)} = {result.grade}
+            </li>
+            <li>
+              Goalie quality: {toGrade(result.goalieQuality)} (A-floor: {toGrade(result.goalieQualityFloorForA)}) - {result.goalieGatePassedForA ? "A-tier eligible" : "A-tier capped"}
             </li>
           </ul>
         </div>
@@ -63,10 +105,10 @@ export function ScoreModal({ result, onClose, onRestart, gameOver = false }: Sco
               <tr>
                 <th scope="row">Weighted points</th>
                 {SCORE_COLUMNS.map((column) => (
-                  <td key={column.key}>{result.weightedContribution[column.key]}</td>
+                  <td key={column.key}>{toGrade(result.weightedContribution[column.key])}</td>
                 ))}
-                <td>{result.weightedContribution.goalieQuality}</td>
-                <td>{result.scoreSubtotal}</td>
+                <td>{toGrade(result.weightedContribution.goalieQuality)}</td>
+                <td>{toGrade(result.scoreSubtotal)}</td>
               </tr>
             </tbody>
           </table>
@@ -93,17 +135,17 @@ export function ScoreModal({ result, onClose, onRestart, gameOver = false }: Sco
                     <span className="score-player-slot">{entry.slot}</span>
                   </th>
                   {SCORE_COLUMNS.map((column) => (
-                    <td key={column.key}>{entry.breakdown[column.key]}</td>
+                    <td key={column.key}>{toGrade(entry.breakdown[column.key])}</td>
                   ))}
-                  <td>{getRowTotal(entry.breakdown)}</td>
+                  <td>{rowAverageGrade(entry.breakdown)}</td>
                 </tr>
               ))}
               <tr className="score-table-total">
                 <th scope="row">Totals</th>
                 {SCORE_COLUMNS.map((column) => (
-                  <td key={column.key}>{result.breakdown[column.key]}</td>
+                  <td key={column.key}>{toGrade(result.breakdown[column.key])}</td>
                 ))}
-                <td>{getRowTotal(result.breakdown)}</td>
+                <td>{rowAverageGrade(result.breakdown)}</td>
               </tr>
             </tbody>
           </table>
@@ -126,7 +168,7 @@ export function ScoreModal({ result, onClose, onRestart, gameOver = false }: Sco
             <ul>
               {result.penaltiesApplied.map((item) => (
                 <li key={`${item.label}-${item.points}`}>
-                  {item.label} (-{item.points})
+                  {item.label} ({toSignedGrade(-item.points)})
                 </li>
               ))}
             </ul>
@@ -139,7 +181,7 @@ export function ScoreModal({ result, onClose, onRestart, gameOver = false }: Sco
             <ul>
               {result.bonuses.map((item) => (
                 <li key={`${item.label}-${item.points}`}>
-                  {item.label} (+{item.points})
+                  {item.label} ({toSignedGrade(item.points)})
                 </li>
               ))}
             </ul>
