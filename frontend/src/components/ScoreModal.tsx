@@ -1,5 +1,18 @@
 import type { ScoreResponse } from "../types";
 
+const SCORE_COLUMNS = [
+  { key: "production", label: "Production" },
+  { key: "awards", label: "Awards" },
+  { key: "cups", label: "Cups" },
+  { key: "grit", label: "Grit" },
+  { key: "hallOfFame", label: "Hall of Fame" },
+  { key: "positionFit", label: "Position Fit" },
+] as const;
+
+function getRowTotal(values: Record<(typeof SCORE_COLUMNS)[number]["key"], number>): number {
+  return SCORE_COLUMNS.reduce((total, column) => total + values[column.key], 0);
+}
+
 type ScoreModalProps = {
   result: ScoreResponse | null;
   onClose?: () => void;
@@ -19,31 +32,41 @@ export function ScoreModal({ result, onClose, onRestart, gameOver = false }: Sco
         <p className="score-total">{result.grade}</p>
         <p className="score-subtotal">{result.totalScore} pts</p>
 
-        <div className="score-grid">
-          <div>
-            <span>Production</span>
-            <strong>{result.breakdown.production}</strong>
-          </div>
-          <div>
-            <span>Awards</span>
-            <strong>{result.breakdown.awards}</strong>
-          </div>
-          <div>
-            <span>Cups</span>
-            <strong>{result.breakdown.cups}</strong>
-          </div>
-          <div>
-            <span>Grit</span>
-            <strong>{result.breakdown.grit}</strong>
-          </div>
-          <div>
-            <span>Hall of Fame</span>
-            <strong>{result.breakdown.hallOfFame}</strong>
-          </div>
-          <div>
-            <span>Position Fit</span>
-            <strong>{result.breakdown.positionFit}</strong>
-          </div>
+        <div className="score-table-wrap">
+          <table className="score-table">
+            <thead>
+              <tr>
+                <th scope="col">Player</th>
+                {SCORE_COLUMNS.map((column) => (
+                  <th key={column.key} scope="col">
+                    {column.label}
+                  </th>
+                ))}
+                <th scope="col">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              {result.playerBreakdown.map((entry) => (
+                <tr key={`${entry.slot}-${entry.playerId}`}>
+                  <th scope="row">
+                    <span className="score-player-name">{entry.playerName}</span>
+                    <span className="score-player-slot">{entry.slot}</span>
+                  </th>
+                  {SCORE_COLUMNS.map((column) => (
+                    <td key={column.key}>{entry.breakdown[column.key]}</td>
+                  ))}
+                  <td>{getRowTotal(entry.breakdown)}</td>
+                </tr>
+              ))}
+              <tr className="score-table-total">
+                <th scope="row">Totals</th>
+                {SCORE_COLUMNS.map((column) => (
+                  <td key={column.key}>{result.breakdown[column.key]}</td>
+                ))}
+                <td>{getRowTotal(result.breakdown)}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
 
         {result.penalties.length > 0 ? (

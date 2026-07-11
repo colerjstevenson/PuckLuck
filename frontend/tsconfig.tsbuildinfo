@@ -1,1 +1,1 @@
-{"root":["./src/app.tsx","./src/api.ts","./src/main.tsx","./src/types.ts","./src/vite-env.d.ts","./src/components/categorytile.tsx","./src/components/playerlistmobile.tsx","./src/components/rinkboard.tsx","./src/components/rinkboardmobile.tsx","./src/components/scoremodal.tsx","./src/hooks/useismobile.ts"],"version":"5.9.3"}
+{"root":["./src/app.tsx","./src/api.ts","./src/main.tsx","./src/types.ts","./src/vite-env.d.ts","./src/components/categorytile.tsx","./src/components/rinkboard.tsx","./src/components/scoremodal.tsx","./src/hooks/useismobile.ts"],"version":"5.9.3"}

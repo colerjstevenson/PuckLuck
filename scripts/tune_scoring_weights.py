@@ -19,6 +19,7 @@ WEIGHT_KEYS = [
     "positionFit",
     "hallOfFame",
 ]
+WEIGHT_FLOOR = 0.1
 
 
 def _parse_args() -> argparse.Namespace:
@@ -125,7 +126,31 @@ def _normalize_weight_set(raw: dict[str, Any], base: dict[str, float]) -> dict[s
     if total <= 0:
         raise ValueError("Weight set total must be > 0")
 
-    return {k: merged[k] / total for k in WEIGHT_KEYS}
+    normalized = {k: merged[k] / total for k in WEIGHT_KEYS}
+
+    floor_total = WEIGHT_FLOOR * len(WEIGHT_KEYS)
+    if floor_total > 1.0:
+        raise ValueError(
+            f"Invalid floor {WEIGHT_FLOOR}: must satisfy floor * key_count <= 1"
+        )
+
+    if all(weight >= WEIGHT_FLOOR for weight in normalized.values()):
+        return normalized
+
+    remaining = 1.0 - floor_total
+    adjusted = {k: WEIGHT_FLOOR for k in WEIGHT_KEYS}
+    excess = {k: max(0.0, normalized[k] - WEIGHT_FLOOR) for k in WEIGHT_KEYS}
+    excess_total = sum(excess.values())
+
+    if excess_total > 0:
+        for key in WEIGHT_KEYS:
+            adjusted[key] += remaining * (excess[key] / excess_total)
+    else:
+        share = remaining / len(WEIGHT_KEYS)
+        for key in WEIGHT_KEYS:
+            adjusted[key] += share
+
+    return adjusted
 
 
 def _load_weight_sets(path: Path, base: dict[str, float]) -> list[dict[str, Any]]:
@@ -333,6 +358,7 @@ def main() -> None:
 
     results: list[dict[str, Any]] = []
     for idx, candidate in enumerate(deduped):
+        print(f"Evaluating candidate {idx+1}/{len(deduped)}: {candidate['name']}")
         sim_seed = args.seed + idx
         with _temporary_weights(candidate["weights"]):
             report = run_simulation(samples=args.samples, mode=args.mode, seed=sim_seed)

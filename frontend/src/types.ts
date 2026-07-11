@@ -52,6 +52,19 @@ export type ScoreResponse = {
     hallOfFame: number;
     positionFit: number;
   };
+  playerBreakdown: {
+    slot: LineupSlot;
+    playerId: string;
+    playerName: string;
+    breakdown: {
+      production: number;
+      awards: number;
+      cups: number;
+      grit: number;
+      hallOfFame: number;
+      positionFit: number;
+    };
+  }[];
   penalties: string[];
   warnings: string[];
 };

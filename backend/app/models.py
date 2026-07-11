@@ -70,9 +70,17 @@ class ScoreBreakdown(BaseModel):
     positionFit: int
 
 
+class ScorePlayerBreakdown(BaseModel):
+    slot: Literal["F1", "F2", "F3", "D1", "D2", "G"]
+    playerId: str
+    playerName: str
+    breakdown: ScoreBreakdown
+
+
 class ScoreResponse(BaseModel):
     totalScore: int
     breakdown: ScoreBreakdown
+    playerBreakdown: list[ScorePlayerBreakdown]
     penalties: list[str]
     warnings: list[str]
     grade: str

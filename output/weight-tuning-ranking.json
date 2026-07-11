@@ -1,0 +1,6356 @@
+{
+  "targetJson": "output\\target-distribution.json",
+  "samples": 5000,
+  "mode": "realistic",
+  "baseSeed": 7,
+  "lossWeights": {
+    "histogram": 0.5,
+    "grades": 0.3,
+    "stats": 0.2
+  },
+  "candidateCount": 100,
+  "best": {
+    "name": "auto_057",
+    "weights": {
+      "production": 0.301581784867586,
+      "trophies": 0.06592606545218595,
+      "cups": 0.028535015222994942,
+      "grit": 0.09249733241343126,
+      "positionFit": 0.5114597697216482,
+      "hallOfFame": 3.232215365757247e-08
+    },
+    "fit": {
+      "composite": 0.15624288141450418,
+      "histogramRmse": 0.15320344168932545,
+      "gradesRmse": 0.18495942412169372,
+      "statsError": 0.12076666666666667
+    },
+    "settings": {
+      "samples": 5000,
+      "mode": "realistic",
+      "seed": 64
+    },
+    "summary": {
+      "lineups": 5000,
+      "score": {
+        "mean": 59.83,
+        "median": 60.0,
+        "stdev": 1.8,
+        "min": 56,
+        "p10": 58.0,
+        "p25": 59.0,
+        "p75": 61.0,
+        "p90": 62.0,
+        "max": 70
+      },
+      "penalties": {
+        "lineupsWithPenalties": 0,
+        "avgPenaltiesPerLineup": 0.0
+      },
+      "warnings": {
+        "lineupsWithWarnings": 0,
+        "avgWarningsPerLineup": 0.0
+      },
+      "grades": {
+        "A-": 1,
+        "B+": 22,
+        "B": 846,
+        "B-": 3764,
+        "C+": 367
+      },
+      "histogram": {
+        "00-09": 0,
+        "10-19": 0,
+        "20-29": 0,
+        "30-39": 0,
+        "40-49": 0,
+        "50-59": 2348,
+        "60-69": 2651,
+        "70-79": 1,
+        "80-89": 0,
+        "90-99": 0,
+        "100": 0
+      }
+    }
+  },
+  "ranked": [
+    {
+      "name": "auto_057",
+      "weights": {
+        "production": 0.301581784867586,
+        "trophies": 0.06592606545218595,
+        "cups": 0.028535015222994942,
+        "grit": 0.09249733241343126,
+        "positionFit": 0.5114597697216482,
+        "hallOfFame": 3.232215365757247e-08
+      },
+      "fit": {
+        "composite": 0.15624288141450418,
+        "histogramRmse": 0.15320344168932545,
+        "gradesRmse": 0.18495942412169372,
+        "statsError": 0.12076666666666667
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 64
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 59.83,
+          "median": 60.0,
+          "stdev": 1.8,
+          "min": 56,
+          "p10": 58.0,
+          "p25": 59.0,
+          "p75": 61.0,
+          "p90": 62.0,
+          "max": 70
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "A-": 1,
+          "B+": 22,
+          "B": 846,
+          "B-": 3764,
+          "C+": 367
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 0,
+          "20-29": 0,
+          "30-39": 0,
+          "40-49": 0,
+          "50-59": 2348,
+          "60-69": 2651,
+          "70-79": 1,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_005",
+      "weights": {
+        "production": 0.07350128157775661,
+        "trophies": 0.000379276194545682,
+        "cups": 0.3280951336747742,
+        "grit": 0.15097948309205508,
+        "positionFit": 0.4045752991094289,
+        "hallOfFame": 0.042469526351439496
+      },
+      "fit": {
+        "composite": 0.16634706081459727,
+        "histogramRmse": 0.172591814827513,
+        "gradesRmse": 0.1576149557805803,
+        "statsError": 0.16383333333333336
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 12
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 49.29,
+          "median": 49.0,
+          "stdev": 2.28,
+          "min": 45,
+          "p10": 47.0,
+          "p25": 47.0,
+          "p75": 51.0,
+          "p90": 52.0,
+          "max": 59
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "B-": 7,
+          "C+": 244,
+          "C": 1845,
+          "C-": 2894,
+          "D+": 10
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 0,
+          "20-29": 0,
+          "30-39": 0,
+          "40-49": 2904,
+          "50-59": 2096,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_072",
+      "weights": {
+        "production": 0.10835945781395702,
+        "trophies": 0.13068638151623158,
+        "cups": 0.03914412629709975,
+        "grit": 0.01458421772253033,
+        "positionFit": 0.5239077092209247,
+        "hallOfFame": 0.18331810742925658
+      },
+      "fit": {
+        "composite": 0.16877702637584452,
+        "histogramRmse": 0.20460795328005835,
+        "gradesRmse": 0.14791016578605118,
+        "statsError": 0.11049999999999999
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 79
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 58.07,
+          "median": 57.0,
+          "stdev": 1.96,
+          "min": 56,
+          "p10": 56.0,
+          "p25": 57.0,
+          "p75": 58.0,
+          "p90": 61.0,
+          "max": 70
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "A-": 1,
+          "B+": 33,
+          "B": 374,
+          "B-": 2014,
+          "C+": 2578
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 0,
+          "20-29": 0,
+          "30-39": 0,
+          "40-49": 0,
+          "50-59": 4097,
+          "60-69": 902,
+          "70-79": 1,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_052",
+      "weights": {
+        "production": 0.04605685686878912,
+        "trophies": 0.24303120339715772,
+        "cups": 0.004157366456270483,
+        "grit": 0.20986786143717437,
+        "positionFit": 0.4177217981370359,
+        "hallOfFame": 0.0791649137035724
+      },
+      "fit": {
+        "composite": 0.17618879277838403,
+        "histogramRmse": 0.19766285345598866,
+        "gradesRmse": 0.15663566461241013,
+        "statsError": 0.15183333333333335
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 59
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 51.19,
+          "median": 51.0,
+          "stdev": 2.13,
+          "min": 47,
+          "p10": 49.0,
+          "p25": 50.0,
+          "p75": 52.0,
+          "p90": 54.0,
+          "max": 62
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "B": 2,
+          "B-": 50,
+          "C+": 635,
+          "C": 3204,
+          "C-": 1109
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 0,
+          "20-29": 0,
+          "30-39": 0,
+          "40-49": 1109,
+          "50-59": 3879,
+          "60-69": 12,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_059",
+      "weights": {
+        "production": 0.26071076433018936,
+        "trophies": 0.002327326655167536,
+        "cups": 0.0014527241788934969,
+        "grit": 0.06380858386300386,
+        "positionFit": 0.4341795439272832,
+        "hallOfFame": 0.23752105704546259
+      },
+      "fit": {
+        "composite": 0.17864556306062768,
+        "histogramRmse": 0.20315717157815613,
+        "gradesRmse": 0.15695659090516534,
+        "statsError": 0.1499
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 66
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 51.29,
+          "median": 51.0,
+          "stdev": 2.37,
+          "min": 48,
+          "p10": 49.0,
+          "p25": 50.0,
+          "p75": 52.0,
+          "p90": 55.0,
+          "max": 70
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "A-": 1,
+          "B+": 1,
+          "B": 9,
+          "B-": 93,
+          "C+": 686,
+          "C": 3246,
+          "C-": 964
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 0,
+          "20-29": 0,
+          "30-39": 0,
+          "40-49": 964,
+          "50-59": 4003,
+          "60-69": 32,
+          "70-79": 1,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_036",
+      "weights": {
+        "production": 0.03178173457762581,
+        "trophies": 0.015500170012398111,
+        "cups": 0.03652000526949832,
+        "grit": 0.2910171624014749,
+        "positionFit": 0.5108541282393355,
+        "hallOfFame": 0.11432679949966729
+      },
+      "fit": {
+        "composite": 0.17867367901584624,
+        "histogramRmse": 0.21176225090674428,
+        "gradesRmse": 0.15748628965269146,
+        "statsError": 0.12773333333333334
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 43
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 61.54,
+          "median": 61.0,
+          "stdev": 2.11,
+          "min": 56,
+          "p10": 59.0,
+          "p25": 60.0,
+          "p75": 63.0,
+          "p90": 64.0,
+          "max": 74
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "A": 1,
+          "A-": 10,
+          "B+": 221,
+          "B": 2025,
+          "B-": 2725,
+          "C+": 18
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 0,
+          "20-29": 0,
+          "30-39": 0,
+          "40-49": 0,
+          "50-59": 767,
+          "60-69": 4222,
+          "70-79": 11,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_085",
+      "weights": {
+        "production": 0.3003813094572152,
+        "trophies": 0.004861727741456986,
+        "cups": 0.183561089751315,
+        "grit": 0.12612184390833822,
+        "positionFit": 0.3820850306564377,
+        "hallOfFame": 0.0029889984852368764
+      },
+      "fit": {
+        "composite": 0.1822430237727906,
+        "histogramRmse": 0.20048784139058046,
+        "gradesRmse": 0.15910812136944577,
+        "statsError": 0.17133333333333334
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 92
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 48.18,
+          "median": 48.0,
+          "stdev": 2.21,
+          "min": 43,
+          "p10": 45.0,
+          "p25": 47.0,
+          "p75": 50.0,
+          "p90": 51.0,
+          "max": 57
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "C+": 75,
+          "C": 1242,
+          "C-": 3168,
+          "D+": 515
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 0,
+          "20-29": 0,
+          "30-39": 0,
+          "40-49": 3683,
+          "50-59": 1317,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_079",
+      "weights": {
+        "production": 0.04625681391512714,
+        "trophies": 0.0017017936751054562,
+        "cups": 0.09727013561940032,
+        "grit": 0.059792286656259824,
+        "positionFit": 0.48568009854676314,
+        "hallOfFame": 0.3092988715873442
+      },
+      "fit": {
+        "composite": 0.1840269890705011,
+        "histogramRmse": 0.23528300947041322,
+        "gradesRmse": 0.13612939222875942,
+        "statsError": 0.12773333333333334
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 86
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 54.74,
+          "median": 54.0,
+          "stdev": 2.47,
+          "min": 52,
+          "p10": 53.0,
+          "p25": 53.0,
+          "p75": 55.0,
+          "p90": 59.0,
+          "max": 72
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "A-": 4,
+          "B+": 20,
+          "B": 39,
+          "B-": 720,
+          "C+": 2556,
+          "C": 1661
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 0,
+          "20-29": 0,
+          "30-39": 0,
+          "40-49": 0,
+          "50-59": 4599,
+          "60-69": 397,
+          "70-79": 4,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_055",
+      "weights": {
+        "production": 0.6555220516195478,
+        "trophies": 0.020432145163910082,
+        "cups": 0.0008985494706380591,
+        "grit": 0.029030551514522735,
+        "positionFit": 0.294116499862762,
+        "hallOfFame": 2.0236861925174166e-07
+      },
+      "fit": {
+        "composite": 0.18879431566399196,
+        "histogramRmse": 0.19052589420768076,
+        "gradesRmse": 0.16514900631161633,
+        "statsError": 0.21993333333333331
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 62
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 40.12,
+          "median": 40.0,
+          "stdev": 2.95,
+          "min": 33,
+          "p10": 37.0,
+          "p25": 38.0,
+          "p75": 42.0,
+          "p90": 44.0,
+          "max": 55
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "C+": 3,
+          "C": 26,
+          "C-": 186,
+          "D+": 2514,
+          "D": 2236,
+          "D-": 35
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 0,
+          "20-29": 0,
+          "30-39": 2271,
+          "40-49": 2700,
+          "50-59": 29,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_002",
+      "weights": {
+        "production": 0.1552006334649172,
+        "trophies": 0.0026752874113936485,
+        "cups": 0.044814362980564786,
+        "grit": 0.5509204515148692,
+        "positionFit": 0.2459483613410734,
+        "hallOfFame": 0.00044090328718162405
+      },
+      "fit": {
+        "composite": 0.18959200884699628,
+        "histogramRmse": 0.20354859147365548,
+        "gradesRmse": 0.15683682147833963,
+        "statsError": 0.2038333333333333
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 9
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 41.89,
+          "median": 42.0,
+          "stdev": 3.48,
+          "min": 33,
+          "p10": 38.0,
+          "p25": 39.0,
+          "p75": 44.0,
+          "p90": 47.0,
+          "max": 58
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "B-": 1,
+          "C+": 15,
+          "C": 107,
+          "C-": 629,
+          "D+": 2921,
+          "D": 1315,
+          "D-": 12
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 0,
+          "20-29": 0,
+          "30-39": 1327,
+          "40-49": 3550,
+          "50-59": 123,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_008",
+      "weights": {
+        "production": 0.5601275412385353,
+        "trophies": 2.6260123092557133e-06,
+        "cups": 0.019372492267602435,
+        "grit": 0.12196086922960543,
+        "positionFit": 0.2748160725066119,
+        "hallOfFame": 0.02372039874533575
+      },
+      "fit": {
+        "composite": 0.19450044470708047,
+        "histogramRmse": 0.19713924935528093,
+        "gradesRmse": 0.16861384454257775,
+        "statsError": 0.22673333333333331
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 15
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 39.24,
+          "median": 39.0,
+          "stdev": 2.87,
+          "min": 32,
+          "p10": 36.0,
+          "p25": 37.0,
+          "p75": 41.0,
+          "p90": 43.0,
+          "max": 52
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "C": 5,
+          "C-": 144,
+          "D+": 1938,
+          "D": 2801,
+          "D-": 112
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 0,
+          "20-29": 0,
+          "30-39": 2913,
+          "40-49": 2082,
+          "50-59": 5,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_097",
+      "weights": {
+        "production": 0.3776172293992678,
+        "trophies": 0.0002341179096754319,
+        "cups": 1.3581670803990945e-05,
+        "grit": 3.7204916215501985e-06,
+        "positionFit": 0.3892027525036785,
+        "hallOfFame": 0.2329285980249527
+      },
+      "fit": {
+        "composite": 0.19510587554825876,
+        "histogramRmse": 0.23353255564365014,
+        "gradesRmse": 0.140865325754779,
+        "statsError": 0.18039999999999998
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 104
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 46.6,
+          "median": 46.0,
+          "stdev": 2.64,
+          "min": 42,
+          "p10": 44.0,
+          "p25": 45.0,
+          "p75": 48.0,
+          "p90": 50.0,
+          "max": 62
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "B": 1,
+          "B-": 18,
+          "C+": 86,
+          "C": 600,
+          "C-": 2293,
+          "D+": 2002
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 0,
+          "20-29": 0,
+          "30-39": 0,
+          "40-49": 4295,
+          "50-59": 700,
+          "60-69": 5,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_063",
+      "weights": {
+        "production": 0.39120170628693773,
+        "trophies": 0.04495850311932818,
+        "cups": 0.02048555536102389,
+        "grit": 0.2925541998027213,
+        "positionFit": 0.2507772288603065,
+        "hallOfFame": 2.2806569682400793e-05
+      },
+      "fit": {
+        "composite": 0.19511953124413342,
+        "histogramRmse": 0.19895684319606965,
+        "gradesRmse": 0.16753703215366192,
+        "statsError": 0.2269
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 70
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 39.03,
+          "median": 39.0,
+          "stdev": 2.95,
+          "min": 32,
+          "p10": 35.0,
+          "p25": 37.0,
+          "p75": 41.0,
+          "p90": 43.0,
+          "max": 58
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "B-": 1,
+          "C+": 1,
+          "C": 7,
+          "C-": 125,
+          "D+": 1861,
+          "D": 2823,
+          "D-": 182
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 0,
+          "20-29": 0,
+          "30-39": 3005,
+          "40-49": 1986,
+          "50-59": 9,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_092",
+      "weights": {
+        "production": 0.5203325743063419,
+        "trophies": 0.002333326141291354,
+        "cups": 0.002982562235366321,
+        "grit": 0.03570078143074401,
+        "positionFit": 0.4376590817953605,
+        "hallOfFame": 0.0009916740908958398
+      },
+      "fit": {
+        "composite": 0.19606637598912752,
+        "histogramRmse": 0.2480593770560882,
+        "gradesRmse": 0.1487222915369448,
+        "statsError": 0.1371
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 99
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 53.17,
+          "median": 53.0,
+          "stdev": 2.35,
+          "min": 48,
+          "p10": 50.0,
+          "p25": 51.0,
+          "p75": 55.0,
+          "p90": 56.0,
+          "max": 64
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "B": 9,
+          "B-": 225,
+          "C+": 1826,
+          "C": 2775,
+          "C-": 165
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 0,
+          "20-29": 0,
+          "30-39": 0,
+          "40-49": 165,
+          "50-59": 4785,
+          "60-69": 50,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_048",
+      "weights": {
+        "production": 0.23223185025441215,
+        "trophies": 0.013201506840238273,
+        "cups": 0.3584939548635869,
+        "grit": 0.07072097718744424,
+        "positionFit": 0.3253445870959708,
+        "hallOfFame": 7.123758347614042e-06
+      },
+      "fit": {
+        "composite": 0.20083837150686265,
+        "histogramRmse": 0.20963167699562962,
+        "gradesRmse": 0.1765639989190484,
+        "statsError": 0.2152666666666667
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 55
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 41.36,
+          "median": 41.0,
+          "stdev": 2.53,
+          "min": 37,
+          "p10": 38.0,
+          "p25": 39.0,
+          "p75": 43.0,
+          "p90": 45.0,
+          "max": 53
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "C": 17,
+          "C-": 319,
+          "D+": 3310,
+          "D": 1354
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 0,
+          "20-29": 0,
+          "30-39": 1354,
+          "40-49": 3629,
+          "50-59": 17,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_026",
+      "weights": {
+        "production": 0.06240142604635327,
+        "trophies": 0.04697028999416916,
+        "cups": 0.00025982587679732906,
+        "grit": 0.7568740803400469,
+        "positionFit": 0.11707839352583943,
+        "hallOfFame": 0.01641598421679402
+      },
+      "fit": {
+        "composite": 0.20239445664329245,
+        "histogramRmse": 0.2136481389404721,
+        "gradesRmse": 0.14327906835463242,
+        "statsError": 0.2629333333333333
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 33
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 32.54,
+          "median": 32.0,
+          "stdev": 4.29,
+          "min": 22,
+          "p10": 27.0,
+          "p25": 29.0,
+          "p75": 35.0,
+          "p90": 38.0,
+          "max": 52
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "C": 3,
+          "C-": 27,
+          "D+": 290,
+          "D": 1202,
+          "D-": 2202,
+          "F": 1276
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 0,
+          "20-29": 1276,
+          "30-39": 3404,
+          "40-49": 317,
+          "50-59": 3,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_032",
+      "weights": {
+        "production": 0.029503134121909982,
+        "trophies": 0.2252917744837892,
+        "cups": 0.06003920007912526,
+        "grit": 0.09881911985641907,
+        "positionFit": 0.5863460153298915,
+        "hallOfFame": 7.561288648855821e-07
+      },
+      "fit": {
+        "composite": 0.21245792243229744,
+        "histogramRmse": 0.25829827719131226,
+        "gradesRmse": 0.1724959461221377,
+        "statsError": 0.15779999999999997
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 39
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 65.3,
+          "median": 65.0,
+          "stdev": 1.48,
+          "min": 63,
+          "p10": 64.0,
+          "p25": 64.0,
+          "p75": 66.0,
+          "p90": 67.0,
+          "max": 73
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "A-": 60,
+          "B+": 1912,
+          "B": 3028
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 0,
+          "20-29": 0,
+          "30-39": 0,
+          "40-49": 0,
+          "50-59": 0,
+          "60-69": 4940,
+          "70-79": 60,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_058",
+      "weights": {
+        "production": 0.5977465477526392,
+        "trophies": 0.19183303927882006,
+        "cups": 8.67740529713705e-07,
+        "grit": 0.004967060369719427,
+        "positionFit": 0.20368422536053782,
+        "hallOfFame": 0.0017682594977537363
+      },
+      "fit": {
+        "composite": 0.21372876650782233,
+        "histogramRmse": 0.21279736840478083,
+        "gradesRmse": 0.16794471879588407,
+        "statsError": 0.28473333333333334
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 65
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 30.58,
+          "median": 30.0,
+          "stdev": 3.0,
+          "min": 24,
+          "p10": 27.0,
+          "p25": 28.0,
+          "p75": 32.0,
+          "p90": 35.0,
+          "max": 48
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "C-": 1,
+          "D+": 37,
+          "D": 469,
+          "D-": 2508,
+          "F": 1985
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 0,
+          "20-29": 1985,
+          "30-39": 2977,
+          "40-49": 38,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_050",
+      "weights": {
+        "production": 0.09505718427271999,
+        "trophies": 0.04770726560384399,
+        "cups": 0.02386277575837178,
+        "grit": 0.4716930620615225,
+        "positionFit": 0.28623947085441853,
+        "hallOfFame": 0.07544024144912324
+      },
+      "fit": {
+        "composite": 0.2140579219667393,
+        "histogramRmse": 0.2460982508895768,
+        "gradesRmse": 0.17231821062872524,
+        "statsError": 0.19656666666666664
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 57
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 43.81,
+          "median": 43.0,
+          "stdev": 3.11,
+          "min": 36,
+          "p10": 40.0,
+          "p25": 41.0,
+          "p75": 46.0,
+          "p90": 48.0,
+          "max": 59
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "B-": 2,
+          "C+": 23,
+          "C": 208,
+          "C-": 1109,
+          "D+": 3372,
+          "D": 286
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 0,
+          "20-29": 0,
+          "30-39": 286,
+          "40-49": 4481,
+          "50-59": 233,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "baseline",
+      "weights": {
+        "production": 0.35,
+        "trophies": 0.15,
+        "cups": 0.1,
+        "grit": 0.15,
+        "positionFit": 0.2,
+        "hallOfFame": 0.1
+      },
+      "fit": {
+        "composite": 0.21620878562947127,
+        "histogramRmse": 0.22184485979661964,
+        "gradesRmse": 0.16539896354831593,
+        "statsError": 0.2783333333333334
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 7
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 31.42,
+          "median": 31.0,
+          "stdev": 3.04,
+          "min": 26,
+          "p10": 28.0,
+          "p25": 29.0,
+          "p75": 33.0,
+          "p90": 36.0,
+          "max": 47
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "C-": 1,
+          "D+": 76,
+          "D": 702,
+          "D-": 2754,
+          "F": 1467
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 0,
+          "20-29": 1467,
+          "30-39": 3456,
+          "40-49": 77,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_083",
+      "weights": {
+        "production": 0.23227544068208325,
+        "trophies": 0.00828947788166185,
+        "cups": 0.051410005517245026,
+        "grit": 0.1548645995565877,
+        "positionFit": 0.5513710327036404,
+        "hallOfFame": 0.0017894436587818155
+      },
+      "fit": {
+        "composite": 0.2169250401749575,
+        "histogramRmse": 0.260401214911284,
+        "gradesRmse": 0.18932588684216278,
+        "statsError": 0.14963333333333337
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 90
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 64.37,
+          "median": 64.0,
+          "stdev": 1.74,
+          "min": 60,
+          "p10": 62.0,
+          "p25": 63.0,
+          "p75": 65.0,
+          "p90": 67.0,
+          "max": 73
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "A-": 28,
+          "B+": 1169,
+          "B": 3704,
+          "B-": 99
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 0,
+          "20-29": 0,
+          "30-39": 0,
+          "40-49": 0,
+          "50-59": 0,
+          "60-69": 4972,
+          "70-79": 28,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_040",
+      "weights": {
+        "production": 0.2912075884936553,
+        "trophies": 0.2833718603381503,
+        "cups": 0.004999758293391812,
+        "grit": 0.05015733777018858,
+        "positionFit": 0.37025931434394366,
+        "hallOfFame": 4.1407606702762785e-06
+      },
+      "fit": {
+        "composite": 0.21969658512920492,
+        "histogramRmse": 0.2643640602722624,
+        "gradesRmse": 0.16433740553246803,
+        "statsError": 0.19106666666666663
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 47
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 45.36,
+          "median": 45.0,
+          "stdev": 2.16,
+          "min": 41,
+          "p10": 43.0,
+          "p25": 44.0,
+          "p75": 47.0,
+          "p90": 48.0,
+          "max": 56
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "C+": 12,
+          "C": 206,
+          "C-": 1902,
+          "D+": 2880
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 0,
+          "20-29": 0,
+          "30-39": 0,
+          "40-49": 4782,
+          "50-59": 218,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_029",
+      "weights": {
+        "production": 0.396702443528992,
+        "trophies": 0.022859347613276956,
+        "cups": 0.3797702971260738,
+        "grit": 0.00017774485584534473,
+        "positionFit": 0.20022756530238472,
+        "hallOfFame": 0.00026260157342723907
+      },
+      "fit": {
+        "composite": 0.2210283979002859,
+        "histogramRmse": 0.21619319642814427,
+        "gradesRmse": 0.18110599895404583,
+        "statsError": 0.293
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 36
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 29.16,
+          "median": 29.0,
+          "stdev": 2.97,
+          "min": 23,
+          "p10": 26.0,
+          "p25": 27.0,
+          "p75": 31.0,
+          "p90": 33.0,
+          "max": 44
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "D+": 14,
+          "D": 243,
+          "D-": 1803,
+          "F": 2940
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 0,
+          "20-29": 2940,
+          "30-39": 2046,
+          "40-49": 14,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_044",
+      "weights": {
+        "production": 0.4601685991341454,
+        "trophies": 0.09019492599965452,
+        "cups": 0.00444766552104199,
+        "grit": 0.05567559873018785,
+        "positionFit": 0.32543651390403394,
+        "hallOfFame": 0.06407669671093627
+      },
+      "fit": {
+        "composite": 0.22117546336408023,
+        "histogramRmse": 0.24206723333517374,
+        "gradesRmse": 0.19473948898831117,
+        "statsError": 0.2086
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 51
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 42.3,
+          "median": 42.0,
+          "stdev": 2.56,
+          "min": 37,
+          "p10": 39.0,
+          "p25": 40.0,
+          "p75": 44.0,
+          "p90": 46.0,
+          "max": 58
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "B-": 1,
+          "C+": 1,
+          "C": 48,
+          "C-": 522,
+          "D+": 3848,
+          "D": 580
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 0,
+          "20-29": 0,
+          "30-39": 580,
+          "40-49": 4370,
+          "50-59": 50,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_010",
+      "weights": {
+        "production": 0.030642827131092135,
+        "trophies": 0.44765909370291085,
+        "cups": 0.013534195458372617,
+        "grit": 0.14017769571215036,
+        "positionFit": 0.36761322188111506,
+        "hallOfFame": 0.00037296611435903864
+      },
+      "fit": {
+        "composite": 0.22249331752116452,
+        "histogramRmse": 0.26482496449198634,
+        "gradesRmse": 0.17242500647279346,
+        "statsError": 0.19176666666666664
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 17
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 45.03,
+          "median": 45.0,
+          "stdev": 2.22,
+          "min": 41,
+          "p10": 43.0,
+          "p25": 43.0,
+          "p75": 46.0,
+          "p90": 48.0,
+          "max": 64
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "B": 1,
+          "C+": 11,
+          "C": 199,
+          "C-": 1574,
+          "D+": 3215
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 0,
+          "20-29": 0,
+          "30-39": 0,
+          "40-49": 4789,
+          "50-59": 210,
+          "60-69": 1,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_028",
+      "weights": {
+        "production": 0.3947999631700577,
+        "trophies": 1.4843787626159741e-05,
+        "cups": 0.0006433072006162893,
+        "grit": 0.0016881511024482304,
+        "positionFit": 0.26900916297051997,
+        "hallOfFame": 0.33384457176873167
+      },
+      "fit": {
+        "composite": 0.22734222931273002,
+        "histogramRmse": 0.25491965222577306,
+        "gradesRmse": 0.16367467733281163,
+        "statsError": 0.2539
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 35
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 35.19,
+          "median": 34.0,
+          "stdev": 3.32,
+          "min": 30,
+          "p10": 32.0,
+          "p25": 33.0,
+          "p75": 36.0,
+          "p90": 41.0,
+          "max": 59
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "B-": 1,
+          "C+": 1,
+          "C": 11,
+          "C-": 45,
+          "D+": 597,
+          "D": 1602,
+          "D-": 2743
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 0,
+          "20-29": 0,
+          "30-39": 4345,
+          "40-49": 642,
+          "50-59": 13,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_089",
+      "weights": {
+        "production": 0.447642458292943,
+        "trophies": 0.009664173420292218,
+        "cups": 0.07370609250021429,
+        "grit": 0.09011793645069735,
+        "positionFit": 0.2549668754849881,
+        "hallOfFame": 0.12390246385086504
+      },
+      "fit": {
+        "composite": 0.22872929184236654,
+        "histogramRmse": 0.2594453104045419,
+        "gradesRmse": 0.1649332332447631,
+        "statsError": 0.24763333333333334
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 96
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 36.05,
+          "median": 36.0,
+          "stdev": 2.83,
+          "min": 30,
+          "p10": 33.0,
+          "p25": 34.0,
+          "p75": 38.0,
+          "p90": 40.0,
+          "max": 52
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "C": 1,
+          "C-": 29,
+          "D+": 548,
+          "D": 2782,
+          "D-": 1640
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 0,
+          "20-29": 0,
+          "30-39": 4422,
+          "40-49": 577,
+          "50-59": 1,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_007",
+      "weights": {
+        "production": 0.06829242823496769,
+        "trophies": 0.0020893551062380095,
+        "cups": 0.008004197617159333,
+        "grit": 0.8862305295461598,
+        "positionFit": 0.030941435312081253,
+        "hallOfFame": 0.004442054183394025
+      },
+      "fit": {
+        "composite": 0.22920235680733345,
+        "histogramRmse": 0.22034557981828123,
+        "gradesRmse": 0.1986096674384205,
+        "statsError": 0.2972333333333334
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 14
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 26.75,
+          "median": 26.0,
+          "stdev": 5.04,
+          "min": 14,
+          "p10": 21.0,
+          "p25": 23.0,
+          "p75": 30.0,
+          "p90": 34.0,
+          "max": 50
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "C": 1,
+          "C-": 2,
+          "D+": 61,
+          "D": 311,
+          "D-": 997,
+          "F": 3628
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 278,
+          "20-29": 3350,
+          "30-39": 1308,
+          "40-49": 63,
+          "50-59": 1,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_011",
+      "weights": {
+        "production": 0.23995792321014348,
+        "trophies": 0.3939443015496265,
+        "cups": 2.115467216293828e-06,
+        "grit": 0.144775287244227,
+        "positionFit": 0.21445904141240937,
+        "hallOfFame": 0.006861331116377358
+      },
+      "fit": {
+        "composite": 0.22926526120805318,
+        "histogramRmse": 0.2398989787389684,
+        "gradesRmse": 0.1781859061285632,
+        "statsError": 0.27930000000000005
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 18
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 31.83,
+          "median": 31.0,
+          "stdev": 2.69,
+          "min": 27,
+          "p10": 29.0,
+          "p25": 30.0,
+          "p75": 33.0,
+          "p90": 35.0,
+          "max": 45
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "D+": 47,
+          "D": 743,
+          "D-": 3197,
+          "F": 1013
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 0,
+          "20-29": 1013,
+          "30-39": 3940,
+          "40-49": 47,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_054",
+      "weights": {
+        "production": 0.5253648280494803,
+        "trophies": 0.00011505656644584469,
+        "cups": 0.0001212227101052776,
+        "grit": 0.27265752275835436,
+        "positionFit": 0.20011175857204688,
+        "hallOfFame": 0.0016296113435672857
+      },
+      "fit": {
+        "composite": 0.22945543183495618,
+        "histogramRmse": 0.2598847296923633,
+        "gradesRmse": 0.16126577885147061,
+        "statsError": 0.25566666666666665
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 61
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 34.68,
+          "median": 34.0,
+          "stdev": 3.31,
+          "min": 27,
+          "p10": 31.0,
+          "p25": 32.0,
+          "p75": 37.0,
+          "p90": 39.0,
+          "max": 51
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "C": 1,
+          "C-": 16,
+          "D+": 406,
+          "D": 1949,
+          "D-": 2480,
+          "F": 148
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 0,
+          "20-29": 148,
+          "30-39": 4429,
+          "40-49": 422,
+          "50-59": 1,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_084",
+      "weights": {
+        "production": 0.17659025142806437,
+        "trophies": 0.3484984988080841,
+        "cups": 0.05412849186106258,
+        "grit": 0.049983469966750266,
+        "positionFit": 0.2923627960463057,
+        "hallOfFame": 0.07843649188973305
+      },
+      "fit": {
+        "composite": 0.23113609484931746,
+        "histogramRmse": 0.2498893427826878,
+        "gradesRmse": 0.19157141152657856,
+        "statsError": 0.2436
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 91
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 37.06,
+          "median": 37.0,
+          "stdev": 2.43,
+          "min": 33,
+          "p10": 34.0,
+          "p25": 35.0,
+          "p75": 38.0,
+          "p90": 40.0,
+          "max": 50
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "C": 3,
+          "C-": 22,
+          "D+": 723,
+          "D": 3653,
+          "D-": 599
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 0,
+          "20-29": 0,
+          "30-39": 4252,
+          "40-49": 745,
+          "50-59": 3,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_031",
+      "weights": {
+        "production": 0.05076591148635136,
+        "trophies": 0.3725784136066007,
+        "cups": 0.0721891591347042,
+        "grit": 0.14637912111739496,
+        "positionFit": 0.35680475863105143,
+        "hallOfFame": 0.0012826360238973177
+      },
+      "fit": {
+        "composite": 0.23157004909107937,
+        "histogramRmse": 0.2705684252222952,
+        "gradesRmse": 0.18964167715532818,
+        "statsError": 0.19696666666666665
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 38
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 44.27,
+          "median": 44.0,
+          "stdev": 2.32,
+          "min": 40,
+          "p10": 42.0,
+          "p25": 42.0,
+          "p75": 46.0,
+          "p90": 47.0,
+          "max": 58
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "B-": 1,
+          "C+": 13,
+          "C": 111,
+          "C-": 1201,
+          "D+": 3674
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 0,
+          "20-29": 0,
+          "30-39": 0,
+          "40-49": 4875,
+          "50-59": 125,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_070",
+      "weights": {
+        "production": 0.027958082621343448,
+        "trophies": 3.046821108406828e-05,
+        "cups": 0.5736421387642595,
+        "grit": 0.014756575793400579,
+        "positionFit": 0.37289901704435774,
+        "hallOfFame": 0.010713717565554538
+      },
+      "fit": {
+        "composite": 0.23172667016155135,
+        "histogramRmse": 0.26416545779285583,
+        "gradesRmse": 0.20159091532818924,
+        "statsError": 0.19583333333333333
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 77
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 43.69,
+          "median": 44.0,
+          "stdev": 2.78,
+          "min": 41,
+          "p10": 41.0,
+          "p25": 41.0,
+          "p75": 44.0,
+          "p90": 47.0,
+          "max": 58
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "B-": 1,
+          "C+": 26,
+          "C": 194,
+          "C-": 794,
+          "D+": 3985
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 0,
+          "20-29": 0,
+          "30-39": 0,
+          "40-49": 4779,
+          "50-59": 221,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_030",
+      "weights": {
+        "production": 0.6282479359217229,
+        "trophies": 0.03154374466896369,
+        "cups": 0.0010040890327331314,
+        "grit": 0.005516221073556986,
+        "positionFit": 0.2492776028359153,
+        "hallOfFame": 0.08441040646710794
+      },
+      "fit": {
+        "composite": 0.23183750173504541,
+        "histogramRmse": 0.264723237981241,
+        "gradesRmse": 0.16314183137030533,
+        "statsError": 0.25266666666666665
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 37
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 35.12,
+          "median": 35.0,
+          "stdev": 3.04,
+          "min": 29,
+          "p10": 32.0,
+          "p25": 33.0,
+          "p75": 37.0,
+          "p90": 39.0,
+          "max": 50
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "C": 1,
+          "C-": 11,
+          "D+": 452,
+          "D": 2177,
+          "D-": 2336,
+          "F": 23
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 0,
+          "20-29": 23,
+          "30-39": 4513,
+          "40-49": 463,
+          "50-59": 1,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_087",
+      "weights": {
+        "production": 0.7394625321961041,
+        "trophies": 0.029485240297277938,
+        "cups": 0.042187879107181095,
+        "grit": 0.008875205246626201,
+        "positionFit": 0.1672011452509125,
+        "hallOfFame": 0.01278799790189818
+      },
+      "fit": {
+        "composite": 0.23205861610495737,
+        "histogramRmse": 0.22909942264123112,
+        "gradesRmse": 0.1938741270589171,
+        "statsError": 0.29673333333333335
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 94
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 28.18,
+          "median": 28.0,
+          "stdev": 3.4,
+          "min": 21,
+          "p10": 24.0,
+          "p25": 26.0,
+          "p75": 30.0,
+          "p90": 33.0,
+          "max": 47
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "C-": 1,
+          "D+": 14,
+          "D": 240,
+          "D-": 1305,
+          "F": 3440
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 0,
+          "20-29": 3440,
+          "30-39": 1545,
+          "40-49": 15,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_073",
+      "weights": {
+        "production": 0.1458179758631982,
+        "trophies": 0.2755390773838623,
+        "cups": 0.34810592941292207,
+        "grit": 0.021985137499972676,
+        "positionFit": 0.2055269206383225,
+        "hallOfFame": 0.003024959201722256
+      },
+      "fit": {
+        "composite": 0.235577218072228,
+        "histogramRmse": 0.2328782124162366,
+        "gradesRmse": 0.1982159284359213,
+        "statsError": 0.29836666666666667
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 80
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 28.37,
+          "median": 28.0,
+          "stdev": 3.06,
+          "min": 24,
+          "p10": 25.0,
+          "p25": 26.0,
+          "p75": 30.0,
+          "p90": 32.0,
+          "max": 42
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "D+": 9,
+          "D": 193,
+          "D-": 1253,
+          "F": 3545
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 0,
+          "20-29": 3545,
+          "30-39": 1446,
+          "40-49": 9,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_065",
+      "weights": {
+        "production": 0.40597314952318647,
+        "trophies": 0.25209712193179445,
+        "cups": 0.00017342266145120897,
+        "grit": 0.11409088651469433,
+        "positionFit": 0.2169691910876079,
+        "hallOfFame": 0.010696228281265513
+      },
+      "fit": {
+        "composite": 0.23922751162221711,
+        "histogramRmse": 0.2593498724958938,
+        "gradesRmse": 0.18319747346978962,
+        "statsError": 0.27296666666666664
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 72
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 32.61,
+          "median": 32.0,
+          "stdev": 2.75,
+          "min": 26,
+          "p10": 29.0,
+          "p25": 31.0,
+          "p75": 34.0,
+          "p90": 36.0,
+          "max": 49
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "C-": 2,
+          "D+": 81,
+          "D": 1033,
+          "D-": 3339,
+          "F": 545
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 0,
+          "20-29": 545,
+          "30-39": 4372,
+          "40-49": 83,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_039",
+      "weights": {
+        "production": 0.3438906807768474,
+        "trophies": 0.035752243630760884,
+        "cups": 0.33167663721268664,
+        "grit": 0.12098972518932469,
+        "positionFit": 0.16760870327469762,
+        "hallOfFame": 8.200991568266539e-05
+      },
+      "fit": {
+        "composite": 0.23954762138507887,
+        "histogramRmse": 0.23727265482409204,
+        "gradesRmse": 0.20288209102122062,
+        "statsError": 0.3002333333333333
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 46
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 27.87,
+          "median": 28.0,
+          "stdev": 3.03,
+          "min": 22,
+          "p10": 24.0,
+          "p25": 26.0,
+          "p75": 30.0,
+          "p90": 32.0,
+          "max": 40
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "D+": 1,
+          "D": 154,
+          "D-": 1187,
+          "F": 3658
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 0,
+          "20-29": 3658,
+          "30-39": 1341,
+          "40-49": 1,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_091",
+      "weights": {
+        "production": 0.5331626794503166,
+        "trophies": 0.000655469061665314,
+        "cups": 0.28516772649293815,
+        "grit": 0.004847109088171817,
+        "positionFit": 0.17616688500685215,
+        "hallOfFame": 1.3090005592234596e-07
+      },
+      "fit": {
+        "composite": 0.24005949988006037,
+        "histogramRmse": 0.23681610817448437,
+        "gradesRmse": 0.2030381526427273,
+        "statsError": 0.3037
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 98
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 27.79,
+          "median": 27.0,
+          "stdev": 3.05,
+          "min": 21,
+          "p10": 24.0,
+          "p25": 26.0,
+          "p75": 30.0,
+          "p90": 32.0,
+          "max": 41
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "D+": 4,
+          "D": 119,
+          "D-": 1229,
+          "F": 3648
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 0,
+          "20-29": 3648,
+          "30-39": 1348,
+          "40-49": 4,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_013",
+      "weights": {
+        "production": 0.1638545437249848,
+        "trophies": 0.019714944700434466,
+        "cups": 0.00019743125719457242,
+        "grit": 0.7563856972204662,
+        "positionFit": 0.04106096008841024,
+        "hallOfFame": 0.01878642300850973
+      },
+      "fit": {
+        "composite": 0.2400803450661607,
+        "histogramRmse": 0.23193971003454558,
+        "gradesRmse": 0.2120571890518485,
+        "statsError": 0.30246666666666666
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 20
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 26.04,
+          "median": 26.0,
+          "stdev": 4.61,
+          "min": 14,
+          "p10": 20.0,
+          "p25": 23.0,
+          "p75": 29.0,
+          "p90": 32.0,
+          "max": 46
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "C-": 1,
+          "D+": 31,
+          "D": 201,
+          "D-": 844,
+          "F": 3923
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 298,
+          "20-29": 3625,
+          "30-39": 1045,
+          "40-49": 32,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_041",
+      "weights": {
+        "production": 0.1171281621733836,
+        "trophies": 0.4471154775976745,
+        "cups": 0.000149153825865673,
+        "grit": 0.05638592375651791,
+        "positionFit": 0.36147862975111705,
+        "hallOfFame": 0.017742652895441337
+      },
+      "fit": {
+        "composite": 0.2417505507698949,
+        "histogramRmse": 0.27319684544964346,
+        "gradesRmse": 0.21448487126135493,
+        "statsError": 0.20403333333333337
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 48
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 43.39,
+          "median": 43.0,
+          "stdev": 2.2,
+          "min": 40,
+          "p10": 41.0,
+          "p25": 42.0,
+          "p75": 45.0,
+          "p90": 46.0,
+          "max": 56
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "C+": 6,
+          "C": 80,
+          "C-": 683,
+          "D+": 4231
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 0,
+          "20-29": 0,
+          "30-39": 0,
+          "40-49": 4914,
+          "50-59": 86,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_022",
+      "weights": {
+        "production": 0.19723444952255614,
+        "trophies": 0.4363443266749006,
+        "cups": 0.0012128004093968914,
+        "grit": 0.0031832210150371755,
+        "positionFit": 0.3619166410925779,
+        "hallOfFame": 0.00010856128553132605
+      },
+      "fit": {
+        "composite": 0.2434168201908533,
+        "histogramRmse": 0.273563102243506,
+        "gradesRmse": 0.2191397857858899,
+        "statsError": 0.20446666666666669
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 29
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 43.08,
+          "median": 43.0,
+          "stdev": 2.29,
+          "min": 39,
+          "p10": 41.0,
+          "p25": 41.0,
+          "p75": 44.0,
+          "p90": 46.0,
+          "max": 57
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "C+": 9,
+          "C": 67,
+          "C-": 594,
+          "D+": 4325,
+          "D": 5
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 0,
+          "20-29": 0,
+          "30-39": 5,
+          "40-49": 4919,
+          "50-59": 76,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_086",
+      "weights": {
+        "production": 0.3259012880158254,
+        "trophies": 0.0003193174570477574,
+        "cups": 0.0010350196063893344,
+        "grit": 0.6038516665132675,
+        "positionFit": 0.009868488422368682,
+        "hallOfFame": 0.0590242199851013
+      },
+      "fit": {
+        "composite": 0.2544617015299723,
+        "histogramRmse": 0.2205936123694016,
+        "gradesRmse": 0.25530520670646056,
+        "statsError": 0.3378666666666666
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 93
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 21.18,
+          "median": 21.0,
+          "stdev": 4.23,
+          "min": 10,
+          "p10": 16.0,
+          "p25": 18.0,
+          "p75": 24.0,
+          "p90": 27.0,
+          "max": 40
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "D+": 1,
+          "D": 14,
+          "D-": 180,
+          "F": 4805
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 1886,
+          "20-29": 2919,
+          "30-39": 194,
+          "40-49": 1,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_081",
+      "weights": {
+        "production": 0.5994387473083309,
+        "trophies": 0.008188218586376745,
+        "cups": 0.00042801250498513815,
+        "grit": 0.3644146147448801,
+        "positionFit": 0.026685365473145678,
+        "hallOfFame": 0.0008450413822813736
+      },
+      "fit": {
+        "composite": 0.2572249423641425,
+        "histogramRmse": 0.22070277833239066,
+        "gradesRmse": 0.2594673995487129,
+        "statsError": 0.3451666666666666
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 88
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 20.35,
+          "median": 20.0,
+          "stdev": 4.05,
+          "min": 11,
+          "p10": 16.0,
+          "p25": 17.0,
+          "p75": 23.0,
+          "p90": 26.0,
+          "max": 39
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "D": 12,
+          "D-": 104,
+          "F": 4884
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 2295,
+          "20-29": 2589,
+          "30-39": 116,
+          "40-49": 0,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_090",
+      "weights": {
+        "production": 0.5327831471428239,
+        "trophies": 0.1735414210379458,
+        "cups": 3.174189402483857e-09,
+        "grit": 0.06891764804607171,
+        "positionFit": 0.1556454552085644,
+        "hallOfFame": 0.06911232539040464
+      },
+      "fit": {
+        "composite": 0.25833497435059866,
+        "histogramRmse": 0.2587742575366343,
+        "gradesRmse": 0.2230928186076049,
+        "statsError": 0.3101
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 97
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 26.71,
+          "median": 26.0,
+          "stdev": 3.13,
+          "min": 20,
+          "p10": 23.0,
+          "p25": 24.0,
+          "p75": 28.0,
+          "p90": 31.0,
+          "max": 41
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "D+": 6,
+          "D": 95,
+          "D-": 750,
+          "F": 4149
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 0,
+          "20-29": 4149,
+          "30-39": 845,
+          "40-49": 6,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_023",
+      "weights": {
+        "production": 0.7566109268842427,
+        "trophies": 0.0024198284739322343,
+        "cups": 7.23907445977676e-05,
+        "grit": 0.10343276162593837,
+        "positionFit": 0.0661107237246859,
+        "hallOfFame": 0.07135336854660312
+      },
+      "fit": {
+        "composite": 0.2587058329060635,
+        "histogramRmse": 0.2217622969840373,
+        "gradesRmse": 0.2609045036023717,
+        "statsError": 0.3477666666666666
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 30
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 20.19,
+          "median": 20.0,
+          "stdev": 3.74,
+          "min": 12,
+          "p10": 16.0,
+          "p25": 18.0,
+          "p75": 22.0,
+          "p90": 25.0,
+          "max": 37
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "D": 11,
+          "D-": 78,
+          "F": 4911
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 2390,
+          "20-29": 2521,
+          "30-39": 89,
+          "40-49": 0,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_035",
+      "weights": {
+        "production": 0.0006251838439359664,
+        "trophies": 0.2417428177239535,
+        "cups": 0.33028545743792903,
+        "grit": 0.3471100108226318,
+        "positionFit": 0.06820807146205078,
+        "hallOfFame": 0.012028458709498858
+      },
+      "fit": {
+        "composite": 0.2594740398064638,
+        "histogramRmse": 0.2224557320620728,
+        "gradesRmse": 0.2617094681403134,
+        "statsError": 0.3486666666666667
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 42
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 20.2,
+          "median": 20.0,
+          "stdev": 3.6,
+          "min": 13,
+          "p10": 16.0,
+          "p25": 17.0,
+          "p75": 22.0,
+          "p90": 25.0,
+          "max": 38
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "D": 8,
+          "D-": 66,
+          "F": 4926
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 2340,
+          "20-29": 2586,
+          "30-39": 74,
+          "40-49": 0,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_076",
+      "weights": {
+        "production": 0.5464524829610927,
+        "trophies": 0.15589593083547623,
+        "cups": 0.00020183111729617424,
+        "grit": 0.23344349196324873,
+        "positionFit": 0.06400516191924048,
+        "hallOfFame": 1.1012036455793976e-06
+      },
+      "fit": {
+        "composite": 0.25989486753548763,
+        "histogramRmse": 0.22625048066247283,
+        "gradesRmse": 0.2605432017919485,
+        "statsError": 0.34303333333333336
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 83
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 21.03,
+          "median": 21.0,
+          "stdev": 3.53,
+          "min": 13,
+          "p10": 17.0,
+          "p25": 18.0,
+          "p75": 23.0,
+          "p90": 26.0,
+          "max": 36
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "D": 4,
+          "D-": 92,
+          "F": 4904
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 1839,
+          "20-29": 3065,
+          "30-39": 96,
+          "40-49": 0,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_004",
+      "weights": {
+        "production": 0.10524137186166328,
+        "trophies": 0.0510885649529677,
+        "cups": 0.002718966435103717,
+        "grit": 0.14712842354636732,
+        "positionFit": 0.677471653169282,
+        "hallOfFame": 0.016351020034615835
+      },
+      "fit": {
+        "composite": 0.2609211638731036,
+        "histogramRmse": 0.2762929802023405,
+        "gradesRmse": 0.258426690350889,
+        "statsError": 0.22623333333333337
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 11
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 75.43,
+          "median": 75.0,
+          "stdev": 1.28,
+          "min": 73,
+          "p10": 74.0,
+          "p25": 75.0,
+          "p75": 76.0,
+          "p90": 77.0,
+          "max": 81
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "A+": 18,
+          "A": 4829,
+          "A-": 153
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 0,
+          "20-29": 0,
+          "30-39": 0,
+          "40-49": 0,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 4982,
+          "80-89": 18,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_043",
+      "weights": {
+        "production": 0.27070766500506693,
+        "trophies": 0.1804795707091966,
+        "cups": 0.010371026306194554,
+        "grit": 0.4778014293731887,
+        "positionFit": 0.04958007274751527,
+        "hallOfFame": 0.011060235858837876
+      },
+      "fit": {
+        "composite": 0.26165717884919076,
+        "histogramRmse": 0.23720242218600782,
+        "gradesRmse": 0.25425322585395616,
+        "statsError": 0.33390000000000003
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 50
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 22.33,
+          "median": 22.0,
+          "stdev": 3.75,
+          "min": 14,
+          "p10": 18.0,
+          "p25": 20.0,
+          "p75": 25.0,
+          "p90": 27.0,
+          "max": 41
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "D+": 1,
+          "D": 18,
+          "D-": 196,
+          "F": 4785
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 1185,
+          "20-29": 3600,
+          "30-39": 214,
+          "40-49": 1,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_014",
+      "weights": {
+        "production": 0.24679721361020437,
+        "trophies": 0.23652166246362352,
+        "cups": 0.0005027167798488364,
+        "grit": 0.48192345905,
+        "positionFit": 0.01945983133751601,
+        "hallOfFame": 0.014795116758807167
+      },
+      "fit": {
+        "composite": 0.26203702058244815,
+        "histogramRmse": 0.22512361048988178,
+        "gradesRmse": 0.2625173844583576,
+        "statsError": 0.35359999999999997
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 21
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 19.34,
+          "median": 19.0,
+          "stdev": 3.79,
+          "min": 11,
+          "p10": 15.0,
+          "p25": 17.0,
+          "p75": 22.0,
+          "p90": 24.0,
+          "max": 36
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "D": 4,
+          "D-": 55,
+          "F": 4941
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 2757,
+          "20-29": 2184,
+          "30-39": 59,
+          "40-49": 0,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_056",
+      "weights": {
+        "production": 0.40449150421265656,
+        "trophies": 0.002492576483415874,
+        "cups": 0.05257213451461807,
+        "grit": 0.42529599935079715,
+        "positionFit": 0.055871773299164394,
+        "hallOfFame": 0.05927601213934788
+      },
+      "fit": {
+        "composite": 0.2621330302373082,
+        "histogramRmse": 0.2418630867397353,
+        "gradesRmse": 0.2497160673359131,
+        "statsError": 0.33143333333333336
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 63
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 22.91,
+          "median": 22.0,
+          "stdev": 3.83,
+          "min": 14,
+          "p10": 18.0,
+          "p25": 20.0,
+          "p75": 25.0,
+          "p90": 28.0,
+          "max": 41
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "D+": 4,
+          "D": 31,
+          "D-": 267,
+          "F": 4698
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 934,
+          "20-29": 3764,
+          "30-39": 298,
+          "40-49": 4,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_080",
+      "weights": {
+        "production": 0.14452926433811006,
+        "trophies": 0.6787179042316996,
+        "cups": 0.027882748352837494,
+        "grit": 0.027637819232760583,
+        "positionFit": 0.11981039151383154,
+        "hallOfFame": 0.0014218723307607077
+      },
+      "fit": {
+        "composite": 0.26216781204578116,
+        "histogramRmse": 0.2239891068779908,
+        "gradesRmse": 0.2631108620226191,
+        "statsError": 0.3562
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 87
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 19.92,
+          "median": 19.0,
+          "stdev": 3.11,
+          "min": 16,
+          "p10": 16.0,
+          "p25": 17.0,
+          "p75": 22.0,
+          "p90": 24.0,
+          "max": 36
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "D": 1,
+          "D-": 47,
+          "F": 4952
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 2572,
+          "20-29": 2380,
+          "30-39": 48,
+          "40-49": 0,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_038",
+      "weights": {
+        "production": 0.6684459884764898,
+        "trophies": 0.13189268382482427,
+        "cups": 0.001259133642062809,
+        "grit": 0.014737479460234543,
+        "positionFit": 0.1496198015862142,
+        "hallOfFame": 0.03404491301017431
+      },
+      "fit": {
+        "composite": 0.2628498554445071,
+        "histogramRmse": 0.2641807232662038,
+        "gradesRmse": 0.22859831270468414,
+        "statsError": 0.31089999999999995
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 45
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 26.03,
+          "median": 26.0,
+          "stdev": 3.35,
+          "min": 19,
+          "p10": 22.0,
+          "p25": 24.0,
+          "p75": 28.0,
+          "p90": 31.0,
+          "max": 46
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "C-": 1,
+          "D": 93,
+          "D-": 636,
+          "F": 4270
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 13,
+          "20-29": 4257,
+          "30-39": 729,
+          "40-49": 1,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_034",
+      "weights": {
+        "production": 0.3555724278843093,
+        "trophies": 0.3010306230734665,
+        "cups": 1.0688292816340922e-08,
+        "grit": 0.2544987206049637,
+        "positionFit": 0.056460439627411464,
+        "hallOfFame": 0.03243777812155627
+      },
+      "fit": {
+        "composite": 0.2629698407241844,
+        "histogramRmse": 0.22584090941110815,
+        "gradesRmse": 0.26305350895099,
+        "statsError": 0.35566666666666663
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 41
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 19.46,
+          "median": 19.0,
+          "stdev": 3.42,
+          "min": 12,
+          "p10": 16.0,
+          "p25": 17.0,
+          "p75": 21.0,
+          "p90": 24.0,
+          "max": 36
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "D": 4,
+          "D-": 45,
+          "F": 4951
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 2786,
+          "20-29": 2165,
+          "30-39": 49,
+          "40-49": 0,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_009",
+      "weights": {
+        "production": 0.49069153675179006,
+        "trophies": 0.01075346959162646,
+        "cups": 0.028000159302477276,
+        "grit": 0.4680228149014701,
+        "positionFit": 4.510896027709698e-06,
+        "hallOfFame": 0.002527508556608321
+      },
+      "fit": {
+        "composite": 0.2631453492270319,
+        "histogramRmse": 0.22752822002795808,
+        "gradesRmse": 0.26278190848795396,
+        "statsError": 0.35273333333333334
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 16
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 19.02,
+          "median": 19.0,
+          "stdev": 4.08,
+          "min": 9,
+          "p10": 14.0,
+          "p25": 16.0,
+          "p75": 22.0,
+          "p90": 24.0,
+          "max": 40
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "D+": 1,
+          "D": 5,
+          "D-": 48,
+          "F": 4946
+        },
+        "histogram": {
+          "00-09": 2,
+          "10-19": 2920,
+          "20-29": 2024,
+          "30-39": 53,
+          "40-49": 1,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_071",
+      "weights": {
+        "production": 0.04254040969978665,
+        "trophies": 1.2741832061541714e-05,
+        "cups": 0.3681071575831157,
+        "grit": 0.5008845556338044,
+        "positionFit": 0.08089436768411795,
+        "hallOfFame": 0.007560767567113849
+      },
+      "fit": {
+        "composite": 0.26366555079893506,
+        "histogramRmse": 0.257077307085207,
+        "gradesRmse": 0.23757854640999407,
+        "statsError": 0.31926666666666664
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 78
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 24.62,
+          "median": 24.0,
+          "stdev": 3.8,
+          "min": 16,
+          "p10": 20.0,
+          "p25": 22.0,
+          "p75": 27.0,
+          "p90": 30.0,
+          "max": 41
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "D+": 3,
+          "D": 65,
+          "D-": 475,
+          "F": 4457
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 324,
+          "20-29": 4133,
+          "30-39": 540,
+          "40-49": 3,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_093",
+      "weights": {
+        "production": 0.6532902408757034,
+        "trophies": 0.01560758663238686,
+        "cups": 0.07017363298985801,
+        "grit": 0.15532747224007215,
+        "positionFit": 0.05071464551938357,
+        "hallOfFame": 0.05488642174259604
+      },
+      "fit": {
+        "composite": 0.2642234121946777,
+        "histogramRmse": 0.22835691362426494,
+        "gradesRmse": 0.2634831846084842,
+        "statsError": 0.355
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 100
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 19.12,
+          "median": 19.0,
+          "stdev": 3.69,
+          "min": 11,
+          "p10": 15.0,
+          "p25": 16.0,
+          "p75": 21.0,
+          "p90": 24.0,
+          "max": 37
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "D": 4,
+          "D-": 37,
+          "F": 4959
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 2939,
+          "20-29": 2020,
+          "30-39": 41,
+          "40-49": 0,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_074",
+      "weights": {
+        "production": 0.1479461119779351,
+        "trophies": 0.028463516532346182,
+        "cups": 0.0012150046566594154,
+        "grit": 0.19641067472806364,
+        "positionFit": 0.005594515145003079,
+        "hallOfFame": 0.6203701769599926
+      },
+      "fit": {
+        "composite": 0.26463707132183667,
+        "histogramRmse": 0.21067186031189056,
+        "gradesRmse": 0.26282602610852673,
+        "statsError": 0.4022666666666667
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 81
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 11.46,
+          "median": 10.0,
+          "stdev": 4.93,
+          "min": 6,
+          "p10": 8.0,
+          "p25": 9.0,
+          "p75": 11.0,
+          "p90": 20.0,
+          "max": 46
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "C-": 1,
+          "D+": 3,
+          "D": 7,
+          "D-": 42,
+          "F": 4947
+        },
+        "histogram": {
+          "00-09": 2312,
+          "10-19": 2028,
+          "20-29": 607,
+          "30-39": 49,
+          "40-49": 4,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_020",
+      "weights": {
+        "production": 0.9222505040832237,
+        "trophies": 0.006196606877187855,
+        "cups": 0.008436565825067794,
+        "grit": 0.003129156120750623,
+        "positionFit": 0.05919663188465201,
+        "hallOfFame": 0.0007905352091179813
+      },
+      "fit": {
+        "composite": 0.2647982788504106,
+        "histogramRmse": 0.22899127414895887,
+        "gradesRmse": 0.2627865836975483,
+        "statsError": 0.35733333333333334
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 27
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 18.84,
+          "median": 18.0,
+          "stdev": 3.98,
+          "min": 10,
+          "p10": 14.0,
+          "p25": 16.0,
+          "p75": 21.0,
+          "p90": 24.0,
+          "max": 37
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "D": 3,
+          "D-": 51,
+          "F": 4946
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 2999,
+          "20-29": 1947,
+          "30-39": 54,
+          "40-49": 0,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_095",
+      "weights": {
+        "production": 0.48510395372556503,
+        "trophies": 0.00014023915606278762,
+        "cups": 0.04076289164084215,
+        "grit": 0.35851739196312227,
+        "positionFit": 0.07060762056916949,
+        "hallOfFame": 0.04486790294523823
+      },
+      "fit": {
+        "composite": 0.2663645242763344,
+        "histogramRmse": 0.25377024684114996,
+        "gradesRmse": 0.2473535584080869,
+        "statsError": 0.32636666666666664
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 102
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 23.65,
+          "median": 23.0,
+          "stdev": 3.72,
+          "min": 15,
+          "p10": 19.0,
+          "p25": 21.0,
+          "p75": 26.0,
+          "p90": 29.0,
+          "max": 42
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "D+": 5,
+          "D": 36,
+          "D-": 307,
+          "F": 4652
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 605,
+          "20-29": 4047,
+          "30-39": 343,
+          "40-49": 5,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_096",
+      "weights": {
+        "production": 0.16475948037033997,
+        "trophies": 0.11443929097977283,
+        "cups": 0.4154995780814431,
+        "grit": 0.16926998678680952,
+        "positionFit": 0.1219927435646517,
+        "hallOfFame": 0.014038920216982921
+      },
+      "fit": {
+        "composite": 0.2729567158463357,
+        "histogramRmse": 0.26204715744932766,
+        "gradesRmse": 0.2527771237389062,
+        "statsError": 0.3305
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 103
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 23.29,
+          "median": 23.0,
+          "stdev": 3.28,
+          "min": 17,
+          "p10": 19.0,
+          "p25": 21.0,
+          "p75": 25.0,
+          "p90": 28.0,
+          "max": 41
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "D+": 1,
+          "D": 10,
+          "D-": 233,
+          "F": 4756
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 556,
+          "20-29": 4200,
+          "30-39": 243,
+          "40-49": 1,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_061",
+      "weights": {
+        "production": 0.5725441457238031,
+        "trophies": 0.18490272296414453,
+        "cups": 0.02920886330069238,
+        "grit": 0.07821153410413333,
+        "positionFit": 0.13513081247342454,
+        "hallOfFame": 1.921433802150682e-06
+      },
+      "fit": {
+        "composite": 0.27321425883510203,
+        "histogramRmse": 0.2751845661634123,
+        "gradesRmse": 0.24005103028909738,
+        "statsError": 0.31803333333333333
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 68
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 25.25,
+          "median": 25.0,
+          "stdev": 3.17,
+          "min": 18,
+          "p10": 22.0,
+          "p25": 23.0,
+          "p75": 27.0,
+          "p90": 29.0,
+          "max": 40
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "D+": 2,
+          "D": 41,
+          "D-": 452,
+          "F": 4505
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 39,
+          "20-29": 4466,
+          "30-39": 493,
+          "40-49": 2,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_082",
+      "weights": {
+        "production": 0.2856409714907171,
+        "trophies": 0.26042488802302916,
+        "cups": 0.027104191656666523,
+        "grit": 0.006883483116855018,
+        "positionFit": 0.02423070685974137,
+        "hallOfFame": 0.3957157588529908
+      },
+      "fit": {
+        "composite": 0.27394399972886907,
+        "histogramRmse": 0.22470371603513814,
+        "gradesRmse": 0.2652626945932223,
+        "statsError": 0.41006666666666663
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 89
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 10.9,
+          "median": 10.0,
+          "stdev": 4.04,
+          "min": 6,
+          "p10": 7.0,
+          "p25": 8.0,
+          "p75": 12.0,
+          "p90": 18.0,
+          "max": 40
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "D+": 1,
+          "D": 2,
+          "D-": 5,
+          "F": 4992
+        },
+        "histogram": {
+          "00-09": 2435,
+          "10-19": 2317,
+          "20-29": 240,
+          "30-39": 7,
+          "40-49": 1,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_064",
+      "weights": {
+        "production": 0.800918137451643,
+        "trophies": 0.03255760172797488,
+        "cups": 0.11069581334422963,
+        "grit": 0.0006925159896482651,
+        "positionFit": 0.054341128740941776,
+        "hallOfFame": 0.0007948027455624653
+      },
+      "fit": {
+        "composite": 0.2751274516322962,
+        "histogramRmse": 0.24506112039096026,
+        "gradesRmse": 0.2644563047893869,
+        "statsError": 0.3663
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 71
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 17.65,
+          "median": 17.0,
+          "stdev": 3.73,
+          "min": 9,
+          "p10": 13.0,
+          "p25": 15.0,
+          "p75": 20.0,
+          "p90": 23.0,
+          "max": 34
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "D-": 23,
+          "F": 4977
+        },
+        "histogram": {
+          "00-09": 4,
+          "10-19": 3569,
+          "20-29": 1404,
+          "30-39": 23,
+          "40-49": 0,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_047",
+      "weights": {
+        "production": 0.07390234361695555,
+        "trophies": 0.3746172189274948,
+        "cups": 0.35073420679262424,
+        "grit": 0.02464461513211931,
+        "positionFit": 0.17609084906041933,
+        "hallOfFame": 1.0766470386732869e-05
+      },
+      "fit": {
+        "composite": 0.27603246744975546,
+        "histogramRmse": 0.2795274453918125,
+        "gradesRmse": 0.24191803806838616,
+        "statsError": 0.3184666666666667
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 54
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 25.08,
+          "median": 25.0,
+          "stdev": 3.19,
+          "min": 21,
+          "p10": 22.0,
+          "p25": 22.0,
+          "p75": 27.0,
+          "p90": 29.0,
+          "max": 39
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "D": 42,
+          "D-": 415,
+          "F": 4543
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 0,
+          "20-29": 4543,
+          "30-39": 457,
+          "40-49": 0,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_025",
+      "weights": {
+        "production": 0.0807395203332098,
+        "trophies": 0.546104646329699,
+        "cups": 0.22394551411908808,
+        "grit": 0.054261348122473615,
+        "positionFit": 0.09492240291721425,
+        "hallOfFame": 2.6568178315130108e-05
+      },
+      "fit": {
+        "composite": 0.2762311054676507,
+        "histogramRmse": 0.24700582252982692,
+        "gradesRmse": 0.2641828695646797,
+        "statsError": 0.3673666666666666
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 32
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 17.87,
+          "median": 17.0,
+          "stdev": 3.46,
+          "min": 13,
+          "p10": 14.0,
+          "p25": 15.0,
+          "p75": 20.0,
+          "p90": 22.0,
+          "max": 36
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "D": 4,
+          "D-": 24,
+          "F": 4972
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 3626,
+          "20-29": 1346,
+          "30-39": 28,
+          "40-49": 0,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_045",
+      "weights": {
+        "production": 0.4553336373550079,
+        "trophies": 0.4250463189903135,
+        "cups": 0.013775113091169237,
+        "grit": 0.028257689812594966,
+        "positionFit": 0.07741356462726323,
+        "hallOfFame": 0.0001736761236511381
+      },
+      "fit": {
+        "composite": 0.2772269110119609,
+        "histogramRmse": 0.24812926250059847,
+        "gradesRmse": 0.26456315476109454,
+        "statsError": 0.36896666666666667
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 52
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 17.87,
+          "median": 17.0,
+          "stdev": 3.22,
+          "min": 11,
+          "p10": 14.0,
+          "p25": 16.0,
+          "p75": 20.0,
+          "p90": 22.0,
+          "max": 39
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "D": 1,
+          "D-": 20,
+          "F": 4979
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 3653,
+          "20-29": 1326,
+          "30-39": 21,
+          "40-49": 0,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_051",
+      "weights": {
+        "production": 0.36060561432952193,
+        "trophies": 0.5749870369943979,
+        "cups": 0.004475976631286476,
+        "grit": 0.04449467712309836,
+        "positionFit": 0.0034893863586946024,
+        "hallOfFame": 0.011947308563000717
+      },
+      "fit": {
+        "composite": 0.27819694979058324,
+        "histogramRmse": 0.2308604300910361,
+        "gradesRmse": 0.2656446713724396,
+        "statsError": 0.41536666666666666
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 58
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 10.47,
+          "median": 10.0,
+          "stdev": 3.46,
+          "min": 4,
+          "p10": 7.0,
+          "p25": 8.0,
+          "p75": 12.0,
+          "p90": 15.0,
+          "max": 32
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "D-": 1,
+          "F": 4999
+        },
+        "histogram": {
+          "00-09": 2233,
+          "10-19": 2668,
+          "20-29": 98,
+          "30-39": 1,
+          "40-49": 0,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_001",
+      "weights": {
+        "production": 0.4171483751103469,
+        "trophies": 0.43394666616947697,
+        "cups": 0.14203759091800938,
+        "grit": 0.002012993118299163,
+        "positionFit": 0.004694845618021143,
+        "hallOfFame": 0.00015952906584645155
+      },
+      "fit": {
+        "composite": 0.2783183268789208,
+        "histogramRmse": 0.23096403498065549,
+        "gradesRmse": 0.26569880907308774,
+        "statsError": 0.41563333333333335
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 8
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 10.29,
+          "median": 10.0,
+          "stdev": 3.51,
+          "min": 4,
+          "p10": 6.0,
+          "p25": 8.0,
+          "p75": 12.0,
+          "p90": 15.0,
+          "max": 28
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "F": 5000
+        },
+        "histogram": {
+          "00-09": 2348,
+          "10-19": 2566,
+          "20-29": 86,
+          "30-39": 0,
+          "40-49": 0,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_046",
+      "weights": {
+        "production": 0.4596970324076288,
+        "trophies": 0.2896586580618564,
+        "cups": 0.0008639278014787435,
+        "grit": 0.12277903192040274,
+        "positionFit": 0.11806779982952471,
+        "hallOfFame": 0.008933549979108524
+      },
+      "fit": {
+        "composite": 0.27872335681386784,
+        "histogramRmse": 0.27369570362323586,
+        "gradesRmse": 0.2526072388963886,
+        "statsError": 0.33046666666666663
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 53
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 23.6,
+          "median": 23.0,
+          "stdev": 3.13,
+          "min": 17,
+          "p10": 20.0,
+          "p25": 21.0,
+          "p75": 25.0,
+          "p90": 28.0,
+          "max": 38
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "D": 16,
+          "D-": 231,
+          "F": 4753
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 323,
+          "20-29": 4430,
+          "30-39": 247,
+          "40-49": 0,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_033",
+      "weights": {
+        "production": 0.6809804295227,
+        "trophies": 0.03633821818977838,
+        "cups": 0.001189863615358793,
+        "grit": 0.006749215391057843,
+        "positionFit": 0.008213467974135089,
+        "hallOfFame": 0.26652880530697
+      },
+      "fit": {
+        "composite": 0.2787486596503559,
+        "histogramRmse": 0.237071051873407,
+        "gradesRmse": 0.26526600126773014,
+        "statsError": 0.4031666666666667
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 40
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 12.13,
+          "median": 11.0,
+          "stdev": 3.96,
+          "min": 4,
+          "p10": 8.0,
+          "p25": 9.0,
+          "p75": 14.0,
+          "p90": 17.0,
+          "max": 34
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "D-": 8,
+          "F": 4992
+        },
+        "histogram": {
+          "00-09": 1378,
+          "10-19": 3336,
+          "20-29": 278,
+          "30-39": 8,
+          "40-49": 0,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_066",
+      "weights": {
+        "production": 0.3124988205307724,
+        "trophies": 0.27015417024653376,
+        "cups": 0.27141991647298924,
+        "grit": 0.03939444515981018,
+        "positionFit": 0.001828523616791421,
+        "hallOfFame": 0.10470412397310308
+      },
+      "fit": {
+        "composite": 0.2798197873180903,
+        "histogramRmse": 0.23212695585899462,
+        "gradesRmse": 0.26569880907308774,
+        "statsError": 0.4202333333333333
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 73
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 9.99,
+          "median": 9.0,
+          "stdev": 3.47,
+          "min": 4,
+          "p10": 6.0,
+          "p25": 7.0,
+          "p75": 12.0,
+          "p90": 15.0,
+          "max": 27
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "F": 5000
+        },
+        "histogram": {
+          "00-09": 2569,
+          "10-19": 2368,
+          "20-29": 63,
+          "30-39": 0,
+          "40-49": 0,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_069",
+      "weights": {
+        "production": 0.01712353716531317,
+        "trophies": 0.44573938970337157,
+        "cups": 0.37576500771225557,
+        "grit": 0.07259776977262673,
+        "positionFit": 0.00871557587531322,
+        "hallOfFame": 0.0800587197711197
+      },
+      "fit": {
+        "composite": 0.2817918991788552,
+        "histogramRmse": 0.23585784624719108,
+        "gradesRmse": 0.26569880907308774,
+        "statsError": 0.4207666666666667
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 76
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 9.31,
+          "median": 9.0,
+          "stdev": 3.73,
+          "min": 5,
+          "p10": 5.0,
+          "p25": 6.0,
+          "p75": 12.0,
+          "p90": 14.0,
+          "max": 27
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "F": 5000
+        },
+        "histogram": {
+          "00-09": 2956,
+          "10-19": 1972,
+          "20-29": 72,
+          "30-39": 0,
+          "40-49": 0,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_019",
+      "weights": {
+        "production": 0.5737014179706139,
+        "trophies": 0.41497964548583466,
+        "cups": 0.0005495956723158789,
+        "grit": 0.00179608365206244,
+        "positionFit": 0.0077544600381727535,
+        "hallOfFame": 0.0012187971810002484
+      },
+      "fit": {
+        "composite": 0.28182184672722865,
+        "histogramRmse": 0.24097689063099353,
+        "gradesRmse": 0.2656446713724396,
+        "statsError": 0.40819999999999995
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 26
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 11.56,
+          "median": 11.0,
+          "stdev": 3.49,
+          "min": 4,
+          "p10": 7.0,
+          "p25": 9.0,
+          "p75": 13.0,
+          "p90": 16.0,
+          "max": 32
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "D-": 1,
+          "F": 4999
+        },
+        "histogram": {
+          "00-09": 1520,
+          "10-19": 3350,
+          "20-29": 129,
+          "30-39": 1,
+          "40-49": 0,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_078",
+      "weights": {
+        "production": 0.8060122700068031,
+        "trophies": 2.020722631308306e-06,
+        "cups": 0.03358374737172892,
+        "grit": 0.00831197258542023,
+        "positionFit": 0.04319359438384491,
+        "hallOfFame": 0.10889639492957152
+      },
+      "fit": {
+        "composite": 0.2833254946605092,
+        "histogramRmse": 0.259112513293848,
+        "gradesRmse": 0.26456412671195073,
+        "statsError": 0.37200000000000005
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 85
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 16.56,
+          "median": 16.0,
+          "stdev": 3.92,
+          "min": 8,
+          "p10": 12.0,
+          "p25": 14.0,
+          "p75": 19.0,
+          "p90": 22.0,
+          "max": 33
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "D-": 21,
+          "F": 4979
+        },
+        "histogram": {
+          "00-09": 35,
+          "10-19": 3941,
+          "20-29": 1003,
+          "30-39": 21,
+          "40-49": 0,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_037",
+      "weights": {
+        "production": 0.3906392061668007,
+        "trophies": 0.01242349957354603,
+        "cups": 0.18602837322040328,
+        "grit": 0.03779372601652883,
+        "positionFit": 0.026380186038337305,
+        "hallOfFame": 0.3467350089843839
+      },
+      "fit": {
+        "composite": 0.28358252803224354,
+        "histogramRmse": 0.2487819344508176,
+        "gradesRmse": 0.264994091578338,
+        "statsError": 0.3984666666666667
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 44
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 12.64,
+          "median": 12.0,
+          "stdev": 3.91,
+          "min": 7,
+          "p10": 9.0,
+          "p25": 10.0,
+          "p75": 14.0,
+          "p90": 19.0,
+          "max": 42
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "D+": 1,
+          "D-": 12,
+          "F": 4987
+        },
+        "histogram": {
+          "00-09": 885,
+          "10-19": 3722,
+          "20-29": 380,
+          "30-39": 12,
+          "40-49": 1,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_099",
+      "weights": {
+        "production": 0.8938354527166718,
+        "trophies": 0.07703416416312436,
+        "cups": 0.005167043220904013,
+        "grit": 0.021796159805053766,
+        "positionFit": 0.002161373464925355,
+        "hallOfFame": 5.8066293207563895e-06
+      },
+      "fit": {
+        "composite": 0.2839545474568091,
+        "histogramRmse": 0.2522197022078532,
+        "gradesRmse": 0.265482321176275,
+        "statsError": 0.391
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 106
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 13.58,
+          "median": 13.0,
+          "stdev": 4.06,
+          "min": 4,
+          "p10": 9.0,
+          "p25": 11.0,
+          "p75": 16.0,
+          "p90": 19.0,
+          "max": 33
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "D-": 4,
+          "F": 4996
+        },
+        "histogram": {
+          "00-09": 759,
+          "10-19": 3811,
+          "20-29": 426,
+          "30-39": 4,
+          "40-49": 0,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_075",
+      "weights": {
+        "production": 0.9627681001371623,
+        "trophies": 0.0013757280278396454,
+        "cups": 0.020116650597927523,
+        "grit": 0.0013842564730491202,
+        "positionFit": 0.013957844263205385,
+        "hallOfFame": 0.00039742050081602147
+      },
+      "fit": {
+        "composite": 0.28499506903994837,
+        "histogramRmse": 0.2576919231810094,
+        "gradesRmse": 0.2653192470537011,
+        "statsError": 0.38276666666666664
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 82
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 14.81,
+          "median": 14.0,
+          "stdev": 4.18,
+          "min": 5,
+          "p10": 10.0,
+          "p25": 12.0,
+          "p75": 17.0,
+          "p90": 20.0,
+          "max": 35
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "D": 1,
+          "D-": 6,
+          "F": 4993
+        },
+        "histogram": {
+          "00-09": 411,
+          "10-19": 3949,
+          "20-29": 633,
+          "30-39": 7,
+          "40-49": 0,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_077",
+      "weights": {
+        "production": 0.14308860068497603,
+        "trophies": 0.05050267212801906,
+        "cups": 0.6677047114231371,
+        "grit": 0.0002065014799179487,
+        "positionFit": 0.07906454798189334,
+        "hallOfFame": 0.059432966302056446
+      },
+      "fit": {
+        "composite": 0.2853965867720792,
+        "histogramRmse": 0.2615460049919951,
+        "gradesRmse": 0.2652119475869387,
+        "statsError": 0.3753
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 84
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 15.95,
+          "median": 16.0,
+          "stdev": 3.73,
+          "min": 11,
+          "p10": 12.0,
+          "p25": 12.0,
+          "p75": 18.0,
+          "p90": 21.0,
+          "max": 34
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "D-": 9,
+          "F": 4991
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 3984,
+          "20-29": 1007,
+          "30-39": 9,
+          "40-49": 0,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_015",
+      "weights": {
+        "production": 0.5044323782898847,
+        "trophies": 0.39909891908208184,
+        "cups": 0.006206049652798813,
+        "grit": 0.02571853345505994,
+        "positionFit": 0.06384026812845454,
+        "hallOfFame": 0.0007038513917201302
+      },
+      "fit": {
+        "composite": 0.28670717783789806,
+        "histogramRmse": 0.26403614077690885,
+        "gradesRmse": 0.2653192470537011,
+        "statsError": 0.3754666666666666
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 22
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 16.9,
+          "median": 16.0,
+          "stdev": 3.23,
+          "min": 10,
+          "p10": 13.0,
+          "p25": 15.0,
+          "p75": 19.0,
+          "p90": 21.0,
+          "max": 37
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "D": 1,
+          "D-": 6,
+          "F": 4993
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 4040,
+          "20-29": 953,
+          "30-39": 7,
+          "40-49": 0,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_053",
+      "weights": {
+        "production": 0.07215571492707167,
+        "trophies": 0.004322871472229981,
+        "cups": 0.04532899727727635,
+        "grit": 0.06174738349379009,
+        "positionFit": 0.7929575867373908,
+        "hallOfFame": 0.023487446092241078
+      },
+      "fit": {
+        "composite": 0.2873080830009886,
+        "histogramRmse": 0.2933397037875743,
+        "gradesRmse": 0.27286077035733813,
+        "statsError": 0.2939
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 60
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 84.77,
+          "median": 85.0,
+          "stdev": 0.8,
+          "min": 83,
+          "p10": 84.0,
+          "p25": 84.0,
+          "p75": 85.0,
+          "p90": 86.0,
+          "max": 88
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "A+": 5000
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 0,
+          "20-29": 0,
+          "30-39": 0,
+          "40-49": 0,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 5000,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_094",
+      "weights": {
+        "production": 0.25208640173753005,
+        "trophies": 0.0788916100344712,
+        "cups": 2.0882998086083967e-08,
+        "grit": 0.07078094883264639,
+        "positionFit": 0.07400780581517499,
+        "hallOfFame": 0.5242332126971793
+      },
+      "fit": {
+        "composite": 0.2882664241991792,
+        "histogramRmse": 0.2703839694010925,
+        "gradesRmse": 0.2621592427732209,
+        "statsError": 0.37213333333333337
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 101
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 16.52,
+          "median": 15.0,
+          "stdev": 4.42,
+          "min": 12,
+          "p10": 13.0,
+          "p25": 14.0,
+          "p75": 17.0,
+          "p90": 25.0,
+          "max": 44
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "D+": 2,
+          "D": 36,
+          "D-": 27,
+          "F": 4935
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 4194,
+          "20-29": 741,
+          "30-39": 63,
+          "40-49": 2,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_062",
+      "weights": {
+        "production": 0.6445233148594369,
+        "trophies": 0.15858433938839941,
+        "cups": 0.07479373385928982,
+        "grit": 0.009391544070220645,
+        "positionFit": 0.016615931615246306,
+        "hallOfFame": 0.09609113620740686
+      },
+      "fit": {
+        "composite": 0.28877547270188947,
+        "histogramRmse": 0.25827080924698187,
+        "gradesRmse": 0.2656446713724396,
+        "statsError": 0.39973333333333333
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 69
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 12.9,
+          "median": 12.0,
+          "stdev": 3.59,
+          "min": 6,
+          "p10": 9.0,
+          "p25": 10.0,
+          "p75": 15.0,
+          "p90": 18.0,
+          "max": 33
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "D-": 1,
+          "F": 4999
+        },
+        "histogram": {
+          "00-09": 808,
+          "10-19": 3918,
+          "20-29": 273,
+          "30-39": 1,
+          "40-49": 0,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_018",
+      "weights": {
+        "production": 0.24994554750392414,
+        "trophies": 0.27887138013612806,
+        "cups": 0.05198258933884026,
+        "grit": 0.05969910893761385,
+        "positionFit": 0.06982906723209055,
+        "hallOfFame": 0.2896723068514032
+      },
+      "fit": {
+        "composite": 0.2894079353193899,
+        "histogramRmse": 0.2691335052280998,
+        "gradesRmse": 0.2638039423511332,
+        "statsError": 0.37850000000000006
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 25
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 16.19,
+          "median": 15.0,
+          "stdev": 3.63,
+          "min": 11,
+          "p10": 13.0,
+          "p25": 14.0,
+          "p75": 17.0,
+          "p90": 22.0,
+          "max": 41
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "D+": 1,
+          "D": 4,
+          "D-": 30,
+          "F": 4965
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 4160,
+          "20-29": 805,
+          "30-39": 34,
+          "40-49": 1,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_067",
+      "weights": {
+        "production": 0.7330743685430939,
+        "trophies": 0.010391741528909284,
+        "cups": 0.22792426690412998,
+        "grit": 1.7061941267928183e-06,
+        "positionFit": 0.0221463331587761,
+        "hallOfFame": 0.0064615836709638495
+      },
+      "fit": {
+        "composite": 0.28966692940513683,
+        "histogramRmse": 0.26492619898585135,
+        "gradesRmse": 0.26559054415181493,
+        "statsError": 0.38763333333333333
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 74
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 14.19,
+          "median": 14.0,
+          "stdev": 3.76,
+          "min": 6,
+          "p10": 10.0,
+          "p25": 11.0,
+          "p75": 17.0,
+          "p90": 19.0,
+          "max": 31
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "D-": 2,
+          "F": 4998
+        },
+        "histogram": {
+          "00-09": 444,
+          "10-19": 4091,
+          "20-29": 463,
+          "30-39": 2,
+          "40-49": 0,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_021",
+      "weights": {
+        "production": 0.7964443177820392,
+        "trophies": 0.00011618389869054113,
+        "cups": 0.18144852984582976,
+        "grit": 0.0019470375871810683,
+        "positionFit": 0.02002544418174681,
+        "hallOfFame": 1.8486704512603284e-05
+      },
+      "fit": {
+        "composite": 0.289750727232551,
+        "histogramRmse": 0.2654479849749716,
+        "gradesRmse": 0.2656446713724396,
+        "statsError": 0.38666666666666666
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 28
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 14.38,
+          "median": 14.0,
+          "stdev": 3.81,
+          "min": 6,
+          "p10": 10.0,
+          "p25": 12.0,
+          "p75": 17.0,
+          "p90": 19.0,
+          "max": 30
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "D-": 1,
+          "F": 4999
+        },
+        "histogram": {
+          "00-09": 422,
+          "10-19": 4102,
+          "20-29": 475,
+          "30-39": 1,
+          "40-49": 0,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_068",
+      "weights": {
+        "production": 0.6944440237497029,
+        "trophies": 0.23114205366126575,
+        "cups": 0.0008341739219464541,
+        "grit": 0.02858560713651635,
+        "positionFit": 0.013120974930160114,
+        "hallOfFame": 0.03187316660040828
+      },
+      "fit": {
+        "composite": 0.2898277526553602,
+        "histogramRmse": 0.2625145121529648,
+        "gradesRmse": 0.26559054415181493,
+        "statsError": 0.3944666666666667
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 75
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 13.3,
+          "median": 13.0,
+          "stdev": 3.68,
+          "min": 5,
+          "p10": 9.0,
+          "p25": 11.0,
+          "p75": 15.0,
+          "p90": 18.0,
+          "max": 34
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "D-": 2,
+          "F": 4998
+        },
+        "histogram": {
+          "00-09": 682,
+          "10-19": 4020,
+          "20-29": 296,
+          "30-39": 2,
+          "40-49": 0,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_027",
+      "weights": {
+        "production": 0.06861654901843584,
+        "trophies": 0.8554241676158112,
+        "cups": 0.0041850164855709296,
+        "grit": 0.033547532091960694,
+        "positionFit": 5.036590792447123e-06,
+        "hallOfFame": 0.03822169819742889
+      },
+      "fit": {
+        "composite": 0.2919485597561832,
+        "histogramRmse": 0.2515294596879441,
+        "gradesRmse": 0.26559054415181493,
+        "statsError": 0.4325333333333334
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 34
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 7.96,
+          "median": 7.0,
+          "stdev": 3.64,
+          "min": 4,
+          "p10": 4.0,
+          "p25": 5.0,
+          "p75": 10.0,
+          "p90": 13.0,
+          "max": 32
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "D-": 2,
+          "F": 4998
+        },
+        "histogram": {
+          "00-09": 3561,
+          "10-19": 1395,
+          "20-29": 42,
+          "30-39": 2,
+          "40-49": 0,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_042",
+      "weights": {
+        "production": 0.07710055698774429,
+        "trophies": 0.0845240901983293,
+        "cups": 0.5065851842094257,
+        "grit": 0.022406952352011955,
+        "positionFit": 0.05589239143948949,
+        "hallOfFame": 0.25349082481299934
+      },
+      "fit": {
+        "composite": 0.2920923848253222,
+        "histogramRmse": 0.26786911322170354,
+        "gradesRmse": 0.26510387182601247,
+        "statsError": 0.39313333333333333
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 49
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 13.46,
+          "median": 13.0,
+          "stdev": 3.8,
+          "min": 9,
+          "p10": 10.0,
+          "p25": 10.0,
+          "p75": 16.0,
+          "p90": 18.0,
+          "max": 33
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "D-": 11,
+          "F": 4989
+        },
+        "histogram": {
+          "00-09": 440,
+          "10-19": 4149,
+          "20-29": 400,
+          "30-39": 11,
+          "40-49": 0,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_016",
+      "weights": {
+        "production": 0.4584305825100123,
+        "trophies": 0.23529498784504355,
+        "cups": 0.12710791298610807,
+        "grit": 0.17592891956221868,
+        "positionFit": 0.00010593112501690602,
+        "hallOfFame": 0.0031316659716005067
+      },
+      "fit": {
+        "composite": 0.2927677870730155,
+        "histogramRmse": 0.2679279143216087,
+        "gradesRmse": 0.26559054415181493,
+        "statsError": 0.39563333333333334
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 23
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 13.37,
+          "median": 13.0,
+          "stdev": 3.47,
+          "min": 6,
+          "p10": 9.0,
+          "p25": 11.0,
+          "p75": 15.25,
+          "p90": 18.0,
+          "max": 32
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "D-": 2,
+          "F": 4998
+        },
+        "histogram": {
+          "00-09": 603,
+          "10-19": 4132,
+          "20-29": 263,
+          "30-39": 2,
+          "40-49": 0,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_017",
+      "weights": {
+        "production": 0.7138484424069897,
+        "trophies": 0.03138006537830893,
+        "cups": 0.05382063617166269,
+        "grit": 0.002590920475943271,
+        "positionFit": 0.03691145520459725,
+        "hallOfFame": 0.16144848036249812
+      },
+      "fit": {
+        "composite": 0.29281857047246934,
+        "histogramRmse": 0.2739077482391737,
+        "gradesRmse": 0.265482321176275,
+        "statsError": 0.3811
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 24
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 15.19,
+          "median": 15.0,
+          "stdev": 3.74,
+          "min": 8,
+          "p10": 11.0,
+          "p25": 12.0,
+          "p75": 17.0,
+          "p90": 20.0,
+          "max": 32
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "D-": 4,
+          "F": 4996
+        },
+        "histogram": {
+          "00-09": 102,
+          "10-19": 4263,
+          "20-29": 631,
+          "30-39": 4,
+          "40-49": 0,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_012",
+      "weights": {
+        "production": 0.4389964900804539,
+        "trophies": 0.23093463414973775,
+        "cups": 0.0194941195691979,
+        "grit": 0.27319572009211895,
+        "positionFit": 0.006938436135285111,
+        "hallOfFame": 0.030440599973206448
+      },
+      "fit": {
+        "composite": 0.29303772706145603,
+        "histogramRmse": 0.2745349522374155,
+        "gradesRmse": 0.2652119475869387,
+        "statsError": 0.38103333333333333
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 19
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 15.53,
+          "median": 15.0,
+          "stdev": 3.58,
+          "min": 7,
+          "p10": 11.0,
+          "p25": 13.0,
+          "p75": 18.0,
+          "p90": 20.0,
+          "max": 32
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "D-": 9,
+          "F": 4991
+        },
+        "histogram": {
+          "00-09": 72,
+          "10-19": 4274,
+          "20-29": 645,
+          "30-39": 9,
+          "40-49": 0,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_098",
+      "weights": {
+        "production": 0.43297275511452044,
+        "trophies": 0.15681175057778057,
+        "cups": 0.09630698224202182,
+        "grit": 0.20170846809465273,
+        "positionFit": 0.0212179235098244,
+        "hallOfFame": 0.09098212046120009
+      },
+      "fit": {
+        "composite": 0.29309586900143636,
+        "histogramRmse": 0.27450281667705406,
+        "gradesRmse": 0.2654815355430311,
+        "statsError": 0.381
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 105
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 15.58,
+          "median": 15.0,
+          "stdev": 3.56,
+          "min": 8,
+          "p10": 11.0,
+          "p25": 13.0,
+          "p75": 18.0,
+          "p90": 20.0,
+          "max": 35
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "D": 1,
+          "D-": 3,
+          "F": 4996
+        },
+        "histogram": {
+          "00-09": 41,
+          "10-19": 4269,
+          "20-29": 686,
+          "30-39": 4,
+          "40-49": 0,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_003",
+      "weights": {
+        "production": 0.30198004252094574,
+        "trophies": 0.019490719666851494,
+        "cups": 0.19773004150954804,
+        "grit": 0.22906214162235602,
+        "positionFit": 0.007873553354985829,
+        "hallOfFame": 0.24386350132531281
+      },
+      "fit": {
+        "composite": 0.29319302376918793,
+        "histogramRmse": 0.27086168224592216,
+        "gradesRmse": 0.264829497709645,
+        "statsError": 0.3915666666666667
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 10
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 13.89,
+          "median": 13.0,
+          "stdev": 3.82,
+          "min": 7,
+          "p10": 10.0,
+          "p25": 11.0,
+          "p75": 16.0,
+          "p90": 19.0,
+          "max": 39
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "D": 5,
+          "D-": 11,
+          "F": 4984
+        },
+        "histogram": {
+          "00-09": 354,
+          "10-19": 4211,
+          "20-29": 419,
+          "30-39": 16,
+          "40-49": 0,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_024",
+      "weights": {
+        "production": 0.22728194581337266,
+        "trophies": 0.3509041585389702,
+        "cups": 0.06474642896798331,
+        "grit": 0.061545647545559225,
+        "positionFit": 0.06383679264223954,
+        "hallOfFame": 0.23168502649187508
+      },
+      "fit": {
+        "composite": 0.294290026887899,
+        "histogramRmse": 0.2768650738011371,
+        "gradesRmse": 0.26499163329110165,
+        "statsError": 0.3818
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 31
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 15.6,
+          "median": 15.0,
+          "stdev": 3.43,
+          "min": 10,
+          "p10": 12.0,
+          "p25": 13.0,
+          "p75": 17.0,
+          "p90": 21.0,
+          "max": 39
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "D": 5,
+          "D-": 8,
+          "F": 4987
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 4314,
+          "20-29": 673,
+          "30-39": 13,
+          "40-49": 0,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_049",
+      "weights": {
+        "production": 0.566633965736044,
+        "trophies": 0.02438971321855151,
+        "cups": 0.3558694663907226,
+        "grit": 0.013771484123445187,
+        "positionFit": 0.03933536825888419,
+        "hallOfFame": 2.2723525795656034e-09
+      },
+      "fit": {
+        "composite": 0.29465711922285387,
+        "histogramRmse": 0.276647435622244,
+        "gradesRmse": 0.2656446713724396,
+        "statsError": 0.3832
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 56
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 15.08,
+          "median": 15.0,
+          "stdev": 3.48,
+          "min": 7,
+          "p10": 11.0,
+          "p25": 12.0,
+          "p75": 17.0,
+          "p90": 20.0,
+          "max": 30
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "D-": 1,
+          "F": 4999
+        },
+        "histogram": {
+          "00-09": 125,
+          "10-19": 4318,
+          "20-29": 556,
+          "30-39": 1,
+          "40-49": 0,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_060",
+      "weights": {
+        "production": 0.3576730660920129,
+        "trophies": 0.45660605260265,
+        "cups": 0.004362996069250609,
+        "grit": 0.16043165898701736,
+        "positionFit": 0.020909497638312673,
+        "hallOfFame": 1.672861075656837e-05
+      },
+      "fit": {
+        "composite": 0.2986435409442306,
+        "histogramRmse": 0.282072356932498,
+        "gradesRmse": 0.2655356527043833,
+        "statsError": 0.3897333333333333
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 67
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 14.28,
+          "median": 14.0,
+          "stdev": 3.4,
+          "min": 8,
+          "p10": 10.0,
+          "p25": 12.0,
+          "p75": 16.0,
+          "p90": 19.0,
+          "max": 36
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "D": 1,
+          "D-": 2,
+          "F": 4997
+        },
+        "histogram": {
+          "00-09": 180,
+          "10-19": 4423,
+          "20-29": 394,
+          "30-39": 3,
+          "40-49": 0,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_088",
+      "weights": {
+        "production": 0.007127601425386228,
+        "trophies": 0.08446163064730199,
+        "cups": 0.01800216008612867,
+        "grit": 0.02092054375064263,
+        "positionFit": 0.865796235619169,
+        "hallOfFame": 0.0036918284713715194
+      },
+      "fit": {
+        "composite": 0.3006917195897469,
+        "histogramRmse": 0.3051869769650909,
+        "gradesRmse": 0.27286077035733813,
+        "statsError": 0.3312
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 95
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 90.54,
+          "median": 90.0,
+          "stdev": 0.59,
+          "min": 90,
+          "p10": 90.0,
+          "p25": 90.0,
+          "p75": 91.0,
+          "p90": 91.0,
+          "max": 93
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "A+": 5000
+        },
+        "histogram": {
+          "00-09": 0,
+          "10-19": 0,
+          "20-29": 0,
+          "30-39": 0,
+          "40-49": 0,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 5000,
+          "100": 0
+        }
+      }
+    },
+    {
+      "name": "auto_006",
+      "weights": {
+        "production": 0.06896342598259542,
+        "trophies": 0.8137415874325454,
+        "cups": 0.053043471822556046,
+        "grit": 0.00027582101896209387,
+        "positionFit": 0.06387449436083296,
+        "hallOfFame": 0.00010119938250810476
+      },
+      "fit": {
+        "composite": 0.3066946188373345,
+        "histogramRmse": 0.29624117938537237,
+        "gradesRmse": 0.2655356527043833,
+        "statsError": 0.3945666666666667
+      },
+      "settings": {
+        "samples": 5000,
+        "mode": "realistic",
+        "seed": 13
+      },
+      "summary": {
+        "lineups": 5000,
+        "score": {
+          "mean": 13.57,
+          "median": 13.0,
+          "stdev": 3.53,
+          "min": 9,
+          "p10": 10.0,
+          "p25": 10.0,
+          "p75": 16.0,
+          "p90": 19.0,
+          "max": 35
+        },
+        "penalties": {
+          "lineupsWithPenalties": 0,
+          "avgPenaltiesPerLineup": 0.0
+        },
+        "warnings": {
+          "lineupsWithWarnings": 0,
+          "avgWarningsPerLineup": 0.0
+        },
+        "grades": {
+          "D": 1,
+          "D-": 2,
+          "F": 4997
+        },
+        "histogram": {
+          "00-09": 4,
+          "10-19": 4681,
+          "20-29": 312,
+          "30-39": 3,
+          "40-49": 0,
+          "50-59": 0,
+          "60-69": 0,
+          "70-79": 0,
+          "80-89": 0,
+          "90-99": 0,
+          "100": 0
+        }
+      }
+    }
+  ]
+}

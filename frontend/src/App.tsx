@@ -36,7 +36,7 @@ function RinkBoardMobile({ lineup, onSlotAction, selectedPlayerId, selectedLineu
           <button
             key={slot}
             type="button"
-            className={`rink-mobile-slot${hasSelection ? " has-selection" : ""}${isMoveTarget ? " move-target" : ""}${isSelectedLineupSlot ? " is-selected" : ""}`}
+            className={`rink-mobile-slot slot-${slot}${hasSelection ? " has-selection" : ""}${isMoveTarget ? " move-target" : ""}${isSelectedLineupSlot ? " is-selected" : ""}`}
             onClick={() => onSlotAction(slot)}
           >
             <div className="slot-top-row">
@@ -159,7 +159,7 @@ export default function App() {
       return;
     }
 
-    void spin(undefined, { resetRespins: true });
+    void spin();
   }, [isGameOver, loading, slottedCount]);
 
   useEffect(() => {
@@ -207,7 +207,7 @@ export default function App() {
     setSelectedPlayerId(null);
     setSelectedLineupSlot(null);
     setSearchQuery("");
-    if (options?.resetRespins ?? true) {
+    if (options?.resetRespins) {
       setRespinsLeft(2);
     }
 

@@ -132,12 +132,12 @@ SLOT_POSITION_GROUP = {
 }
 
 SCORE_WEIGHTS = {
-    "production": 0.35,
-    "trophies": 0.15,
-    "cups": 0.10,
-    "grit": 0.15,
-    "positionFit": 0.20,
-    "hallOfFame": 0.10,
+    "production": 0.301582,
+    "trophies": 0.065926,
+    "cups": 0.028535,
+    "grit": 0.092497,
+    "positionFit": 0.511460,
+    "hallOfFame": 0.0,
 }
 
 SCORE_ADJUSTMENTS = {
@@ -562,6 +562,7 @@ def score_lineup(lineup: list[dict]) -> dict:
 
     used_slots = set()
     picked_players = []
+    picked_lineup: list[tuple[str, dict]] = []
     slot_map: dict[str, dict] = {}
 
     for pick in lineup:
@@ -578,6 +579,7 @@ def score_lineup(lineup: list[dict]) -> dict:
             continue
 
         picked_players.append(player)
+        picked_lineup.append((slot, player))
         slot_map[slot] = player
 
     production_scores: list[float] = []
@@ -591,9 +593,12 @@ def score_lineup(lineup: list[dict]) -> dict:
     cup_norm = SCORE_NORMALIZATION["cups"]
     grit_norm = SCORE_NORMALIZATION["grit"]
 
-    for player in picked_players:
+    player_breakdown: list[dict] = []
+
+    for slot, player in picked_lineup:
         stats = player.get("stats") or {}
         player_group = player.get("positionGroup")
+        player_name = player.get("name", "Unknown Player")
         career_points = _parse_int(stats.get("points"), 0)
         games_played = _parse_int(stats.get("gamesPlayed"), 0)
 
@@ -684,7 +689,26 @@ def score_lineup(lineup: list[dict]) -> dict:
             ]
         grit_scores.append(_mean(grit_components))
 
-        hall_scores.append(1.0 if player.get("inHHOF") else 0.0)
+        hall_score = 1.0 if player.get("inHHOF") else 0.0
+        hall_scores.append(hall_score)
+
+        player_breakdown.append(
+            {
+                "slot": slot,
+                "playerId": player.get("id", ""),
+                "playerName": player_name,
+                "breakdown": {
+                    "production": round(_mean(prod_norms) * 100),
+                    "awards": round(
+                        (_clamp(awards_count / trophy_norm["awardsMax"]) if trophy_norm["awardsMax"] else 0.0) * 100
+                    ),
+                    "cups": round((_clamp(cup_total / cup_norm["max"]) if cup_norm["max"] else 0.0) * 100),
+                    "grit": round(_mean(grit_components) * 100),
+                    "hallOfFame": round(hall_score * 100),
+                    "positionFit": 0,
+                },
+            }
+        )
 
     position_norm = SCORE_NORMALIZATION["position"]
     position_scores: list[float] = []
@@ -714,6 +738,20 @@ def score_lineup(lineup: list[dict]) -> dict:
         else:
             position_scores.append(position_norm["skaterOffPosition"])
             penalties.append(f"{player_name} is off-position in {slot}.")
+
+    position_by_slot = {
+        slot: round(score * 100)
+        for slot, score in zip(SLOT_POSITION_GROUP.keys(), position_scores)
+    }
+
+    for entry in player_breakdown:
+        entry["breakdown"]["positionFit"] = position_by_slot.get(
+            entry["slot"],
+            round(position_norm["skaterOffPosition"] * 100),
+        )
+
+    slot_order = {slot: index for index, slot in enumerate(SLOT_POSITION_GROUP)}
+    player_breakdown.sort(key=lambda entry: slot_order.get(entry["slot"], len(slot_order)))
 
     component_values = {
         "production": _mean(production_scores),
@@ -768,6 +806,7 @@ def score_lineup(lineup: list[dict]) -> dict:
         "totalScore": total_score,
         "grade": grade,
         "breakdown": breakdown,
+        "playerBreakdown": player_breakdown,
         "penalties": penalties,
         "warnings": warnings,
     }
