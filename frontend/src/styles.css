@@ -352,8 +352,17 @@ button {
 
 .rink-mobile {
   display: grid;
+  gap: 0.55rem;
+}
+
+.rink-mobile-columns {
+  display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  grid-auto-flow: row;
+  gap: 0.55rem;
+}
+
+.rink-mobile-column {
+  display: grid;
   gap: 0.55rem;
 }
 
@@ -369,8 +378,6 @@ button {
 }
 
 .rink-mobile .slot-G {
-  grid-column: 1 / -1;
-  transform: none;
   width: 100%;
 }
 
@@ -746,6 +753,10 @@ button {
   .player-card,
   .rink-mobile-slot {
     min-height: 44px;
+  }
+
+  .rink-mobile-columns {
+    gap: 0.45rem;
   }
 
   .meta-row {

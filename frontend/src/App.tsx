@@ -7,6 +7,8 @@ import { useIsMobile } from "./hooks/useIsMobile";
 import type { Category, GameMode, LineupSlot, PlayerCard, ScoreResponse, SpinResponse } from "./types";
 
 const SLOT_SEQUENCE: LineupSlot[] = ["F1", "F2", "F3", "D1", "D2", "G"];
+const FORWARD_SLOTS: LineupSlot[] = ["F1", "F2", "F3"];
+const DEFENSE_SLOTS: LineupSlot[] = ["D1", "D2"];
 const SLOT_LABELS: Record<LineupSlot, string> = {
   F1: "F",
   F2: "F",
@@ -23,37 +25,55 @@ type RinkBoardMobileProps = {
   selectedLineupSlot: LineupSlot | null;
 };
 
+function renderMobileSlot(
+  slot: LineupSlot,
+  lineup: Partial<Record<LineupSlot, PlayerCard>>,
+  onSlotAction: (slot: LineupSlot) => void,
+  selectedPlayerId: string | null,
+  selectedLineupSlot: LineupSlot | null,
+) {
+  const player = lineup[slot];
+  const hasSelection = Boolean(selectedPlayerId || selectedLineupSlot);
+  const isMoveTarget = Boolean(selectedLineupSlot && !player);
+  const isSelectedLineupSlot = selectedLineupSlot === slot;
+
+  return (
+    <button
+      key={slot}
+      type="button"
+      className={`rink-mobile-slot slot-${slot}${hasSelection ? " has-selection" : ""}${isMoveTarget ? " move-target" : ""}${isSelectedLineupSlot ? " is-selected" : ""}`}
+      onClick={() => onSlotAction(slot)}
+    >
+      <div className="slot-top-row">
+        <span>{slot}</span>
+        <span className="slot-type">{SLOT_LABELS[slot]}</span>
+      </div>
+      {player ? (
+        <div className="slot-player mobile-player-card">
+          <strong>{player.name}</strong>
+          <span>{player.positionGroup}</span>
+        </div>
+      ) : (
+        <p className="slot-empty">{selectedLineupSlot ? "Move here" : "Tap to assign"}</p>
+      )}
+    </button>
+  );
+}
+
 function RinkBoardMobile({ lineup, onSlotAction, selectedPlayerId, selectedLineupSlot }: RinkBoardMobileProps) {
   return (
     <section className="rink-mobile" aria-label="Lineup board">
-      {SLOT_SEQUENCE.map((slot) => {
-        const player = lineup[slot];
-        const hasSelection = Boolean(selectedPlayerId || selectedLineupSlot);
-        const isMoveTarget = Boolean(selectedLineupSlot && !player);
-        const isSelectedLineupSlot = selectedLineupSlot === slot;
+      <div className="rink-mobile-columns">
+        <div className="rink-mobile-column">
+          {FORWARD_SLOTS.map((slot) => renderMobileSlot(slot, lineup, onSlotAction, selectedPlayerId, selectedLineupSlot))}
+        </div>
 
-        return (
-          <button
-            key={slot}
-            type="button"
-            className={`rink-mobile-slot slot-${slot}${hasSelection ? " has-selection" : ""}${isMoveTarget ? " move-target" : ""}${isSelectedLineupSlot ? " is-selected" : ""}`}
-            onClick={() => onSlotAction(slot)}
-          >
-            <div className="slot-top-row">
-              <span>{slot}</span>
-              <span className="slot-type">{SLOT_LABELS[slot]}</span>
-            </div>
-            {player ? (
-              <div className="slot-player mobile-player-card">
-                <strong>{player.name}</strong>
-                <span>{player.positionGroup}</span>
-              </div>
-            ) : (
-              <p className="slot-empty">{selectedLineupSlot ? "Move here" : "Tap to assign"}</p>
-            )}
-          </button>
-        );
-      })}
+        <div className="rink-mobile-column">
+          {DEFENSE_SLOTS.map((slot) => renderMobileSlot(slot, lineup, onSlotAction, selectedPlayerId, selectedLineupSlot))}
+        </div>
+      </div>
+
+      {renderMobileSlot("G", lineup, onSlotAction, selectedPlayerId, selectedLineupSlot)}
     </section>
   );
 }
@@ -148,11 +168,8 @@ export default function App() {
 
   const filteredPlayers = useMemo(() => {
     const query = searchQuery.trim().toLowerCase();
-    if (!query) {
-      return playerPool;
-    }
-
-    return playerPool.filter((player) => {
+    const players = query
+      ? playerPool.filter((player) => {
       const haystack =
         gameMode === "pro"
           ? player.name.toLowerCase()
@@ -160,6 +177,20 @@ export default function App() {
               .join(" ")
               .toLowerCase();
       return haystack.includes(query);
+    })
+      : playerPool;
+
+    if (gameMode !== "classic") {
+      return players;
+    }
+
+    return [...players].sort((a, b) => {
+      const pointsDiff = b.stats.points - a.stats.points;
+      if (pointsDiff !== 0) {
+        return pointsDiff;
+      }
+
+      return a.name.localeCompare(b.name);
     });
   }, [gameMode, playerPool, searchQuery]);
 
