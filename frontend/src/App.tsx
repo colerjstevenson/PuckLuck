@@ -18,6 +18,18 @@ const SLOT_LABELS: Record<LineupSlot, string> = {
   G: "G",
 };
 
+function getPlayerListStat(player: PlayerCard): string {
+  const position = player.position.toUpperCase();
+  const positionGroup = player.positionGroup.toUpperCase();
+  const isGoalie = position === "G" || positionGroup === "G" || positionGroup === "GOALIE";
+
+  if (isGoalie) {
+    return `${player.stats.wins ?? 0} W`;
+  }
+
+  return `${player.stats.points} PTS`;
+}
+
 type RinkBoardMobileProps = {
   lineup: Partial<Record<LineupSlot, PlayerCard>>;
   onSlotAction: (slot: LineupSlot) => void;
@@ -116,7 +128,7 @@ function PlayerListMobile({
               {gameMode === "classic" ? (
                 <>
                   <p>
-                    {player.position} | {player.birthCountry ?? "N/A"} | {player.stats.points} PTS
+                    {player.position} | {player.birthCountry ?? "N/A"} | {getPlayerListStat(player)}
                   </p>
                   <p className="teams-line">{player.teamsPlayedFor.slice(0, 2).join(" / ") || "No teams"}</p>
                 </>
@@ -728,7 +740,7 @@ export default function App() {
                       {gameMode === "classic" ? (
                         <>
                           <p>
-                            {player.position} | {player.birthCountry ?? "N/A"} | {player.stats.points} PTS
+                            {player.position} | {player.birthCountry ?? "N/A"} | {getPlayerListStat(player)}
                           </p>
                           <p className="teams-line">{player.teamsPlayedFor.slice(0, 2).join(" / ") || "No teams"}</p>
                         </>

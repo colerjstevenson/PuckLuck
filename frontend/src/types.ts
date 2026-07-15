@@ -27,6 +27,7 @@ export type PlayerCard = {
     goals: number;
     assists: number;
     points: number;
+    wins?: number;
     pim: number;
   };
   awards: string[];
