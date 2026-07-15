@@ -113,6 +113,11 @@ body {
   gap: 0.4rem;
 }
 
+.category-row {
+  display: grid;
+  gap: 0.4rem;
+}
+
 .category-title {
   font-size: 0.78rem;
   letter-spacing: 0.14em;
@@ -739,6 +744,41 @@ button {
 
   .tiles-row {
     grid-template-columns: 1fr;
+    gap: 0.65rem;
+  }
+
+  .category-wrap {
+    gap: 0.3rem;
+  }
+
+  .category-row {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: stretch;
+    gap: 0.45rem;
+  }
+
+  .category-tile {
+    min-height: 88px;
+    padding: 0.65rem 0.7rem;
+    gap: 0.22rem;
+  }
+
+  .category-title,
+  .category-status,
+  .category-group {
+    font-size: 0.64rem;
+  }
+
+  .category-label {
+    font-size: 0.92rem;
+    line-height: 1.15;
+  }
+
+  .respin-side {
+    min-width: 82px;
+    padding: 0.45rem;
+    font-size: 0.74rem;
+    line-height: 1.1;
   }
 
   .actions-row {
@@ -784,6 +824,12 @@ button {
     top: 12%;
   }
 
+  .slot-F2 {
+    left: 50%;
+    top: 12%;
+    transform: translateX(-50%);
+  }
+
   .slot-D1 {
     left: 8%;
     top: 46%;
@@ -792,6 +838,12 @@ button {
   .slot-D2 {
     right: 8%;
     top: 46%;
+  }
+
+  .slot-G {
+    left: 50%;
+    bottom: 8%;
+    transform: translateX(-50%);
   }
 
   .player-list-mobile {
