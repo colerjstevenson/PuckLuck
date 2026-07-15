@@ -30,6 +30,14 @@ function getPlayerListStat(player: PlayerCard): string {
   return `${player.stats.points} PTS`;
 }
 
+function getClassicSortValue(player: PlayerCard): number {
+  const position = player.position.toUpperCase();
+  const positionGroup = player.positionGroup.toUpperCase();
+  const isGoalie = position === "G" || positionGroup === "G" || positionGroup === "GOALIE";
+
+  return isGoalie ? player.stats.wins ?? 0 : player.stats.points;
+}
+
 type RinkBoardMobileProps = {
   lineup: Partial<Record<LineupSlot, PlayerCard>>;
   onSlotAction: (slot: LineupSlot) => void;
@@ -197,9 +205,9 @@ export default function App() {
     }
 
     return [...players].sort((a, b) => {
-      const pointsDiff = b.stats.points - a.stats.points;
-      if (pointsDiff !== 0) {
-        return pointsDiff;
+      const statDiff = getClassicSortValue(b) - getClassicSortValue(a);
+      if (statDiff !== 0) {
+        return statDiff;
       }
 
       return a.name.localeCompare(b.name);
